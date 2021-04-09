@@ -1,8 +1,9 @@
 # E-commerce project using MySql SpringBoot Angular Java Full Stack Development
 
-Team members : Ayushi , Shravya, Mayank , Ekta
-FrontEnd developers : Ayushi , Mayank
-Backend developers : Shravya , Ekta
+Team members : Ayushi , Shravya, Mayank , Ekta <br/>
+FrontEnd developers : Ayushi , Mayank <br/>
+Backend developers : Shravya , Ekta <br/>
+<br/>
 
 How to initialize github repository  with your local one :
 (Remote origin of this repository is : https://github.com/Ayushi-ti/sample.git )
