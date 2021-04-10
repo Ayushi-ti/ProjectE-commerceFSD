@@ -1,7 +1,7 @@
 # E-commerce project using MySql SpringBoot Angular Java Full Stack Development
 
 Team members : Ayushi , Shravya, Mayank , Ekta <br/>
-WordFlow file : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=0  <br/>
+Work Flow schedule : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=0  <br/>
 
 
 Steps to initialize github repository  with your local one :
