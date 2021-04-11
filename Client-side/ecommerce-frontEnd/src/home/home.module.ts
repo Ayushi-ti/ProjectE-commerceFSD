@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BannerComponent } from './banner/banner.component';
+import { HomeComponent } from './home/home.component';
+
+
+
+@NgModule({
+  declarations: [
+    BannerComponent,
+    HomeComponent
+  ],
+  imports: [
+    CommonModule
+  ]
+})
+export class HomeModule { }
