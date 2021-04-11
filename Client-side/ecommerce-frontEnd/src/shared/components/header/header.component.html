@@ -1,1 +1,35 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div class="row between-xs middle-xs header-row">
+            <nav>
+                <a mat-button>Home</a>
+                <span></span>
+                <a mat-button>Order&Returns</a>
+                <span></span>
+                <a mat-button>My Profile</a>
+                <span></span>
+                <a mat-button>Login/Logout </a>
+
+                <!-- <button mat-button [matMenuTriggerFor]="menu"></button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Admin</button>
+                    <button mat-menu-item>LogOut</button>
+                </mat-menu> -->
+                <!-- <a mat-button>Login</a> -->
+                <!--
+                <a *ngIf="onEnabledEmp()"mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
+                -->
+            </nav>
+            <!--<a routerLink='/order' mat-raised-button [matBadge]="total$ | async" matBadgeColor="warn" >
+            (isLogged$ | async) as boolean
+            -->
+            <span class="fill-space"></span>
+
+            <a matBadgeColor="primary">
+                <mat-icon>shopping_cart</mat-icon>
+                Cart
+            </a>
+
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

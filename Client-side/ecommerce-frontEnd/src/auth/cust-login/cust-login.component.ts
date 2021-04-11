@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+//import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-cust-login',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cust-login.component.css']
 })
 export class CustLoginComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor() {
+      //this.buildForm();
+     }
 
   ngOnInit(): void {
   }
+  
 
 }

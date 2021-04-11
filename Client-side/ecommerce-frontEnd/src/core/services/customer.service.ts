@@ -35,6 +35,9 @@ export class CustomerService {
   }
 
   editCustomer(id, newCustomer){
-    return this.http.put(`${this.host}/books/${id}`, newCustomer);
+    return this.http.put(`${this.host}/customer/${id}`, newCustomer);
+  }
+  login(email,password){
+    return this.http.get(`${this.host}/customer/${email}/${password}`);
   }
 }
