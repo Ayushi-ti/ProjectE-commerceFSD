@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from './core/services/customer.service';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { CustomerService } from './core/services/customer.service';
     SharedModule,
     FormsModule,
     CoreModule,
-    NgbModule,
+    NgbModule
     
   ],
   

@@ -48,10 +48,11 @@ public class ProductController {
 		productService.deleteProduct(id);
 		return true;
 	}
-	
-//	@PutMapping("/{id}")
-//	public boolean updateBook(@PathVariable int id,@RequestBody Book book) {
-//		return bookService.editBook(id, book);
-//	}
+
+//	http://localhost:5555/products/{id}
+	@PutMapping("/{id}")
+	public boolean updateProduct(@PathVariable int id,@RequestBody Product product) {
+		return productService.editProduct(id, product);
+	}
 
 }

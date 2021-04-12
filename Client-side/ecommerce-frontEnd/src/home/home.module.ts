@@ -4,7 +4,7 @@ import { BannerComponent } from './banner/banner.component';
 import { HomeComponent } from './home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { SwiperModule } from 'swiper/angular';
+
 
 
 
@@ -17,7 +17,7 @@ import { SwiperModule } from 'swiper/angular';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    SwiperModule
+  
   ]
 })
 export class HomeModule { }
