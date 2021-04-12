@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from 'src/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
 
     
   ],

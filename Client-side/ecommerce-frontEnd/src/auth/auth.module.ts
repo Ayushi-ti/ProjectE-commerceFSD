@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 //import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material/material.module';
 import { SharedModule } from 'src/shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     ReactiveFormsModule,
     SharedModule
   ]
