@@ -43,4 +43,27 @@ public class ProductService {
 		return productRepository.save(product);
 	}
 
+
+	public boolean editProduct(int id, Product product) {
+		Product dbProduct=findProductbyId(id);
+		if(dbProduct != null){
+			if(product.getProduct_name() != null){
+				dbProduct.setProduct_name(product.getProduct_name());
+			}
+			if(product.getTotal_quantity() >= 0){
+				dbProduct.setTotal_quantity(product.getTotal_quantity());
+			}
+			if(product. getDescription() != null){
+				dbProduct.setDescription(product. getDescription());
+			}
+			if(product.getCategory() != null){
+				dbProduct.setCategory(product.getCategory());
+			}
+			
+
+			productRepository.save(dbProduct);
+		}
+		return dbProduct != null;
+	}
+
 }
