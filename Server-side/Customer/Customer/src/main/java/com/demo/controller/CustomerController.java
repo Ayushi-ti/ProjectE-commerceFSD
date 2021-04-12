@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,29 +22,34 @@ import com.demo.service.CustomerService;
 public class CustomerController {
 	@Autowired
 	CustomerService customerService;
-	@PostMapping("/register/{customername}/{email}/{password}/{address}/{phno}")
-	public Customer registercustomer(@PathVariable String customername,@PathVariable String email,@PathVariable String password,@PathVariable String address,@PathVariable long phno) {
-		Customer customer=new Customer();
-		
-		customer.setCustomerName(customername);
-		customer.setEmail(email);
-		customer.setPassword(password);
-		customer.setAddress(address);
-		customer.setPhno(phno);
+	@PostMapping("/register")
+	public Customer registercustomer(@RequestBody Customer customer) {
 		
 		return customerService.savecustomer(customer);
 		
-		
-	}
-
-
-@GetMapping("/login/{email}/{password}")
-	//@GetMapping("/{email}")
-public boolean logincustomer(@PathVariable String email,@PathVariable String password)
-	//public List<Customer> logincustomer(@PathVariable String email)
-{
+}
 	
+@GetMapping("/login/{email}/{password}")
+public boolean logincustomer(@PathVariable String email,@PathVariable String password)
+{
 	return customerService.verifycustomer(email, password);
-	//return customerService.verifycustomer(email);		
+}
+@GetMapping("/show")
+public List<Customer> showcustomer()
+{
+	return customerService.displaycustomer();
+}
+
+
+@PutMapping("/update/{email}")
+public boolean editcustomer(@PathVariable String email,@RequestBody Customer customer)
+{
+	return customerService.updatecustomer(email, customer);
+}
+
+@DeleteMapping("/remove/{id}")
+public boolean removecustomer(@PathVariable int id)
+{
+	return customerService.deletecustomer(id);
 }
 }

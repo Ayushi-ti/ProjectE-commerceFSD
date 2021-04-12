@@ -10,10 +10,12 @@ public class Customer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int CustomerId;
+	private int customerId;
 	private String CustomerName;
 	private String email;
 	private String password;
+	private String Address;
+	private long Phno;
 	public String getEmail() {
 		return email;
 	}
@@ -26,18 +28,15 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	private String Address;
-	private long Phno;
-
-	
-	public int getCustomerId() {
-		return CustomerId;
-	}
-	public void setCustomerId(int userId) {
-		CustomerId = userId;
-	}
 	public String getCustomerName() {
 		return CustomerName;
+	}
+	
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	public void setCustomerName(String userName) {
 		CustomerName = userName;
