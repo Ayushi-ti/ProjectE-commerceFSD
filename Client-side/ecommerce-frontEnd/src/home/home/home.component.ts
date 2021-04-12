@@ -6,14 +6,14 @@ import Swiper from 'swiper';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  mySwiper: Swiper;
+  
 
   constructor() { }
 
   ngOnInit(): void {
   }
   ngAfterViewInit() {
-    this.mySwiper = new Swiper('.swiper-container');
+    
   }
 
 }

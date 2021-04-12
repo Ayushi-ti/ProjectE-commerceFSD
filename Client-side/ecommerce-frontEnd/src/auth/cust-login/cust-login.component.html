@@ -1,10 +1,8 @@
 <p>welcome to login page</p>
 
-
-
-<!-- <div class="row center-xs">
+<div class="row center-xs">
     <div class="box">
-        <form [formGroup]="form" (ngSubmit)="login($event)">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
             <mat-card>
                 <mat-card-header>
                     <mat-card-title>Login</mat-card-title>
@@ -14,7 +12,7 @@
                         <div class="col-xs">
                             <mat-form-field appearance="fill">
                                 <mat-label>User name</mat-label>
-                                <input autocomplete="off" formControlName="userName" matInput type="text">
+                                <input autocomplete="off" formControlName="email" matInput type="text">
                                 <span mat-icon-button matSuffix>
                     <mat-icon>person</mat-icon>
                   </span>
@@ -34,14 +32,11 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button [disabled]="form.invalid" mat-raised-button color="accent" type="submit">Login</button>
-                    <button [disabled]="form.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
+                    <button [disabled]="loginForm.invalid" mat-raised-button color="accent" type="submit">Login</button>
+                    <button [disabled]="loginForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
                 </mat-card-actions>
             </mat-card>
         </form>
     </div>
 
 </div>
-<div class="row center-xs">
-    <p>User Name & password is: <strong>admin</strong></p>
-</div> -->
