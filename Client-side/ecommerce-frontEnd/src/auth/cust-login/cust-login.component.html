@@ -1,5 +1,19 @@
 <p>welcome to login page</p>
 
+<button mat-button [matMenuTriggerFor]="menu">New User?</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>Register</button>
+</mat-menu>
+<span class="fill-space "></span>
+<button mat-button [matMenuTriggerFor]="menu2">Admin?</button>
+<mat-menu #menu2="matMenu">
+    <button mat-menu-item>Admin login</button>
+</mat-menu>
+
+
+
+
+
 <div class="row center-xs">
     <div class="box">
         <form [formGroup]="loginForm" (ngSubmit)="login()">

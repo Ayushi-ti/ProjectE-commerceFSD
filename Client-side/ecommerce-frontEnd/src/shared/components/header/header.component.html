@@ -11,29 +11,29 @@
         <div class="row between-xs middle-xs header-row">
             <nav>
                 <!-- <a mat-button routerLink="/home" routerLinkActive="active">Home</a> -->
-                <a mat-button [routerLink]="'/home'">Home</a>
+                <a mat-button [routerLink]="'/home'" routerLinkActive="active">Home</a>
                 <span></span>
                 <a mat-button>Order&Returns</a>
                 <span></span>
                 <a mat-button>My Profile</a>
 
 
-                <!-- <button mat-button [matMenuTriggerFor]="menu"></button>
-                <mat-menu #menu="matMenu">
+                <!-- <button mat-button [matMenuTriggerFor]=" menu "></button>
+                <mat-menu #menu="matMenu ">
                     <button mat-menu-item>Admin</button>
                     <button mat-menu-item>LogOut</button>
                 </mat-menu> -->
                 <!-- <a mat-button>Login</a> -->
                 <!--
-                <a *ngIf="onEnabledEmp()"mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
+                <a *ngIf="onEnabledEmp() "mat-button routerLink="/admin " routerLinkActive="active ">Admin</a>
                 -->
             </nav>
-            <!--<a routerLink='/order' mat-raised-button [matBadge]="total$ | async" matBadgeColor="warn" >
+            <!--<a routerLink='/order' mat-raised-button [matBadge]="total$ | async " matBadgeColor="warn " >
             (isLogged$ | async) as boolean
             -->
-            <span class="fill-space"></span>
+            <span class="fill-space "></span>
 
-            <a mat-button [routerLink]="'/login'">Login/Logout </a>
+            <a mat-button [routerLink]=" '/login' " routerLinkActive="active">Login/Logout </a>
             <span></span>
             <a matBadgeColor="primary" mat-raised-button>
                 <mat-icon>shopping_cart</mat-icon>

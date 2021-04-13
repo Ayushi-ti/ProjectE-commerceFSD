@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from './core/services/customer.service';
+import { HomeModule } from './home/home.module';
 
 
 
@@ -27,7 +28,8 @@ import { CustomerService } from './core/services/customer.service';
     SharedModule,
     FormsModule,
     CoreModule,
-    NgbModule
+    NgbModule,
+   
     
   ],
   

@@ -3,6 +3,10 @@ nav>a {
     text-decoration: none;
 }
 
+mat-sidenav {
+    width: 300px;
+}
+
 h3 {
     padding: 10px;
 }
