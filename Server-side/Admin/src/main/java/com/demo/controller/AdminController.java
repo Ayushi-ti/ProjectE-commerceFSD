@@ -9,6 +9,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -90,7 +91,11 @@ public class AdminController {
 		users.add(user);
 		return users;
 	}
-	
+	@GetMapping("/login/{email}/{password}")
+	public boolean loginadmin(@PathVariable String email,@PathVariable String password)
+	{
+		return adminService.verifyadmin(email, password);
+	}
 	
 
 
