@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from './core/services/customer.service';
 import { HomeModule } from './home/home.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -29,6 +30,8 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     CoreModule,
     NgbModule,
+    HttpClientModule
+    
    
     
   ],

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BannerComponent } from './banner/banner.component';
 import { HomeComponent } from './home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from 'src/material/material.module';
 import{ SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 
@@ -20,7 +19,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule,
     MaterialModule,
     SwiperModule
   

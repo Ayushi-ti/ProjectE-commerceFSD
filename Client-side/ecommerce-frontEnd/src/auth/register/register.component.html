@@ -8,16 +8,16 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">name</label>
             <div class="col-sm-10">
-                <input formControlName="name" class="form-control" />
-                <small *ngIf="registerForm.get('name').dirty && registerForm.get('name').invalid" class="form-text text-danger">name is required</small>
+                <input formControlName="customer_name" class="form-control" />
+                <!-- <small *ngIf="registerForm.get('customer_name').dirty && registerForm.get('customer_name').invalid" class="form-text text-danger">name is required</small> -->
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input formControlName="Email" class="form-control" />
-                <small *ngIf="registerForm.get('Email').dirty && registerForm.get('Email').invalid" class="form-text text-danger">Email is required</small>
+                <input formControlName="email" class="form-control" />
+                <!-- <small *ngIf="registerForm.get('email').dirty && registerForm.get('email').invalid" class="form-text text-danger">Email is required</small> -->
             </div>
         </div>
 
@@ -25,31 +25,31 @@
             <label class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
                 <input formControlName="password" class="form-control" />
-                <small *ngIf="registerForm.get('price').dirty && registerForm.get('password').invalid" class="form-text text-danger">price is required</small>
+                <!-- <small *ngIf="registerForm.get('price').dirty && registerForm.get('password').invalid" class="form-text text-danger">price is required</small> -->
             </div>
         </div>
 
-        <div class="form-group row">
+        <!-- <div class="form-group row">
             <label class="col-sm-2 col-form-label">Confirm Password</label>
             <div class="col-sm-10">
                 <input formControlName="ConfirnPass" class="form-control" />
                 <small *ngIf="registerForm.get('ConfirmPass').dirty && registerForm.get('ConfirmPass').invalid" class="form-text text-danger">confirm password should match password</small>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Address</label>
             <div class="col-sm-10">
-                <input formControlName="Caddresss" class="form-control" />
-                <small *ngIf="registerForm.get('Caddress').dirty && registerForm.get('Caddress').invalid" class="form-text text-danger">address is required</small>
+                <input formControlName="address" class="form-control" />
+                <!-- <small *ngIf="registerForm.get('address').dirty && registerForm.get('address').invalid" class="form-text text-danger">address is required</small> -->
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Mobile No</label>
             <div class="col-sm-10">
-                <input formControlName="mobileNo" class="form-control" />
-                <small *ngIf="registerForm.get('MobileNo').dirty && registerForm.get('publishedDate').invalid" class="form-text text-danger">Mobile no is required</small>
+                <input formControlName="phno" class="form-control" />
+                <!-- <small *ngIf="registerForm.get('phno').dirty && registerForm.get('phno').invalid" class="form-text text-danger">Mobile no is required</small> -->
             </div>
         </div>
 
