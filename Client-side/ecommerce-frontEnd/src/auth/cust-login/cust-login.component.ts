@@ -18,7 +18,7 @@ export class CustLoginComponent implements OnInit {
   customersList:any=[];
 
   
-  @SessionStorage() sessionValue: string = `Email`;
+  //@SessionStorage() sessionValue: string = `Email`;
  
   constructor(private customerService:CustomerService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) {
       this.buildForm();
@@ -53,17 +53,20 @@ export class CustLoginComponent implements OnInit {
 
     .subscribe(data => {
         console.log(data);
-        this.router.navigate(['/home']);
-        if (this.session.get("customersList") != null) {
-          this.customersList = this.session.get("customersList");
-        }
-        if(data==true){
-        this.customersList.push({
+        this.session.set("email",this.Email);
+        this.session.get("email");
+        console.log(this.router.navigate(['/home']));
+
+        // if (this.session.get("customersList") != null) {
+        //   this.customersList = this.session.get("customersList");
+        // }
+        // if(data==true){
+        // this.customersList.push({
           
-          email :user.email
-        })
-        }
-        this.session.set("customersList", this.customersList);
+        //   email :user.email
+        // })
+        // }
+        // this.session.set("customersList", this.customersList);
       });
 
 

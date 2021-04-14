@@ -35,7 +35,9 @@ const routes: Routes = [
   //   http://:localhost:2400/auth
        { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   //     //http://:localhost:2400/home
-  //     //{path: '',redirectTo: '/home',pathMatch: 'full'}
+  //   
+  { path: 'info', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
+  //{path: '',redirectTo: '/home',pathMatch: 'full'}
 ]}];
  
   // {

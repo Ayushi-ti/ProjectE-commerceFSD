@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-
+import {SharedRoutingModule} from './share.routing'
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     MaterialModule,
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    SharedRoutingModule
 
     
   ],

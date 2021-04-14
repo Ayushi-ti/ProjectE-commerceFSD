@@ -24,11 +24,11 @@
 
 
 <header></header>
-
+<aside id="leftBar"></aside>
 
 
 <div class="box">
-    <aside id="leftBar"></aside>
+
     <section>
 
 
@@ -37,7 +37,7 @@
 
 
         <div class="row center-xs">
-            <div class="box">
+            <div class="box" id="loginbox">
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <mat-card>
                         <mat-card-header>
