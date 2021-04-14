@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
     this.customerService.saveCustomer(this.registerForm.value)
     .subscribe((res:any)=>{
       console.log(res);
-      
+      this.showConfirmation();
+      this.router.navigate(['/auth/login']);
 
       
     })
@@ -46,6 +47,9 @@ export class RegisterComponent implements OnInit {
 
   cancel() {
     this.router.navigate(['/home']);
+  }
+  showConfirmation(){
+    alert("Your Account is registered");
   }
 
 

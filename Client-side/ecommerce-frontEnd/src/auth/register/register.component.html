@@ -15,84 +15,89 @@
 
 <header></header>
 
+<aside id="leftBar"></aside>
+<section>
 
+    <div class="row center-xs">
+        <div class="box">
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <aside></aside>
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Register</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-xs">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Name</mat-label>
+                                    <input autocomplete="off" formControlName="customer_name" matInput type="text">
 
-
-
-
-<div class="row center-xs">
-    <div class="box">
-        <form [formGroup]="registerForm" (ngSubmit)="register()">
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>Register</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="row">
-                        <div class="col-xs">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Name</mat-label>
-                                <input autocomplete="off" formControlName="customer_name" matInput type="text">
-
-                            </mat-form-field>
+                                </mat-form-field>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Email</mat-label>
-                                <input autocomplete="off" formControlName="email" matInput type="text">
-                                <!-- <span mat-icon-button matSuffix>
-            <mat-icon>person</mat-icon>
-          </span> -->
-                            </mat-form-field>
+                        <div class="row">
+                            <div class="col-xs">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Email</mat-label>
+                                    <input autocomplete="off" formControlName="email" matInput type="text">
+                                    <!-- <span mat-icon-button matSuffix>
+                <mat-icon>person</mat-icon>
+              </span> -->
+                                </mat-form-field>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Enter your password</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-                            </mat-form-field>
+                        <div class="row">
+                            <div class="col-xs">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Enter your password</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+                                </mat-form-field>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Address</mat-label>
-                                <input autocomplete="off" formControlName="address" matInput type="text">
+                        <div class="row">
+                            <div class="col-xs">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Address</mat-label>
+                                    <input autocomplete="off" formControlName="address" matInput type="text">
 
-                            </mat-form-field>
+                                </mat-form-field>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Mobile No</mat-label>
-                                <input autocomplete="off" formControlName="phno" matInput type="text">
+                        <div class="row">
+                            <div class="col-xs">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Mobile No</mat-label>
+                                    <input autocomplete="off" formControlName="phno" matInput type="text">
 
-                            </mat-form-field>
+                                </mat-form-field>
+                            </div>
                         </div>
-                    </div>
 
 
 
 
 
-                </mat-card-content>
-                <mat-card-actions>
-                    <button [disabled]="registerForm.invalid" mat-raised-button color="accent" type="submit">Register</button>
-                    <button [disabled]="registerForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
-                </mat-card-actions>
-            </mat-card>
-        </form>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button [disabled]="registerForm.invalid" mat-raised-button color="accent" type="submit">Register</button>
+                        <button [disabled]="registerForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+        </div>
+
     </div>
 
-</div>
+
+
+
+</section>
+<aside id="rightBar"></aside>
