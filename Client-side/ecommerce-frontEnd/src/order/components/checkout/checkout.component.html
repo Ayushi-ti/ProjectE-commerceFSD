@@ -1,0 +1,33 @@
+<button (click)="getCartTotal()">Get Total</button>
+<br>
+<div id="wrapper">
+  <div id="left-col">
+    <h2>Please Confirm Your Billing Address</h2>
+    <br>
+
+    <label>Address : </label>
+    <mat-form-field class="col-5 mt-3 mx-auto">
+
+      <input type="text" matInput formControlName="address" disabled value={{billingAddress}} />
+
+    </mat-form-field>
+    <br>
+    <label>Mobile Number </label>
+    <mat-form-field class="col-5 mt-3 mx-auto">
+
+      <input type="text" matInput formControlName="number" disabled value={{billingMobileNumber}} />
+
+    </mat-form-field>
+
+    <br>
+
+    <button mat-raised-button color="primary">Update</button>
+
+  </div>
+
+  <div id="right-col">
+    <h3>Total Amount : {{cartTotal}}</h3>
+    <br>
+    <a mat-raised-button color="primary" class="checkout-btn">Proceed To Payment</a>
+  </div>
+</div>

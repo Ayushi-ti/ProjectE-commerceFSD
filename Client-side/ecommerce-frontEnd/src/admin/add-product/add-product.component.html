@@ -1,0 +1,66 @@
+<div class="product-form">
+    <h2>Add Product Details</h2>
+
+
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+        <div class="row">
+            <div class="col-xs">
+
+                <!--Product Name-->
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Name</mat-label>
+                    <input autocomplete="off" formControlName="product_name" matInput type="text">
+
+                </mat-form-field>
+
+               
+                <mat-form-field>
+                    <mat-label>Select Category</mat-label>
+                    <mat-select formControlName="category">
+                      <mat-option *ngFor="let category of categories" [value]="category.value">
+                        {{category.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                </div>
+
+           
+
+            <!--Description-->
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Description</mat-label>
+                    <input autocomplete="off" formControlName="description" matInput type="text">
+
+                </mat-form-field>
+            </div>
+
+            <!--Price-->
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Price/piece</mat-label>
+                    <input autocomplete="off" formControlName="price" matInput type="number">
+
+                </mat-form-field>
+            </div>
+
+
+            <!--Quantity-->
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Quantity</mat-label>
+                    <input autocomplete="off" formControlName="total_quantity" matInput type="number">
+
+                </mat-form-field>
+            </div>
+
+        </div>
+        <!--row-->
+
+        <button [disabled]="!(productForm.valid && productForm.dirty)"  mat-raised-button color="primary" type="submit">Add Product</button>
+    </form>
+
+
+</div>

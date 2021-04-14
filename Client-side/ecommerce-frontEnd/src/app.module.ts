@@ -6,6 +6,12 @@ import { AppComponent } from './app/app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
+import { ProductsModule } from './products/products.module';
+import { OrderModule } from './order/order.module';
+import { AdminModule } from './admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -16,9 +22,15 @@ import {MaterialModule} from './material/material.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    HttpClientModule,
+    MaterialModule,
+    ProductsModule,
+    OrderModule,
+    AdminModule
+    
     
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

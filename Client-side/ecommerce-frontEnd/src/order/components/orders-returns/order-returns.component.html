@@ -1,0 +1,17 @@
+<div class="parent">
+  <h2>All Orders</h2>
+  <table>
+      <tr>
+          <th>Order Id</th>
+          <th>Order Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+      </tr>
+      <tr *ngFor="let order of orders">
+          <td>{{ order.order_id }}</td>
+          <td>{{ order.order_date | date:'medium' }}</td>
+          <td>{{ order.status }}</td>
+          <td><button mat-raised-button color="primary" (click)="getOrderId(order.order_id)">View Order Details</button></td>
+      </tr>
+  </table>
+</div>

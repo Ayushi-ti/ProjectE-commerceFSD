@@ -1,0 +1,20 @@
+#wrapper{
+    display: flex;
+}
+
+
+#left-col{
+padding: 30px;
+width: 40%;
+}
+
+#right-col{
+    
+    padding-top:50px;
+    width: 40%;
+}
+
+.mat-raised-button{
+    float: right;
+}
+
