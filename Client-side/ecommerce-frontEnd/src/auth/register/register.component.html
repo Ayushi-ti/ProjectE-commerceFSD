@@ -1,74 +1,98 @@
-<p>register works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div class="row between-xs middle-xs header-row">
+            <nav>
+                <a mat-button (click)="redirectToLogin()">Go Back </a>
 
-<h1 class="text-center">Register new user</h1>
 
-<div class="container">
-    <form (ngSubmit)="create()" [formGroup]="registerForm">
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">name</label>
-            <div class="col-sm-10">
-                <input formControlName="customer_name" class="form-control" />
-                <!-- <small *ngIf="registerForm.get('customer_name').dirty && registerForm.get('customer_name').invalid" class="form-text text-danger">name is required</small> -->
-            </div>
+            </nav>
+
         </div>
+    </mat-toolbar-row>
+</mat-toolbar>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input formControlName="email" class="form-control" />
-                <!-- <small *ngIf="registerForm.get('email').dirty && registerForm.get('email').invalid" class="form-text text-danger">Email is required</small> -->
-            </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input formControlName="password" class="form-control" />
-                <!-- <small *ngIf="registerForm.get('price').dirty && registerForm.get('password').invalid" class="form-text text-danger">price is required</small> -->
-            </div>
-        </div>
-
-        <!-- <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Confirm Password</label>
-            <div class="col-sm-10">
-                <input formControlName="ConfirnPass" class="form-control" />
-                <small *ngIf="registerForm.get('ConfirmPass').dirty && registerForm.get('ConfirmPass').invalid" class="form-text text-danger">confirm password should match password</small>
-            </div>
-        </div> -->
-
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Address</label>
-            <div class="col-sm-10">
-                <input formControlName="address" class="form-control" />
-                <!-- <small *ngIf="registerForm.get('address').dirty && registerForm.get('address').invalid" class="form-text text-danger">address is required</small> -->
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Mobile No</label>
-            <div class="col-sm-10">
-                <input formControlName="phno" class="form-control" />
-                <!-- <small *ngIf="registerForm.get('phno').dirty && registerForm.get('phno').invalid" class="form-text text-danger">Mobile no is required</small> -->
-            </div>
-        </div>
+<header></header>
 
 
 
 
 
-        <!-- 
-        name
-        email
-        password
-        confirm password
-        Caddress
-        mobileNo
-   -->
-        <div class="form-group row">
-            <div class="col-sm-5 offset-sm-7">
-                <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary btn-block">Register</button>
-            </div>
-        </div>
-    </form>
+
+<div class="row center-xs">
+    <div class="box">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Register</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-xs">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Name</mat-label>
+                                <input autocomplete="off" formControlName="customer_name" matInput type="text">
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input autocomplete="off" formControlName="email" matInput type="text">
+                                <!-- <span mat-icon-button matSuffix>
+            <mat-icon>person</mat-icon>
+          </span> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter your password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Address</mat-label>
+                                <input autocomplete="off" formControlName="address" matInput type="text">
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Mobile No</mat-label>
+                                <input autocomplete="off" formControlName="phno" matInput type="text">
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+
+
+
+
+                </mat-card-content>
+                <mat-card-actions>
+                    <button [disabled]="registerForm.invalid" mat-raised-button color="accent" type="submit">Register</button>
+                    <button [disabled]="registerForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+
 </div>

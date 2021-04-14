@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/core/services/customer.service';
 @Component({
@@ -9,22 +9,27 @@ import { CustomerService } from 'src/core/services/customer.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor(private customerService:CustomerService, private router:Router) { }
+  hide=true;
+  
+  constructor(private customerService:CustomerService,private formBuilder: FormBuilder, private router:Router) {
+    this.buildForm();
+   }
 
   ngOnInit(): void {
-    this.registerForm = new FormGroup({
+    
+  }
 
-      
+  private buildForm() {
+    this.registerForm = this.formBuilder.group({
       email: new FormControl("xyz@gmail.com", Validators.required),
-      password: new FormControl("", [Validators.required, Validators.min(1)]),
+      password: new FormControl("samplePas", [Validators.required, Validators.min(1)]),
       address: new FormControl("address", Validators.required),
       phno: new FormControl("9872987733", Validators.required),
-      customer_name: new FormControl("",Validators.required)
-
+      customer_name: new FormControl("DemoName",Validators.required)
     });
   }
 
-  create(){
+  register(){
     console.log(this.registerForm.value);
     this.customerService.saveCustomer(this.registerForm.value)
     .subscribe((res:any)=>{
@@ -34,6 +39,18 @@ export class RegisterComponent implements OnInit {
       
     })
   }
+
+  redirectToLogin(){
+    this.router.navigate(['/auth/login']);
   }
 
+  cancel() {
+    this.router.navigate(['/home']);
+  }
+
+
+
+  }
+
+ 
 
