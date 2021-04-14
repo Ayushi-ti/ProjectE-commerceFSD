@@ -34,7 +34,7 @@ export class CustLoginComponent implements OnInit {
     console.log(this.loginForm.value);
     //this.customerService.login(this.loginForm.value.email ,this.loginForm.value.password  )
     const value = this.loginForm.value;
-    this.customerService.login(value.userName, value.password)
+    this.customerService.login(value.email, value.password)
 
     .subscribe(data => {
         console.log(data);
@@ -45,6 +45,10 @@ export class CustLoginComponent implements OnInit {
     cancel() {
       this.router.navigate(['/']);
     }
+    redirectToRegister(){
+      this.router.navigate(['/auth/register']);
+    }
+    
 
   }
   

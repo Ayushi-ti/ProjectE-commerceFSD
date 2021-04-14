@@ -20,10 +20,10 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   getCustomers(){
-    return this.http.get(`${this.host}/customer/show`);
+    return this.http.get(`${this.host}/customers/show`);
   }
   saveCustomer(customer){
-    return this.http.post(`${this.host}/customer/register`, customer);
+    return this.http.post(`${this.host}/customers/register`, customer);
   }
 
  // deleteCustomer(id){
@@ -31,13 +31,15 @@ export class CustomerService {
  // }
 
   findCustomerById(id){
-    return this.http.get(`${this.host}/customer/${id}`);
+    return this.http.get(`${this.host}/customers/${id}`);
   }
 
-  editCustomer(id, newCustomer){
-    return this.http.put(`${this.host}/customer/${id}`, newCustomer);
+  editCustomer(email, newCustomer){
+    return this.http.put(`${this.host}/customers/${email}`, newCustomer);
   }
   login(email,password){
-    return this.http.get(`${this.host}/customer/${email}/${password}`);
+    return this.http.get(`${this.host}/customers/login/${email}/${password}`);
   }
+
+
 }
