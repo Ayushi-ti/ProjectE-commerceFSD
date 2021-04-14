@@ -1,16 +1,36 @@
-<p>welcome to login page</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div class="row between-xs middle-xs header-row">
+            <nav>
+                <a mat-button (click)="redirectToHome()">Go Back</a>
+                <span class="fill-space "></span>
+                <span class="fill-space "></span>
+                <button mat-button [matMenuTriggerFor]="menu">New User?</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="redirectToRegister()">Register</button>
+                </mat-menu>
+
+                <button mat-button [matMenuTriggerFor]="menu" [routerLink]="'/login'">Admin?</button>
+                <mat-menu #menu2="matMenu">
+                    <button mat-menu-item>Admin login</button>
+                </mat-menu>
+
+
+            </nav>
+
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+<header></header>
+
+
+
 <div class="box">
     <aside id="leftBar"></aside>
     <section>
-        <button mat-button [matMenuTriggerFor]="menu">New User?</button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="redirectToRegister()">Register</button>
-        </mat-menu>
-        <span class="fill-space "></span>
-        <button mat-button [matMenuTriggerFor]="menu" [routerLink]="'/login'">Admin?</button>
-        <mat-menu #menu2="matMenu">
-            <button mat-menu-item>Admin login</button>
-        </mat-menu>
+
 
 
 
@@ -28,7 +48,7 @@
                                 <div class="col-xs">
                                     <mat-form-field appearance="fill">
                                         <mat-label>User name</mat-label>
-                                        <input autocomplete="off" formControlName="email" matInput type="text">
+                                        <input id="sessionmail" autocomplete="off" formControlName="email" matInput type="text">
                                         <span mat-icon-button matSuffix>
                     <mat-icon>person</mat-icon>
                   </span>
