@@ -25,8 +25,8 @@ export class CustomerService {
   saveCustomer(customer){
     return this.http.post(`${this.host}/customers/register`, customer);
   }
-  getCustomerByEmail(Email){
-    return  this.http.get(`${this.host}/customers/${Email}`);
+  displayCustomerByEmail(Email){
+    return  this.http.get(`${this.host}/customers/bymail/${Email}`);
   }
 
  // deleteCustomer(id){

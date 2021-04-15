@@ -15,13 +15,16 @@ export class ProfileComponent implements OnInit {
   phno:string;
   address:string;
   email:string;
+  profile:string='assets/images/profilepic.jpg';
 
 
 
 
   EmailId:string=this.session.get('email');
   constructor(private customerService:CustomerService,private router:Router,private session: SessionStorageService) {
-    this.getCustomerInformation(this.EmailId);
+    //this.getCustomerInformation(this.EmailId);
+    console.log(this.EmailId);
+    
     
    }
 
@@ -29,19 +32,18 @@ export class ProfileComponent implements OnInit {
   }
 
 
-getCustomerInformation(EmailId){
-   console.log(EmailId);
-  this.customerService.getCustomerByEmail(EmailId);
-  //  .subscribe(data => {
+getCustomerInformation(){
+  
+  this.customerService.displayCustomerByEmail(this.EmailId);
+  //  .subscribe((data:any)=>{
   //   console.log(data);
   //  this.name=data.customer_name;
   //  this.email=data.email;
   //  this.address=data.address;
   //  this.phno=data.phno;
-    
-    
-  // });
-    
+   
+   
+  // }); 
   
 }
 
