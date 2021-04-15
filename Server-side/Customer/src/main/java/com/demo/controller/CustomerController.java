@@ -33,9 +33,9 @@ public class CustomerController {
 	}
 
 	//localhost:9595/customers/login
-	@GetMapping("/login/{email}/{password}")
-	public boolean logincustomer(@PathVariable String email, @PathVariable String password) {
-		return customerService.verifycustomer(email, password);
+	@PostMapping("/login")
+	public boolean logincustomer(@RequestBody Customer customer) {
+		return customerService.verifycustomer(customer);
 	}
 
 	//localhost:9595/customers/show
@@ -54,8 +54,7 @@ public class CustomerController {
 	public Customer displayCustomerByEmail(@PathVariable String email)
 	{
 		return customerService.getCustomerEmail(email);
-	}
-	//localhost:9595/customers/remove
+	}	//localhost:9595/customers/remove
 	@DeleteMapping("/remove/{id}")
 	public boolean removecustomer(@PathVariable int id) {
 		return customerService.deletecustomer(id);
