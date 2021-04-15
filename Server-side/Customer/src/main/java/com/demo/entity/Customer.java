@@ -1,5 +1,6 @@
 package com.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,11 +12,14 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
-	private String CustomerName;
-	private String email;
+	private String customerName;
+	
 	private String password;
-	private String Address;
-	private long Phno;
+	private String  address;
+	private long  phno;
+	@Column(name="email",unique=true,nullable=false)
+	
+	private String email;
 	public String getEmail() {
 		return email;
 	}
@@ -28,9 +32,7 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getCustomerName() {
-		return CustomerName;
-	}
+	
 	
 	public int getCustomerId() {
 		return customerId;
@@ -38,22 +40,26 @@ public class Customer {
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-	public void setCustomerName(String userName) {
-		CustomerName = userName;
+	
+	
+	
+	public String getCustomer_name() {
+		return customerName;
 	}
-	
-	
+	public void setCustomer_name(String customer_name) {
+		this.customerName = customer_name;
+	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public long getPhno() {
-		return Phno;
+		return phno;
 	}
 	public void setPhno(long phno) {
-		Phno = phno;
+		this.phno = phno;
 	}
 	
 }

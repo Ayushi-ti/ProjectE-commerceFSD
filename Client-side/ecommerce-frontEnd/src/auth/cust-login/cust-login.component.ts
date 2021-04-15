@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { CustomerService } from 'src/core/services/customer/customer.service';
 import { Router } from '@angular/router';
 import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
+
 //import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 
@@ -38,9 +39,25 @@ export class CustLoginComponent implements OnInit {
   }
   private buildForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required,Validators.email]],
+      password: ['', [Validators.required,Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
+      getErrorMessage() {
+        if (this.email.hasError('required')) {
+          return 'You must enter a value';
+        }
+      
+        return this.email.hasError('email') ? 'Not a valid email' : '';
+        // if (this.password.hasError('required')) {
+        //   return 'You must enter a value';
+        // }
+      
+        // return this.email.hasError('password') ? 'Not a valid password' : '';
+      }
     });
+
+    
+   
+  
   }
 
 
@@ -53,9 +70,16 @@ export class CustLoginComponent implements OnInit {
 
     .subscribe(data => {
         console.log(data);
+        if(data==false){
+          alert("Username and password not matched");
+          this.router.navigate(['/auth/login']);
+        }
+       if(data==true){
         this.session.set("email",this.Email);
         this.session.get("email");
-        console.log(this.router.navigate(['/home']));
+        console.log(this.session.get("email"));
+        this.router.navigate(['/home'])
+      }
 
         // if (this.session.get("customersList") != null) {
         //   this.customersList = this.session.get("customersList");
@@ -69,20 +93,11 @@ export class CustLoginComponent implements OnInit {
         // this.session.set("customersList", this.customersList);
       });
 
-
-
-
-
-     
-
-
-      
-    
-  
+}
 
     
-    }
     
+
     cancel() {
       this.router.navigate(['/home']);
     }

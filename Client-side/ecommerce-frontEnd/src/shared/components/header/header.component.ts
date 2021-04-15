@@ -11,13 +11,21 @@ import { MessengerService } from 'src/core/services/messenger/messenger.service'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  flag:boolean=false;
+  EmailId;
   
  
 
   cartItems: Product[] = [];
   cartTotal = 0;
-  constructor(private router: Router,private msg: MessengerService, private cartService: CartService, private session: SessionStorageService) { }
+  constructor(private session: SessionStorageService,private router: Router,private msg: MessengerService, private cartService: CartService) {
+  this.EmailId=this.session.get('email');
 
+  
+  if(this.EmailId!=null)
+  this.flag=true;
+  }
+ 
   ngOnInit(): void {
 
     this.msg.getMsg().subscribe((product: Product) => {
@@ -57,5 +65,12 @@ export class HeaderComponent implements OnInit {
 
 
   }
+
+logout(){
+  this.session.remove('email');
+}
+
+
+
 
 }

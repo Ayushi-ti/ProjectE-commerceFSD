@@ -1,0 +1,25 @@
+<p>profile works!</p>
+<a mat-button (click)="getCustomerInformation()">Show Customer Details </a>
+
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Welcome {{name}} </mat-card-title>
+        <mat-card-subtitle>Profile details</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="profile" alt="customer DP">
+    <mat-card-content>
+        <p>
+            <mat-card>Name : {{name}} <br/> </mat-card>
+            <mat-card> Email: {{address}} <br/> </mat-card>
+            <mat-card>Mobile : {{phno}} <br/></mat-card>
+            <mat-card> Address : {{address}} </mat-card>
+
+
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="'/../home/update'">Update Profile</button>
+        <button mat-raised-button color="primary">Order History</button>
+    </mat-card-actions>
+</mat-card>

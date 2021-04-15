@@ -21,6 +21,7 @@ public class CustomerService {
 	public Customer savecustomer(Customer customer)
 	{
 		
+		
 		return customerRepository.save(customer);
 	}
 	
@@ -28,6 +29,7 @@ public class CustomerService {
 	
 	{
 	    Customer obj1=customerRepository.findByemail(email);
+	    
 	    
 		Customer obj2=customerRepository.findBypassword(password);
 		if(obj1!=null && obj2!=null)
@@ -42,8 +44,8 @@ public class CustomerService {
 		
 		if(obj3!=null)
 		{
-		if(customer.getCustomerName()!=null)
-			obj3.setCustomerName(customer.getCustomerName());
+		if(customer.getCustomer_name()!=null)
+			obj3.setCustomer_name(customer.getCustomer_name());
 		if(customer.getEmail()!=null)
 			 obj3.setEmail(customer.getEmail());
 		if(customer.getPassword()!=null)
@@ -68,6 +70,11 @@ public class CustomerService {
 		}
 		return customerlist;
 	}
+	public Customer getCustomerEmail(String email)
+	{
+		Customer cust= customerRepository.findByemail(email);
+		 return cust;
+	}
 	public boolean deletecustomer(int id)
 	{
 		Customer customer= customerRepository.findBycustomerId(id);
@@ -78,6 +85,9 @@ public class CustomerService {
 		} 
 		return false;
 	}
+	
+		
+	
 }
 
 

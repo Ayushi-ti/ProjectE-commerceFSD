@@ -7,6 +7,11 @@ import { MaterialModule } from 'src/material/material.module';
 import{ SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 import { ProductsModule } from 'src/products/products.module';
 
+import { ProfileComponent } from './profile/profile.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
   direction: 'horizontal',
   slidesPerView:'auto'
@@ -15,14 +20,19 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
 @NgModule({
   declarations: [
     BannerComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    UpdateProfileComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
     SwiperModule,
-    ProductsModule
+    ProductsModule,
+    FormsModule,
+    ReactiveFormsModule,
+  
   
   ],
   providers:[{

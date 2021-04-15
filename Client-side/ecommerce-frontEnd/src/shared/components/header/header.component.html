@@ -15,7 +15,7 @@
                 <span></span>
                 <a mat-button>Order&Returns</a>
                 <span></span>
-                <a mat-button>My Profile</a>
+                <a mat-button [routerLink]="'/home/profile'" routerLinkActive="active">My Profile</a>
 
 
                 <!-- <button mat-button [matMenuTriggerFor]=" menu "></button>
@@ -33,7 +33,9 @@
             -->
             <span class="fill-space "></span>
 
-            <a mat-button [routerLink]=" '/auth/login' " routerLinkActive="active">Login/Logout </a>
+            <a mat-button [routerLink]=" '/auth/login' " routerLinkActive="active">Login </a>
+            <span></span>
+            <a mat-button [routerLink]=" '/auth/login' " [disabled]="flag" (click)="logout()">Logout </a>
             <span></span>
             <a matBadgeColor="primary" mat-raised-button [routerLink]=" '/cart/show' " routerLinkActive="active">
                 <mat-icon>shopping_cart</mat-icon>

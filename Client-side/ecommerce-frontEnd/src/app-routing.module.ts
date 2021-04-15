@@ -39,7 +39,9 @@ const routes: Routes = [
   { path: 'info', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
   //{path: '',redirectTo: '/home',pathMatch: 'full'}
 
-  { path: 'cart', loadChildren: () => import('./order/order.module').then(m => m.OrderModule) }
+  { path: 'cart', loadChildren: () => import('./order/order.module').then(m => m.OrderModule) },
+  //{path: '',redirectTo: '/home',pathMatch: 'full'},
+  {path: '**',loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
 ]}];
  
   // {

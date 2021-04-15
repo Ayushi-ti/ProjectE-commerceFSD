@@ -25,6 +25,12 @@ export class CustomerService {
   saveCustomer(customer){
     return this.http.post(`${this.host}/customers/register`, customer);
   }
+  displayCustomerByEmail(Email){
+    return  this.http.get(`${this.host}/customers/bymail/${Email}`);
+  }
+  updateCustomer(email,customer){
+    return this.http.post(`${this.host}/customers/update/{email}`, customer);
+  }
 
  // deleteCustomer(id){
  //   return this.http.delete(`${this.host}/customer/${id}`);
