@@ -39,8 +39,8 @@ export class CustLoginComponent implements OnInit {
   }
   private buildForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required,Validators.email]],
+      password: ['', [Validators.required,Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
     });
   }
 
