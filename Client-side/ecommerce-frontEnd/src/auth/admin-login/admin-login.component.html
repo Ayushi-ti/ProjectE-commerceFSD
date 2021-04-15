@@ -2,43 +2,22 @@
     <mat-toolbar-row>
         <div class="row between-xs middle-xs header-row">
             <nav>
-                <a mat-button (click)="redirectToHome()">Go Back</a>
-                <span class="fill-space "></span>
-
-                <button mat-button [matMenuTriggerFor]="menu">New User?</button>
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="redirectToRegister()">Register</button>
-                </mat-menu>
-
-                <button mat-button [matMenuTriggerFor]="menu2">Admin?</button>
-                <mat-menu #menu2="matMenu">
-                    <button mat-menu-item [routerLink]="'/../auth/adminlogin'">Admin login</button>
-                </mat-menu>
-
-
+                <a mat-button (click)="redirectToLogin()">Go Back </a>
             </nav>
-
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
-
 
 <header></header>
 <aside id="leftBar"></aside>
 
 
 <div class="box">
-
     <section>
-
-
-
         <aside></aside>
-
-
         <div class="row center-xs">
             <div class="box" id="loginbox">
-                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <form [formGroup]="adminloginForm" (ngSubmit)="adminlogin()">
                     <mat-card>
                         <mat-card-header>
                             <mat-card-title>Login</mat-card-title>
@@ -68,8 +47,8 @@
                             </div>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button [disabled]="loginForm.invalid" mat-raised-button color="accent" type="submit">Login</button>
-                            <button [disabled]="loginForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
+                            <button [disabled]="adminloginForm.invalid" mat-raised-button color="accent" type="submit">Login</button>
+                            <button [disabled]="adminloginForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
                         </mat-card-actions>
                     </mat-card>
                 </form>

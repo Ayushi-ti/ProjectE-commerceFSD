@@ -1,5 +1,25 @@
-.add-product{
+.add-product {
     width: 150px;
     margin-left: 30px;
-    
+}
+
+aside,
+section,
+footer {
+    box-sizing: border-box;
+}
+
+aside {
+    width: 20%;
+    float: left;
+}
+
+section {
+    width: 60%;
+    float: left;
+    /* height: 100px; */
+}
+
+footer {
+    clear: both;
 }

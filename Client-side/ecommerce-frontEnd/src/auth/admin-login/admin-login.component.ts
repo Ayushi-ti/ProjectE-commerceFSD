@@ -1,44 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
-import { CustomerService } from 'src/core/services/customer/customer.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
-
-//import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-
+import { SessionStorageService } from 'angular-web-storage';
+import { AdminService } from 'src/core/services/admin/admin.service';
 
 @Component({
-  selector: 'app-cust-login',
-  templateUrl: './cust-login.component.html',
-  styleUrls: ['./cust-login.component.css']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
-export class CustLoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
   Email:string;
   hide=true;
-  loginForm: FormGroup;
-  customersList:any=[];
-
-  
-  //@SessionStorage() sessionValue: string = `Email`;
- 
-  constructor(private customerService:CustomerService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) {
-      this.buildForm();
-      this.customersList=customerService.getCustomers();
-    }
-
-    
-
-
-
-
-
+  adminloginForm: FormGroup;
+  constructor(private adminService:AdminService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) { 
+    this.buildForm();
+      //this.adminList=adminService.getadmins();
+  }
 
   ngOnInit(): void {
-    
-
   }
+
   private buildForm() {
-    this.loginForm = this.formBuilder.group({
+    this.adminloginForm = this.formBuilder.group({
       email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required,Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
       getErrorMessage() {
@@ -57,12 +41,12 @@ export class CustLoginComponent implements OnInit {
   }
 
 
-  login(){
-    console.log(this.loginForm.value);
+  adminlogin(){
+    console.log(this.adminloginForm.value);
     //this.customerService.login(this.loginForm.value.email ,this.loginForm.value.password  )
-    const user = this.loginForm.value;
-    this.Email=user.email;
-    this.customerService.login(user.email, user.password)
+    const admin = this.adminloginForm.value;
+    this.Email=admin.email;
+    this.adminService.login(admin.email, admin.password)
 
     .subscribe(data => {
         console.log(data);
@@ -74,7 +58,7 @@ export class CustLoginComponent implements OnInit {
         this.session.set("email",this.Email);
         this.session.get("email");
         console.log(this.session.get("email"));
-        this.router.navigate(['/home'])
+        this.router.navigate(['/../admin/home'])
       }
 
         // if (this.session.get("customersList") != null) {
@@ -95,20 +79,18 @@ export class CustLoginComponent implements OnInit {
     
 
     cancel() {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/../auth/login']);
     }
-    redirectToRegister(){
-      this.router.navigate(['/auth/register']);
+    redirectToLogin(){
+      this.router.navigate(['/auth/login']);
     }
     redirectToHome(){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/../home']);
     }
 
 
-   
-    
-
-  }
-  
 
 
+
+
+}
