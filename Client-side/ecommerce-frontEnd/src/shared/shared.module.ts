@@ -2,16 +2,34 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
-
+import { MaterialModule } from 'src/material/material.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import {SharedRoutingModule} from './share.routing'
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    RouterModule,
+    SharedRoutingModule
+
+    
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

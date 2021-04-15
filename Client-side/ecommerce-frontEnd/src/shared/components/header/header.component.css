@@ -1,0 +1,24 @@
+nav>a {
+    padding: 10px;
+    text-decoration: none;
+}
+
+mat-sidenav {
+    width: 300px;
+}
+
+h3 {
+    padding: 10px;
+}
+
+nav>a.active {
+    background-color: black;
+}
+
+.header-row {
+    width: 100%;
+}
+
+.fill-space {
+    flex: 1 1 auto;
+}

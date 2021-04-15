@@ -18,6 +18,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   addCart(){
+    console.log("add to cart");
       this.msg.sendMsg(this.product);  
     }
 }

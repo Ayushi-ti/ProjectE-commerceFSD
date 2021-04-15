@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SuccessOrderComponent } from './components/success-order/success-order.component';
 import { OrderReturnsComponent } from './components/orders-returns/order-returns.component';
 import { OrderReturnDetailsComponent } from './components/order-return-details/order-return-details.component';
+import { OrderRoutingModule } from './order-routing.module';
 
 
 
@@ -24,6 +25,7 @@ import { OrderReturnDetailsComponent } from './components/order-return-details/o
     CommonModule,
     MaterialModule,
     HttpClientModule,
+    OrderRoutingModule
   
   ],
   exports:[CartComponent,ShowCartComponent,CheckoutComponent,

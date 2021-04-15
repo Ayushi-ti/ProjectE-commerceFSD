@@ -4,6 +4,7 @@ import { CartService } from 'src/core/services/cart/cart.service';
 import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
 import { CustomerService } from 'src/core/services/customer/customer.service';
 import { OrderService } from 'src/core/services/order/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-cart',
@@ -14,7 +15,7 @@ export class ShowCartComponent implements OnInit {
 
   cartItems:Product[]=[];
   totalSum:number=0;
-  constructor(public cartService:CartService, public session:SessionStorageService,private customerService:CustomerService,private orderService:OrderService) {
+  constructor(public cartService:CartService, public session:SessionStorageService,private customerService:CustomerService,private orderService:OrderService,private router:Router) {
    }
 
   ngOnInit(): void {
@@ -39,11 +40,11 @@ this.cartItems=this.session.get("cartItems");
 
   checkout(){
     //get user data from session
-    let email=this.session.get("");
+    let email=this.session.get("email");
 
-      if(email == null || email == ""){
+      //if(email == null || email == ""){
         //redirect to login
-      }else{
+      //}else{
           
         /*let cust_id;
         this.customerService.getCustomerId()
@@ -57,7 +58,11 @@ this.cartItems=this.session.get("cartItems");
               redirect to success page
           })
           */
-      }
+         let order_id=1;
+          this.router.navigate(['cart/checkout',{order_id:2}]);
+          //this.router.navigate(['cart/checkout/${order_id}']);
+
+      //}
   }
 
 }

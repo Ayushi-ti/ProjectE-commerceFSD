@@ -1,24 +1,12 @@
 
-<div class="container">
-  <app-cart></app-cart>
-  <br>
-  <app-product-list></app-product-list>
-  <br>
-<app-show-cart></app-show-cart>
-<br>
-<app-checkout></app-checkout>
-<br>
-<app-add-product></app-add-product>
-<br>
-<app-admin-home></app-admin-home>
-<br>
-<app-success-order></app-success-order>
-<br>
-<app-order-returns></app-order-returns>
-<br>
-<app-order-return-details></app-order-return-details>
 
-</div>
+<app-header></app-header>
+<aside id="leftBar"></aside>
+<section>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</section>
+<aside id="rightBar"></aside>
 
-
-
+<app-footer></app-footer>
