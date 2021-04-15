@@ -15,7 +15,7 @@ export class CustomerService {
     return this.data;
   }
 
-  private host:string = "http://localhost:8080";
+  private host:string = "http://localhost:9595";
 
   constructor(private http: HttpClient) { }
 
