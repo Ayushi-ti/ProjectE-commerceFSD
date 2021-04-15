@@ -19,7 +19,6 @@ import com.demo.service.CustomerService;
 
 @RestController
 @RequestMapping("customers")
-@CrossOrigin(origins = {"http://localhost:62380"}) 
 public class CustomerController {
 	@Autowired
 	CustomerService customerService;

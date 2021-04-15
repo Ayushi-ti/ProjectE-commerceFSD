@@ -68,8 +68,8 @@ public class AdminController {
 	}
 
 //view all customers
-//	localhost:5959/admin/users
-	@GetMapping("/users")
+//	localhost:5959/admin/customers
+	@GetMapping("/customers")
 	@HystrixCommand(fallbackMethod = "findUsersFallback", commandProperties = {
 			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000"),
 			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "4"),
@@ -120,6 +120,20 @@ public class AdminController {
 
 	}
 
+//http://localhost:5959/admin/remove-customer/{id} --> deleting customer by id	
+	@DeleteMapping("/remove-customer/{id}")
+	public boolean deleteUserById(@PathVariable int id) {
+
+		Customer user = findCustomerById(id);
+		restTemplate.delete("http://CUSTOMER-SERVICE/customers/remove/{id}", id);
+		if (user != null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 //// http://localhost:5959/admin/products -->add a new product
 //	@PostMapping("/products")
 //	public Product saveProduct(@RequestBody Product product) {
@@ -130,14 +144,14 @@ public class AdminController {
 //
 //	}
 
-//	http://localhost:5959/admin/users/id  -->get users by id
-//		@GetMapping("/users/{id}")
-//	    public Customer findCustomerById(@PathVariable int id){
-//			
-//			 Customer result = restTemplate.getForObject("http://CUSTOMER-SERVICE/customers/{id}", Customer.class, id);
-//
-//		        System.out.println(result);
-//			return result;
-//		}
+//	http://localhost:5959/admin/customers/id  -->get users by id
+		@GetMapping("/customers/{id}")
+	    public Customer findCustomerById(@PathVariable int id){
+			
+			 Customer result = restTemplate.getForObject("http://CUSTOMER-SERVICE/customers/{id}", Customer.class, id);
+
+		        System.out.println(result);
+			return result;
+		}
 
 }
