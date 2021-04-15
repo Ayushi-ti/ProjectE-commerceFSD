@@ -28,6 +28,9 @@ export class CustomerService {
   displayCustomerByEmail(Email){
     return  this.http.get(`${this.host}/customers/bymail/${Email}`);
   }
+  updateCustomer(email,customer){
+    return this.http.post(`${this.host}/customers/update/{email}`, customer);
+  }
 
  // deleteCustomer(id){
  //   return this.http.delete(`${this.host}/customer/${id}`);
@@ -44,5 +47,8 @@ export class CustomerService {
     return this.http.get(`${this.host}/customers/login/${email}/${password}`);
   }
 
+  getCustomerDetails(email){
+    return this.http.get(`${this.host}/customers/bymail/${email}`);
+  }
 
 }

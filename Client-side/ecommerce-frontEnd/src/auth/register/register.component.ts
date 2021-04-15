@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomerService } from 'src/core/services/customer.service';
+import { CustomerService } from 'src/core/services/customer/customer.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,11 +21,11 @@ export class RegisterComponent implements OnInit {
 
   private buildForm() {
     this.registerForm = this.formBuilder.group({
-      email: new FormControl("xyz@gmail.com", [Validators.required,Validators.email]),
-      password: new FormControl("samplePas", [Validators.required, Validators.min(1),Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]),
-      address: new FormControl("address", Validators.required),
-      phno: new FormControl("9872987733", Validators.required),
-      customer_name: new FormControl("DemoName",Validators.required)
+      email: new FormControl('', [Validators.required,Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.min(1),Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]),
+      address: new FormControl('', Validators.required),
+      phno: new FormControl('', Validators.required),
+      customer_name: new FormControl('',Validators.required)
     });
   }
 

@@ -5,8 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { MaterialModule } from 'src/material/material.module';
 import{ SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
+import { ProductsModule } from 'src/products/products.module';
+
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
@@ -25,7 +28,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
-    SwiperModule
+    SwiperModule,
+    ProductsModule,
+    FormsModule,
+    ReactiveFormsModule,
   
   
   ],

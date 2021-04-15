@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomerService } from './services/customer.service';
+import { CustomerService } from './services/customer/customer.service';
 
 
 

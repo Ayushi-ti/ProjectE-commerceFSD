@@ -1,0 +1,22 @@
+  
+<mat-card class="product-card">
+   
+    <img src="https://picsum.photos/400" >
+
+    <mat-card-content>
+        <mat-card-title>
+            {{product.product_name}}   
+           </mat-card-title>
+           <mat-card-subtitle>
+               {{ product.product_price | currency}}
+           </mat-card-subtitle>
+        <p>{{ product.description | slice:0:50 }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="addCart()" mat-raised-button color="primary" >Add Cart</button>
+   <!--     <a mat-raised-button [routerLink]="['/products',product.productId]">View Detail</a>
+    -->
+</mat-card-actions>    
+</mat-card>
+
+
