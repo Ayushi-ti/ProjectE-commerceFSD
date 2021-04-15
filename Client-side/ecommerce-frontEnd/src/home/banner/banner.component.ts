@@ -9,9 +9,15 @@ import 'swiper/swiper-bundle.css';
 export class BannerComponent implements AfterViewInit {
   mySwiper: Swiper;
   slides: string[] = [
-    'assets/images/banner-1.jpg',
-    'assets/images/banner-2.jpg',
-    'assets/images/banner-3.jpg'
+    //'assets/images/banner-1.jpg',
+    //'assets/images/banner-2.jpg',
+   // 'assets/images/banner-3.jpg',
+    'assets/images/banner-4.jpg',
+    'assets/images/banner-5.jpg',
+    'assets/images/banner-6.jpg',
+    //'assets/images/banner-7.jpg',
+    //'assets/images/banner-8.jpg',
+    //'assets/images/banner-9.jpg'
   ];
   constructor() { }
 
