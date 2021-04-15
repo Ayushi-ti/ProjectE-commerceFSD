@@ -27,6 +27,6 @@
   <div id="right-col">
     <h3>Total Amount : {{cartTotal}}</h3>
     <br>
-    <a mat-raised-button color="primary" class="checkout-btn" [routerLink]="'/../cart/success'">Proceed To Payment</a>
+    <a mat-raised-button color="primary" class="checkout-btn"(click)="proceedToPayment()">Proceed To Payment</a>
   </div>
 </div>

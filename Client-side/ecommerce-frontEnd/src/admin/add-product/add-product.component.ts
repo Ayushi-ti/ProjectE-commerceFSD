@@ -42,11 +42,7 @@ export class AddProductComponent implements OnInit {
   saveProduct(){
   console.log(this.productForm.value);
     const product=this.productForm.value;
-      //console.log(product.productName);
-      //product.description;
-      //product.price;
-      //product.quantity;
-     // console.log(product.category);
+      
      this.productService.saveProduct(this.productForm.value)
      .subscribe((res:any)=>{
       console.log(res);

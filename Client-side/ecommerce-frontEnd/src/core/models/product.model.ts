@@ -3,7 +3,7 @@
 export class Product{
     product_id:number;
     product_name:string;
-    price:number;
+    product_price:number;
     total_quantity:number;
     description:string;
     category:string;

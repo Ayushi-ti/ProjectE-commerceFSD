@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
       this.cartItems.push({
         product_id: product.product_id,
         product_name: product.product_name,
-        price: product.price,
+        product_price: product.product_price,
         total_quantity: 1,
         description: product.description,
         category:product.category,

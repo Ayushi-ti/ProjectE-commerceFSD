@@ -16,24 +16,35 @@ export class EditProductComponent implements OnInit {
 
   productForm:FormGroup;
   product:Product;
+  productId:number=8;
   
   categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
   {value:'Clothing',viewValue:'Clothing'},{value:'Books',viewValue:'Books'},
   {value:'Accesories',viewValue:'Accesories'},{value:'Bags and Luggage',viewValue:'Bags and Luggage'},
   {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
 
-  constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { }
+  constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { 
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params: any) => {
-      // get data using id
-      this.getProductDetails(params.id);
-    })
-  
+    this.productForm=new FormGroup({
+      product_id:new FormControl({value:'',disabled:true}),
+      product_name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required),
+      total_quantity:new FormControl('',Validators.required),
+      category:new FormControl('',Validators.required)
+    });
   }
 
-  getProductDetails(id){
-    this.productService.getProductById(id)
+  ngOnInit(): void { 
+  /*  this.activatedRoute.paramMap.subscribe(params => { 
+    this.productId = +params.get('pid');
+   
+});*/
+    this.getProductDetails();
+  }
+
+  getProductDetails(){
+    this.productService.getProductById(this.productId)
     .subscribe((res:any)=>{
       this.product=res;
       this.initializeForm();
@@ -43,10 +54,10 @@ export class EditProductComponent implements OnInit {
 
   initializeForm(){
     this.productForm=new FormGroup({
-      product_id:new FormControl(this.product.product_id),
+      product_id:new FormControl({value:this.product.product_id,disabled:true}),
       product_name: new FormControl(this.product.product_name, Validators.required),
       description: new FormControl(this.product.description, Validators.required),
-      price: new FormControl(this.product.price, Validators.required),
+      price: new FormControl(this.product.product_price, Validators.required),
       total_quantity:new FormControl(this.product.total_quantity,Validators.required),
       category:new FormControl(this.product.category,Validators.required)
     });

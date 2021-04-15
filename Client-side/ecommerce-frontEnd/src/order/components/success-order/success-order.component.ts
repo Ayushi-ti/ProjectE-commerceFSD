@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SessionStorageService } from 'angular-web-storage';
 import { OrderService } from 'src/core/services/order/order.service';
 
 @Component({
@@ -8,19 +10,15 @@ import { OrderService } from 'src/core/services/order/order.service';
 })
 export class SuccessOrderComponent implements OnInit {
 
-  orderId:any="101";
-  constructor(private orderService:OrderService) { }
+  orderId:string;
+  constructor(private orderService:OrderService,private _Activatedroute:ActivatedRoute,private session:SessionStorageService) { }
 
   ngOnInit(): void {
-    this.getOrderId();
-  }
-
-  getOrderId(){
-    this.orderService.getLatestOrderId()
-    .subscribe((res:any)=>{
-      console.log(res);
-      this.orderId = res;
-    })
+    this._Activatedroute.paramMap.subscribe(params => { 
+      this.orderId = params.get('id'); 
+  });
+  this.session.set("cartItems","");
+    
   }
 
   

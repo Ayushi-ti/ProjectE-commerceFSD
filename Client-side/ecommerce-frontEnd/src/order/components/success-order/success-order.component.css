@@ -1,4 +1,8 @@
 .parent{
+    width: 100%;
     text-align: center;
-    padding: 30px;
+}
+.message{
+    width: 80%;
+    margin:10%
 }

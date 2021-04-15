@@ -30,8 +30,8 @@ export class HeaderComponent implements OnInit {
       this.cartItems.push({
         product_id: product.product_id,
         product_name: product.product_name,
-        price: product.price,
-        total_quantity: 1,
+        product_price: product.product_price,
+        total_quantity: product.total_quantity,
         description: product.description,
         category:product.category,
         product_image: product.product_image

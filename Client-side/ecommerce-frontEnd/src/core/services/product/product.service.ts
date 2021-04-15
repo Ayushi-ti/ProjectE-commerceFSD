@@ -25,6 +25,13 @@ export class ProductService {
   }
 
   updateProduct(id,product){
-    return this.http.get(`${this.host}/products/${id}`,product);
+    return this.http.put(`${this.host}/products/${id}`,product);
   }
+
+  deleteProduct(id){
+  
+    return this.http.delete(`${this.host}/products/${id}`);
+  }
+
 }
+

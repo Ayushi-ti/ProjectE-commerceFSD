@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from 'src/core/services/order/order.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class OrderReturnsComponent implements OnInit {
 
   
   
-  constructor() { }
+  constructor(private orderService:OrderService) { }
 
   
   
@@ -28,11 +29,11 @@ export class OrderReturnsComponent implements OnInit {
   }
 
   fetchAllOrders(){
-    
+    //this.orderService. 
   }
 
   
-  getOrderId(orderId){
+  viewOrderDetails(orderId){
     console.log(orderId);
     //by routing pass data to order-returns-detail page
   }

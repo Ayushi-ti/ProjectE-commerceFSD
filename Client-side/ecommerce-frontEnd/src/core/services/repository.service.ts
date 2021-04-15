@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 //import { AuthService } from './auth/auth.service';
 //import { ProductsImagesService } from './products-images/products-images.service';
 //import { CartService } from './cart/cart.service';
-import {CustomerService} from './customer.service'
+import {CustomerService} from './customer/customer.service'
 
 
 @Injectable({

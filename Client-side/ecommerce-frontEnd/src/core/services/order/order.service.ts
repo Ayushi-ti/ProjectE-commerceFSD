@@ -6,12 +6,17 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
 
-  private host:String="http://localhost:5555";//will be changed
+  private host:String="http://localhost:8080";
 
   constructor(private http:HttpClient) { }
 
 
-  getLatestOrderId(){
-    return this.http.get(`${this.host}/orders`);
+  getAllOrders(){
+    return this.http.get(`${this.host}/orders/show`);
   }
+
+  createOrder(order){
+    return this.http.post(`${this.host}/orders/save`, order);
+  }
+
 }

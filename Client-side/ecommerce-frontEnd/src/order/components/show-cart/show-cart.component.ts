@@ -33,7 +33,7 @@ this.cartItems=this.session.get("cartItems");
   findTotalAmout(){
     if( this.cartItems!=null && this.cartItems.length > 0){
     this.cartItems.forEach(item=>{
-      this.totalSum+=(item.total_quantity*item.price);
+      this.totalSum+=(item.total_quantity*item.product_price);
     })
   }
 }
@@ -42,29 +42,16 @@ this.cartItems=this.session.get("cartItems");
     //get user data from session
     let email=this.session.get("email");
 
-      //if(email == null || email == ""){
-        //redirect to login
-      //}else{
+      if(email == null || email == "")
+        {
+          this.router.navigate(['/../../login']);
+        }
+        else{
           
-        /*let cust_id;
-        this.customerService.getCustomerId()
-           .subscribe((res:any)=>{
-              let cust_id=res;
-              redirect to success page
-          })
-          this.orderService.saveOrder()
-          .subscribe((res:any)=>{
-              let order_id=res;
-              redirect to success page
-          })
-          */
-         let order_id=1;
-          this.router.navigate(['cart/checkout',{order_id:2}]);
-          //this.router.navigate(['cart/checkout/${order_id}']);
-
-      //}
+          this.router.navigate(['cart/checkout']);
   }
 
+}
 }
 
 
