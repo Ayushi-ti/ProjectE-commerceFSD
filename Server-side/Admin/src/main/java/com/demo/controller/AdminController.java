@@ -107,18 +107,18 @@ public class AdminController {
 	}
 
 //http://localhost:5959/admin/products/{id} --> deleting product by id	
-//	@DeleteMapping("/products/{id}")
-//	public boolean deleteProductById(@PathVariable int id) {
-//
-//		Product product = findProductbyId(id);
-//		restTemplate.delete("http://USER-SERVICE/users/{userId}", userId);
-//		if (user != null) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//
-//	}
+	@DeleteMapping("/products/{id}")
+	public boolean deleteProductById(@PathVariable int id) {
+
+		Product product = findProductById(id);
+		restTemplate.delete("http://PRODUCT-SERVICE/products/{id}", id);
+		if (product != null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
 
 //// http://localhost:5959/admin/products -->add a new product
 //	@PostMapping("/products")

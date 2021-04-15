@@ -11,11 +11,11 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int product_id;
-	String product_name;
-	int product_price;
-	int total_quantity;
-	String description;
-	String category;
+	private String product_name;
+	private int product_price;
+	private int total_quantity;
+	private String description;
+	private String category;
 
 	public int getProduct_id() {
 		return product_id;
