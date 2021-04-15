@@ -25,18 +25,22 @@ public class CustomerService {
 		return customerRepository.save(customer);
 	}
 	
-	public boolean  verifycustomer( String email,String password)
+	public boolean  verifycustomer( Customer customer)
 	
 	{
-	    Customer obj1=customerRepository.findByemail(email);
+	    Customer obj1=customerRepository.findByemail(customer.getEmail());
+	    if(obj1!=null)
+	    {
+	    	boolean a=obj1.getPassword().equals(customer.getPassword());
+	    	if(a==true)
+	    	{
+	    		return true;
+	    	}
+	    }
+	   return false;
 	    
-	    
-		Customer obj2=customerRepository.findBypassword(password);
-		if(obj1!=null && obj2!=null)
-		{
-			return true;
-		}
-		return false;
+		
+	
 	}
 	public boolean updatecustomer(String email,Customer customer)
 	{
@@ -85,10 +89,11 @@ public class CustomerService {
 		} 
 		return false;
 	}
-	
+
+}
 		
 	
-}
+
 
 
  
