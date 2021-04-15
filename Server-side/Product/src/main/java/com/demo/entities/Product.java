@@ -1,7 +1,5 @@
 package com.demo.entities;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +12,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int product_id;
 	String product_name;
-	String product_price;
+	int product_price;
 	int total_quantity;
 	String description;
 	String category;
@@ -35,11 +33,13 @@ public class Product {
 		this.product_name = product_name;
 	}
 
-	public String getProduct_price() {
+
+
+	public int getProduct_price() {
 		return product_price;
 	}
 
-	public void setProduct_price(String product_price) {
+	public void setProduct_price(int product_price) {
 		this.product_price = product_price;
 	}
 
@@ -73,7 +73,5 @@ public class Product {
 				+ product_price + ", total_quantity=" + total_quantity + ", description=" + description + ", category="
 				+ category + "]";
 	}
-
-	
 
 }

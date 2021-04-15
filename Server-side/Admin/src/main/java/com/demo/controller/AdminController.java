@@ -8,8 +8,11 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -29,6 +32,12 @@ public class AdminController {
 	AdminService adminService;
 	@Autowired
 	RestTemplate restTemplate;
+
+	@GetMapping("/login/{email}/{password}")
+	public boolean loginadmin(@PathVariable String email, @PathVariable String password) {
+		return adminService.verifyadmin(email, password);
+	}
+
 //view all products
 //	localhost:5959/admin/products
 	@GetMapping("/products")
@@ -49,19 +58,15 @@ public class AdminController {
 		return products;
 
 	}
-	
-	public List<Product> findProductsFallback(){
-		Product product = new Product();
 
+	public List<Product> findProductsFallback() {
+		Product product = new Product();
 
 		List<Product> products = new ArrayList<Product>();
 		products.add(product);
 		return products;
 	}
 
-	
-	
-	
 //view all customers
 //	localhost:5959/admin/users
 	@GetMapping("/users")
@@ -82,22 +87,57 @@ public class AdminController {
 		return users;
 
 	}
-	
-	public List<Customer> findUsersFallback(){
-		Customer user = new Customer();
 
+	public List<Customer> findUsersFallback() {
+		Customer user = new Customer();
 
 		List<Customer> users = new ArrayList<Customer>();
 		users.add(user);
 		return users;
 	}
-	@GetMapping("/login/{email}/{password}")
-	public boolean loginadmin(@PathVariable String email,@PathVariable String password)
-	{
-		return adminService.verifyadmin(email, password);
+
+//	    http://localhost:5959/admin/products/id  -->get products by id
+	@GetMapping("/products/{id}")
+	public Product findProductById(@PathVariable int id) {
+
+		Product result = restTemplate.getForObject("http://PRODUCT-SERVICE/products/{id}", Product.class, id);
+
+		System.out.println(result);
+		return result;
 	}
-	
 
+//http://localhost:5959/admin/products/{id} --> deleting product by id	
+//	@DeleteMapping("/products/{id}")
+//	public boolean deleteProductById(@PathVariable int id) {
+//
+//		Product product = findProductbyId(id);
+//		restTemplate.delete("http://USER-SERVICE/users/{userId}", userId);
+//		if (user != null) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//
+//	}
 
+//// http://localhost:5959/admin/products -->add a new product
+//	@PostMapping("/products")
+//	public Product saveProduct(@RequestBody Product product) {
+//
+//		Product result = restTemplate.postForObject("http://PRODUCT-SERVICE/products", product, Product.class);
+//		System.out.println(result);
+//		return result;
+//
+//	}
+
+//	http://localhost:5959/admin/users/id  -->get users by id
+//		@GetMapping("/users/{id}")
+//	    public Customer findCustomerById(@PathVariable int id){
+//			
+//			 Customer result = restTemplate.getForObject("http://CUSTOMER-SERVICE/customers/{id}", Customer.class, id);
+//
+//		        System.out.println(result);
+//			return result;
+//		}
 
 }
