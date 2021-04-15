@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
 
-import { CustomerService } from 'src/core/services/customer.service';
+import { CustomerService } from 'src/core/services/customer/customer.service';
 
 
 @Component({

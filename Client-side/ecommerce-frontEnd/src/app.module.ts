@@ -9,7 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CustomerService } from './core/services/customer.service';
+import { CustomerService } from './core/services/customer/customer.service'
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 

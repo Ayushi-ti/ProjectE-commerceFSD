@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 //import { CustomerService } from 'src/core/services/customer.service';
 import { Router } from '@angular/router';
 import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
-import { CustomerService } from 'src/core/services/customer.service';
+import { CustomerService } from 'src/core/services/customer/customer.service';
 //import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 
