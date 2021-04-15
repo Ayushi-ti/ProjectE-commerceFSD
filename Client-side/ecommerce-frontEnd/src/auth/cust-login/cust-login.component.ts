@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder, EmailValidator} from '@angular/forms';
 import { CustomerService } from 'src/core/services/customer/customer.service';
 import { Router } from '@angular/router';
 import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
@@ -17,6 +17,9 @@ export class CustLoginComponent implements OnInit {
   hide=true;
   loginForm: FormGroup;
   customersList:any=[];
+  flag:boolean;
+
+  
 
   
   //@SessionStorage() sessionValue: string = `Email`;
@@ -41,16 +44,17 @@ export class CustLoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required,Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
+      
+
       getErrorMessage() {
         if (this.email.hasError('required')) {
           return 'You must enter a value';
-        }
-      
+        } 
         return this.email.hasError('email') ? 'Not a valid email' : '';
         // if (this.password.hasError('required')) {
         //   return 'You must enter a value';
         // }
-      
+     
         // return this.email.hasError('password') ? 'Not a valid password' : '';
       }
     });

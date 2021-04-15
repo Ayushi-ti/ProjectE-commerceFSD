@@ -1,26 +1,26 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <div class="row between-xs middle-xs header-row">
-            <nav>
-                <a mat-button (click)="redirectToHome()">Go Back</a>
-                <span class="fill-space "></span>
+<!-- <mat-toolbar color="primary">
+    <mat-toolbar-row> -->
+<!-- <div class="row between-xs middle-xs header-row"></div>
+    <nav> -->
+<a mat-raised-button (click)="redirectToHome()" color="primary">Go Back</a>
+<!-- <span class="fill-space "></span> -->
+<span class="gap"></span>
+<button mat-raised-button [matMenuTriggerFor]="menu" color="primary">New User?</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="redirectToRegister()">Register</button>
+</mat-menu>
+<span class="gap"></span>
+<button mat-raised-button [matMenuTriggerFor]="menu2" color="primary">Admin?</button>
+<mat-menu #menu2="matMenu">
+    <button mat-menu-item [routerLink]="'/../auth/adminlogin'">Admin login</button>
+</mat-menu>
 
-                <button mat-button [matMenuTriggerFor]="menu">New User?</button>
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="redirectToRegister()">Register</button>
-                </mat-menu>
 
-                <button mat-button [matMenuTriggerFor]="menu2">Admin?</button>
-                <mat-menu #menu2="matMenu">
-                    <button mat-menu-item [routerLink]="'/../auth/adminlogin'">Admin login</button>
-                </mat-menu>
+<!-- </nav>
 
-
-            </nav>
-
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
+</div> -->
+<!-- </mat-toolbar-row>
+</mat-toolbar> -->
 
 
 <header></header>
@@ -49,6 +49,7 @@
                                     <mat-form-field appearance="fill">
                                         <mat-label>User name</mat-label>
                                         <input id="sessionmail" autocomplete="off" formControlName="email" matInput type="text">
+                                        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
                                         <span mat-icon-button matSuffix>
                     <mat-icon>person</mat-icon>
                   </span>

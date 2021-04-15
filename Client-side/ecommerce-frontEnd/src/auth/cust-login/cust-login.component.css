@@ -2,6 +2,10 @@
     flex: 1 1 auto;
 }
 
+.gap {
+    width: 40px;
+}
+
 
 /* box {
     float: left;
