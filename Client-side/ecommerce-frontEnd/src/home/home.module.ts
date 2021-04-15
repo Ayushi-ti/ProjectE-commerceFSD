@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/material/material.module';
 import{ SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
@@ -25,7 +26,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
-    SwiperModule
+    SwiperModule,
+    FormsModule,
+    ReactiveFormsModule,
   
   
   ],

@@ -21,8 +21,11 @@ export class ProfileComponent implements OnInit {
 
 
   EmailId:string=this.session.get('email');
+ 
+
+
   constructor(private customerService:CustomerService,private router:Router,private session: SessionStorageService) {
-    //this.getCustomerInformation(this.EmailId);
+    this.getCustomerInformation();
     console.log(this.EmailId);
     
     
