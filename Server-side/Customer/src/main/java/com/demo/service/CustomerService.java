@@ -68,6 +68,11 @@ public class CustomerService {
 		}
 		return customerlist;
 	}
+	public Customer getCustomerEmail(String email)
+	{
+		Customer cust= customerRepository.findByemail(email);
+		 return cust;
+	}
 	public boolean deletecustomer(int id)
 	{
 		Customer customer= customerRepository.findBycustomerId(id);

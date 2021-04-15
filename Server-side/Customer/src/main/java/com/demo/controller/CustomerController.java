@@ -19,11 +19,11 @@ import com.demo.service.CustomerService;
 
 @RestController
 @RequestMapping("customers")
-@CrossOrigin(origins = {"http://localhost:62380"}) 
 public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 
+	//localhost:9595/customers/register
 	@PostMapping("/register")
 	public Customer registercustomer(@RequestBody Customer customer) {
 
@@ -31,21 +31,30 @@ public class CustomerController {
 
 	}
 
+	//localhost:9595/customers/login
 	@GetMapping("/login/{email}/{password}")
 	public boolean logincustomer(@PathVariable String email, @PathVariable String password) {
 		return customerService.verifycustomer(email, password);
 	}
 
+	//localhost:9595/customers/show
 	@GetMapping("/show")
 	public List<Customer> showcustomer() {
 		return customerService.displaycustomer();
 	}
 
+	//localhost:9595/customers/update
 	@PutMapping("/update/{email}")
 	public boolean editcustomer(@PathVariable String email, @RequestBody Customer customer) {
 		return customerService.updatecustomer(email, customer);
 	}
-
+	//localhost:9595/customers/bymail
+	@GetMapping("/bymail/{email}")
+	public Customer displayCustomerByEmail(@PathVariable String email)
+	{
+		return customerService.getCustomerEmail(email);
+	}
+	//localhost:9595/customers/remove
 	@DeleteMapping("/remove/{id}")
 	public boolean removecustomer(@PathVariable int id) {
 		return customerService.deletecustomer(id);
