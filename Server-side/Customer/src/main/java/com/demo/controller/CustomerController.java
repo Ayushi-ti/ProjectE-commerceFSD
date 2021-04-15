@@ -45,7 +45,11 @@ public class CustomerController {
 	public boolean editcustomer(@PathVariable String email, @RequestBody Customer customer) {
 		return customerService.updatecustomer(email, customer);
 	}
-
+	@GetMapping("/bymail/{email}")
+	public Customer displayCustomerByEmail(@PathVariable String email)
+	{
+		return customerService.getCustomerEmail(email);
+	}
 	@DeleteMapping("/remove/{id}")
 	public boolean removecustomer(@PathVariable int id) {
 		return customerService.deletecustomer(id);

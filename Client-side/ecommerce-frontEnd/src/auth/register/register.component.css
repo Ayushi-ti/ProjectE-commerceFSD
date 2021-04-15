@@ -50,6 +50,7 @@ mat-card {
 
 mat-form-field {
     padding: 30px;
+    width: 500px;
 }
 
 mat-toolbar {

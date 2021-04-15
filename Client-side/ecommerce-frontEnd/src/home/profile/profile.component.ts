@@ -40,7 +40,7 @@ getCustomerInformation(EmailId){
   //  this.phno=data.phno;
     
     
-  //});
+  // });
     
   
 }
