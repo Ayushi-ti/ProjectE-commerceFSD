@@ -71,7 +71,8 @@ export class CustLoginComponent implements OnInit {
     .subscribe(data => {
         console.log(data);
         if(data==false){
-          this.showVerificationError();
+          alert("Username and password not matched");
+          this.router.navigate(['/auth/login']);
         }
        if(data==true){
         this.session.set("email",this.Email);
@@ -95,10 +96,7 @@ export class CustLoginComponent implements OnInit {
 }
 
     
-    showVerificationError(){
-      this.router.navigate(['/auth/login']);
-      alert("Username and password not matched");
-      }
+    
 
     cancel() {
       this.router.navigate(['/home']);

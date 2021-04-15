@@ -20,7 +20,7 @@
 
     <div class="row center-xs">
         <div class="box">
-            <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <form (ngSubmit)="register()" [formGroup]="registerForm">
                 <aside></aside>
                 <mat-card>
                     <mat-card-header>

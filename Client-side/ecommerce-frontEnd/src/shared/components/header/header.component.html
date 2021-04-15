@@ -33,7 +33,9 @@
             -->
             <span class="fill-space "></span>
 
-            <a mat-button [routerLink]=" '/auth/login' " routerLinkActive="active">Login/Logout </a>
+            <a mat-button [routerLink]=" '/auth/login' " routerLinkActive="active">Login </a>
+            <span></span>
+            <a mat-button [routerLink]=" '/auth/login' " [disabled]="flag" (click)="logout()">Logout </a>
             <span></span>
             <a matBadgeColor="primary" mat-raised-button>
                 <mat-icon>shopping_cart</mat-icon>
