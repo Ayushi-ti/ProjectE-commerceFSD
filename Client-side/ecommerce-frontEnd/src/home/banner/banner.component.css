@@ -7,6 +7,14 @@ p {
     height: 100%;
 }
 
+.swiper-pagination {
+    align-self: center;
+}
+
+img {
+    width: max-content;
+}
+
 .swiper-slide {
     text-align: center;
     font-size: 18px;

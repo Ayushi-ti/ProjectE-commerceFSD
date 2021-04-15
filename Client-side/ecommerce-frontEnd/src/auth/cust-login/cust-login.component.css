@@ -62,3 +62,7 @@ loginbox {
     color: dimgrey;
     float: center;
 }
+
+mat-toolbar {
+    width: 500px;
+}

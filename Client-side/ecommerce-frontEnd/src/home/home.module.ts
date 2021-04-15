@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { MaterialModule } from 'src/material/material.module';
 import{ SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
+import { ProfileComponent } from './profile/profile.component';
+
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
   direction: 'horizontal',
@@ -14,13 +16,15 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
 @NgModule({
   declarations: [
     BannerComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
-    SwiperModule
+    SwiperModule,
+  
   
   ],
   providers:[{

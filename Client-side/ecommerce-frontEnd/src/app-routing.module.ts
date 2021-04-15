@@ -37,7 +37,8 @@ const routes: Routes = [
   //     //http://:localhost:2400/home
   //   
   { path: 'info', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
-  //{path: '',redirectTo: '/home',pathMatch: 'full'}
+  //{path: '',redirectTo: '/home',pathMatch: 'full'},
+  {path: '**',loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
 ]}];
  
   // {
