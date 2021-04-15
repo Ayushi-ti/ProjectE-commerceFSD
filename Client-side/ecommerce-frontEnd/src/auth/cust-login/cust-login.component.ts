@@ -41,7 +41,23 @@ export class CustLoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required,Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
+      getErrorMessage() {
+        if (this.email.hasError('required')) {
+          return 'You must enter a value';
+        }
+      
+        return this.email.hasError('email') ? 'Not a valid email' : '';
+        // if (this.password.hasError('required')) {
+        //   return 'You must enter a value';
+        // }
+      
+        // return this.email.hasError('password') ? 'Not a valid password' : '';
+      }
     });
+
+    
+   
+  
   }
 
 
@@ -54,6 +70,9 @@ export class CustLoginComponent implements OnInit {
 
     .subscribe(data => {
         console.log(data);
+        if(data==false){
+          this.showVerificationError();
+        }
         this.session.set("email",this.Email);
         this.session.get("email");
         console.log(this.router.navigate(['/home']));
@@ -70,20 +89,14 @@ export class CustLoginComponent implements OnInit {
         // this.session.set("customersList", this.customersList);
       });
 
-
-
-
-
-     
-
-
-      
-    
-  
+}
 
     
-    }
-    
+    showVerificationError(){
+      this.router.navigate(['/auth/login']);
+      alert("Username and password not matched");
+      }
+
     cancel() {
       this.router.navigate(['/home']);
     }
