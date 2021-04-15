@@ -19,6 +19,7 @@ export class ProductCardComponent implements OnInit {
   
   editProduct(pid){
     console.log(pid);
+    this.router.navigate(['/../admin/editproduct',pid]);
     //this.router.navigate(['/cart/success/' + pid]);
     
   }
@@ -26,12 +27,15 @@ export class ProductCardComponent implements OnInit {
     console.log(pid);
     this.productService.deleteProduct(pid)
     .subscribe((res:any)=>{
-      /*this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['Your actualComponent']);
+      // this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      //   this.router.navigate(['/../admin/home']);
         
     }); 
-    */
-    })
+    
+    // })
 
   }
+  
+ 
+
 }

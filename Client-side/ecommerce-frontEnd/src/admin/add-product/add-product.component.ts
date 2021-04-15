@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/core/services/product/product.service';
 
 interface Category {
@@ -21,7 +22,7 @@ export class AddProductComponent implements OnInit {
   {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
   
 
-  constructor(private productService:ProductService) { 
+  constructor(private productService:ProductService,private router: Router) { 
     this.productForm = new FormGroup({
 
       product_name: new FormControl('', Validators.required),
@@ -47,6 +48,9 @@ export class AddProductComponent implements OnInit {
      .subscribe((res:any)=>{
       console.log(res);
     })
+  
+    alert("Product added successfully");
+    this.router.navigate(['/../admin/home']);
   }
   
 }

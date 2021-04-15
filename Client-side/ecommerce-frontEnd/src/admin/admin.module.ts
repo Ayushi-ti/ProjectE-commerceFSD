@@ -10,6 +10,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminRoutingModule } from './admin-routing';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 
 
@@ -20,7 +21,8 @@ import { AdminRoutingModule } from './admin-routing';
     ProductCardComponent,
     EditProductComponent,
     AddCategoryComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    ProductDetailComponent
     
   ],
   imports: [

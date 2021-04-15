@@ -43,8 +43,9 @@ export class CustomerService {
   editCustomer(email, newCustomer){
     return this.http.put(`${this.host}/customers/${email}`, newCustomer);
   }
-  login(email,password){
-    return this.http.get(`${this.host}/customers/login/${email}/${password}`);
+  login(em,pass){
+   const user={email:em,password:pass};
+    return this.http.post(`${this.host}/customers/login`, user);
   }
 
   getCustomerDetails(email){

@@ -25,6 +25,8 @@ export class EditProductComponent implements OnInit {
 
   constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { 
 
+
+    
     this.productForm=new FormGroup({
       product_id:new FormControl({value:'',disabled:true}),
       product_name: new FormControl('', Validators.required),
@@ -68,7 +70,7 @@ export class EditProductComponent implements OnInit {
     this.productService.updateProduct(this.product.product_id,this.productForm.value)
     .subscribe((res:any)=>{
       console.log(res);
-      //this.router.navigate(["admin -home"]);
+      // this.router.navigate(['/../admin/editproduct']);
     })
   }
 

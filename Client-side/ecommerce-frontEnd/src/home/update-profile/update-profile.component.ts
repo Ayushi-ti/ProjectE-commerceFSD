@@ -63,16 +63,16 @@ export class UpdateProfileComponent implements OnInit {
 
   getCustomerInformation(){
   
-    this.customerService.displayCustomerByEmail(this.EmailId);
-    //  .subscribe((data:any)=>{
-    //   console.log(data);
-    //  this.name=data.customer_name;
-    //  this.email=data.email;
-    //  this.address=data.address;
-    //  this.phno=data.phno;
+    this.customerService.displayCustomerByEmail(this.EmailId)
+     .subscribe((data:any)=>{
+      console.log(data);
+     this.name=data.customer_name;
+     this.email=data.email;
+     this.address=data.address;
+     this.phno=data.phno;
      
      
-    // }); 
+    }); 
     
   }
 

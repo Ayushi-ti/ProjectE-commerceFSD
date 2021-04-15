@@ -12,7 +12,7 @@ import { CustomerService } from 'src/core/services/customer/customer.service';
 })
 export class ProfileComponent implements OnInit {
   name:string;
-  phno:string;
+  phno:number;
   address:string;
   email:string;
   profile:string='assets/images/profilepic.jpg';
@@ -37,16 +37,16 @@ export class ProfileComponent implements OnInit {
 
 getCustomerInformation(){
   
-  this.customerService.displayCustomerByEmail(this.EmailId);
-  //  .subscribe((data:any)=>{
-  //   console.log(data);
-  //  this.name=data.customer_name;
-  //  this.email=data.email;
-  //  this.address=data.address;
-  //  this.phno=data.phno;
+  this.customerService.displayCustomerByEmail(this.EmailId)
+   .subscribe((data:any)=>{
+    console.log(data);
+   this.name=data.customer_name;
+   this.email=data.email;
+   this.address=data.address;
+   this.phno=data.phno;
    
    
-  // }); 
+  }); 
   
 }
 
