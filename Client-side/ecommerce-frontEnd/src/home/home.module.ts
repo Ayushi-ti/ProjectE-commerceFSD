@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { MaterialModule } from 'src/material/material.module';
 import{ SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 import { ProfileComponent } from './profile/profile.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
@@ -17,13 +18,14 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface={
   declarations: [
     BannerComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    UpdateProfileComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
-    SwiperModule,
+    SwiperModule
   
   
   ],

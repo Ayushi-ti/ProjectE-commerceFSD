@@ -15,7 +15,7 @@ export class CustomerService {
     return this.data;
   }
 
-  private host:string = "http://localhost:8080";
+  private host:string = "http://localhost:9595";
 
   constructor(private http: HttpClient) { }
 
@@ -25,8 +25,8 @@ export class CustomerService {
   saveCustomer(customer){
     return this.http.post(`${this.host}/customers/register`, customer);
   }
-  getCustomerByEmail(Email){
-    return  this.http.get(`${this.host}/customers/${Email}`);
+  displayCustomerByEmail(Email){
+    return  this.http.get(`${this.host}/customers/bymail/${Email}`);
   }
 
  // deleteCustomer(id){
