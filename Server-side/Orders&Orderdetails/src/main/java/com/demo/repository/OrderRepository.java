@@ -11,6 +11,10 @@ public interface OrderRepository extends CrudRepository<Order,Integer>  {
 	public Order findByorderid(int orderid);
 
 	
+
+	public Iterable<Order> findAllBycustomerid(int customerid);
+
+	
 	
 	
 

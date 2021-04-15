@@ -53,6 +53,11 @@ public class OrderController {
 	{
 		return orderService.deleteorder(orderid);
 	}
+	@GetMapping("/search/{customerid}")
+	public List<Order> getAllorders(@PathVariable int customerid)
+	{
+		return orderService.getorder(customerid);
+	}
 	//orderdetails service
 	
 	@PostMapping("/orderdetails/save")
