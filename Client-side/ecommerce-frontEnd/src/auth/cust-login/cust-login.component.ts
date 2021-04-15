@@ -73,9 +73,12 @@ export class CustLoginComponent implements OnInit {
         if(data==false){
           this.showVerificationError();
         }
+       if(data==true){
         this.session.set("email",this.Email);
         this.session.get("email");
-        console.log(this.router.navigate(['/home']));
+        console.log(this.session.get("email"));
+        this.router.navigate(['/home'])
+      }
 
         // if (this.session.get("customersList") != null) {
         //   this.customersList = this.session.get("customersList");
