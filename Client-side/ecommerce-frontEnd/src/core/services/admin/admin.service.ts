@@ -15,7 +15,7 @@ export class AdminService {
     return this.data;
   }
 
-  private host:string = "http://localhost:9595";
+  private host:string = "http://localhost:5959";
   constructor(private http: HttpClient) {}
 
   getAdmins(){

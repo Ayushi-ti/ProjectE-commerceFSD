@@ -16,7 +16,7 @@ export class EditProductComponent implements OnInit {
 
   productForm:FormGroup;
   product:Product;
-  productId:number=8;
+  productId:number;
   
   categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
   {value:'Clothing',viewValue:'Clothing'},{value:'Books',viewValue:'Books'},
@@ -25,8 +25,11 @@ export class EditProductComponent implements OnInit {
 
   constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { 
 
+    this.activatedRoute.params.subscribe((params: any) => {
+      console.log(params.product_id);
+      this.productId=params.product_id;
+    })
 
-    
     this.productForm=new FormGroup({
       product_id:new FormControl({value:'',disabled:true}),
       product_name: new FormControl('', Validators.required),

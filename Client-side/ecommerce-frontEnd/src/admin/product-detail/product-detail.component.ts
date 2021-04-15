@@ -31,8 +31,8 @@ pid:number;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: any) => {
-      console.log(params.pid);
-      this.pid=params.pid;
+      console.log(params.product_id);
+      this.pid=params.product_id;
       this.getProductInformation();
 
     })
