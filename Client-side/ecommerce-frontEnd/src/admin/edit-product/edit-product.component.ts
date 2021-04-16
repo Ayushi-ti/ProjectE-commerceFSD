@@ -16,7 +16,7 @@ export class EditProductComponent implements OnInit {
 
   productForm:FormGroup;
   product:Product;
-  productId:number=8;
+  productId:number;
   
   categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
   {value:'Clothing',viewValue:'Clothing'},{value:'Books',viewValue:'Books'},
@@ -24,6 +24,11 @@ export class EditProductComponent implements OnInit {
   {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
 
   constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { 
+
+    this.activatedRoute.params.subscribe((params: any) => {
+      console.log(params.product_id);
+      this.productId=params.product_id;
+    })
 
     this.productForm=new FormGroup({
       product_id:new FormControl({value:'',disabled:true}),
@@ -68,7 +73,7 @@ export class EditProductComponent implements OnInit {
     this.productService.updateProduct(this.product.product_id,this.productForm.value)
     .subscribe((res:any)=>{
       console.log(res);
-      //this.router.navigate(["admin -home"]);
+      // this.router.navigate(['/../admin/editproduct']);
     })
   }
 

@@ -1,27 +1,24 @@
-  
 <mat-card class="product-card">
-   
-    <img src="https://picsum.photos/400" >
+
+    <img src="https://picsum.photos/400">
 
     <mat-card-content>
         <mat-card-title>
-            {{product.product_name}}   
-           </mat-card-title>
-           <mat-card-subtitle>
-               {{ product.product_price | currency}}
-           </mat-card-subtitle>
+            {{product.product_name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{ product.product_price | currency}}
+        </mat-card-subtitle>
         <p>{{ product.description | slice:0:50 }}</p>
     </mat-card-content>
     <mat-card-actions>
-        
+
         <a mat-raised-button color="primary" class="edit-product" (click)="editProduct(product.product_id)">Edit</a>
         <button (click)="removeProduct(product.product_id)" mat-raised-button color="primary" class="remove-product">Remove</button>
-        
-        <!--<button (click)="editProduct()" mat-raised-button color="primary" >Edit</button>
-        -->
-   <!--     <a mat-raised-button [routerLink]="['/products',product.productId]">View Detail</a>
-    -->
-</mat-card-actions>    
+
+        <!-- <button (click)="editProduct" mat-raised-button color="primary">Edit</button> -->
+
+        <a mat-raised-button [routerLink]="['/../admin/productdetail', product.product_id]"> View Detail</a>
+
+    </mat-card-actions>
 </mat-card>
-
-

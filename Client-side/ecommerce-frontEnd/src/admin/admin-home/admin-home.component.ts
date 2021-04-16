@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/core/models/product.model';
 import { ProductService } from 'src/core/services/product/product.service';
 
@@ -11,7 +12,7 @@ export class AdminHomeComponent implements OnInit {
 
   products:Product[]=[];
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,private router: Router) { }
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -24,5 +25,10 @@ export class AdminHomeComponent implements OnInit {
       this.products = res;
     })
   }
+
+  goToAddProduct(){
+    this.router.navigate(['/../admin/addproduct']);
+  }
+  
 
 }

@@ -8,6 +8,9 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { AdminRoutingModule } from './admin-routing';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 
 
@@ -17,13 +20,17 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     AdminHomeComponent,
     ProductCardComponent,
     EditProductComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    AdminHeaderComponent,
+    ProductDetailComponent
+    
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
+    AdminRoutingModule
   ],
   exports:[AddProductComponent,AdminHomeComponent,ProductCardComponent,
     EditProductComponent,

@@ -1,9 +1,9 @@
-.fill-space {
-    flex: 1 1 auto;
+mat-toolbar {
+    width: max-content;
 }
 
-.gap {
-    width: 40px;
+.fill-space {
+    flex: 1 1 auto;
 }
 
 
@@ -65,8 +65,4 @@ nav>a.active {
 loginbox {
     color: dimgrey;
     float: center;
-}
-
-mat-toolbar {
-    width: 500px;
 }

@@ -12,7 +12,7 @@ import { CustomerService } from 'src/core/services/customer/customer.service';
 })
 export class ProfileComponent implements OnInit {
   name:string;
-  phno:string;
+  phno:number;
   address:string;
   email:string;
   profile:string='assets/images/profilepic.jpg';

@@ -1,7 +1,14 @@
+<admin-header></admin-header>
+<aside></aside>
+<section>
+    <a mat-raised-button color="primary" class="add-product" (click)="goToAddProduct">Add Product</a>
+    <div class="product-grid">
 
-<a mat-raised-button color="primary" class="add-product">Add Product</a>
-<div class="product-grid">
-   
-    <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
-   
- </div>
+        <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+        <!-- <a mat-raised-button color="primary" class="add-product" (click)="goToProductDetails">Product Details</a>
+        <a mat-raised-button color="primary" class="add-product" (click)="goToEditProduct">Add Product</a> -->
+    </div>
+
+</section>
+<aside></aside>
+<footer></footer>

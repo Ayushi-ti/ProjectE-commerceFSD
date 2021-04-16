@@ -8,13 +8,15 @@ import { SharedModule } from 'src/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from 'src/admin/auth-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 
 @NgModule({
   declarations: [
     CustLoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminLoginComponent
   ],
   imports: [
     CommonModule,

@@ -9,13 +9,16 @@ import com.demo.entity.Customer;
 @Repository
 public interface CustomerRepository extends CrudRepository<Customer,Integer>  {
 
-	public Customer findByemail(String email);
+	//public Customer findByemail(String email);
 
-	public Customer findBypassword(String password);
+	//public Customer findBypassword(String password);
 
 	
 
 	public Customer findBycustomerId(int id);
+
+
+	public Customer findByemail(String email);
 
 	
 

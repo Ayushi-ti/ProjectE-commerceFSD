@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrderService } from 'src/core/services/order/order.service';
 
 
@@ -20,7 +21,7 @@ export class OrderReturnsComponent implements OnInit {
 
   
   
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService:OrderService,private router:Router) { }
 
   
   
@@ -35,6 +36,8 @@ export class OrderReturnsComponent implements OnInit {
   
   viewOrderDetails(orderId){
     console.log(orderId);
+    
+    this.router.navigate(['/../admin/editproduct',orderId]);
     //by routing pass data to order-returns-detail page
   }
   

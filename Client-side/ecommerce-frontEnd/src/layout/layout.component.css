@@ -35,21 +35,20 @@ div {
 }
 
 aside {
-    width: 50%;
-    float: left;
-}
-
-rightBar {
     width: 20%;
     float: left;
 }
 
 section {
-    width: 60%;
-    float: left;
+    width: 100%;
+    float: right;
     /* height: 100px; */
 }
 
 app-footer {
-    clear: all;
+    clear: both;
+}
+
+router-outlet {
+    align-self: center;
 }
