@@ -31,10 +31,10 @@ const routes: Routes = [
   path: 'addproduct',
   component: AddProductComponent
   },
-  {
-  path: '**',
-  component: AdminHomeComponent
-  },
+  // {
+  // path: '**',
+  // component: AdminHomeComponent
+  // },
 
 
 ];

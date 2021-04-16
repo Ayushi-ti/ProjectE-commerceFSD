@@ -15,13 +15,13 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'adminlogin',
+    path: 'logmain',
     component: AdminLoginComponent
-  },
-  {
-    path: '',
-    component: CustLoginComponent
   }
+  // {
+  //   path: '',
+  //   component: CustLoginComponent
+  // }
 ];
 
 @NgModule({

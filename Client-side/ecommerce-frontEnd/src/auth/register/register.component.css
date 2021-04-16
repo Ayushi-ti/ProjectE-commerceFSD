@@ -45,12 +45,12 @@ nav>a.active {
 }
 
 mat-card {
-    width: 500px
+    width: 400px
 }
 
 mat-form-field {
     padding: 30px;
-    width: 500px;
+    width: 400px;
 }
 
 mat-toolbar {

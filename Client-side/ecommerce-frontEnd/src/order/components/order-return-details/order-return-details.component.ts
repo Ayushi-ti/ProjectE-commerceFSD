@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/core/models/product.model';
 
 @Component({
@@ -18,16 +19,18 @@ export class OrderReturnDetailsComponent implements OnInit {
   ,{name:"Product3",Price:700,quantity:2}
   ,{name:"Product4",Price:1000,quantity:3}]
 
-  constructor() { }
+  constructor(private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     //get order id form order-return component
-
+    this.activatedRoute.params.subscribe((params: any) => {
+      console.log(params.orderId);
+      this.orderId=params.orderId;
     this.getOrderDetails();
-  }
+  })}
 
   getOrderDetails(){
-    this.orderId=101;
+    //this.orderId=101;
     this.getOrderedProducts();
   }
 

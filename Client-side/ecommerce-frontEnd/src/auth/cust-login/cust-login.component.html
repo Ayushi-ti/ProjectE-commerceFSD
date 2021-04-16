@@ -12,7 +12,7 @@
 <span class="gap"></span>
 <button mat-raised-button [matMenuTriggerFor]="menu2" color="primary">Admin?</button>
 <mat-menu #menu2="matMenu">
-    <button mat-menu-item [routerLink]="'/../auth/adminlogin'">Admin login</button>
+    <button mat-menu-item (click)="redirectToAdminLogin()">Admin login</button>
 </mat-menu>
 
 
