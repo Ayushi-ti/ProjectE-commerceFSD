@@ -12,11 +12,13 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
+	
 	private String customerName;
 	
 	private String password;
 	private String  address;
 	private long  phno;
+	private String deliveryAddress;
 	@Column(name="email",unique=true,nullable=false)
 	
 	private String email;
@@ -33,7 +35,12 @@ public class Customer {
 		this.password = password;
 	}
 	
-	
+	public String getDeliveryAddress() {
+		return deliveryAddress;
+	}
+	public void setDeliveryAddress(String deliveryAddress) {
+		this.deliveryAddress = deliveryAddress;
+	}
 	public int getCustomerId() {
 		return customerId;
 	}
