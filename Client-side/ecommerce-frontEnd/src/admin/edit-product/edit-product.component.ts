@@ -25,9 +25,12 @@ export class EditProductComponent implements OnInit {
 
   constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { 
 
-    this.activatedRoute.params.subscribe((params: any) => {
+    this.activatedRoute.paramMap.subscribe((params:any) => {
       console.log(params.product_id);
-      this.productId=params.product_id;
+      this.productId=params.get('product_id');
+      //this._Activatedroute.paramMap.subscribe(params => { 
+      //  this.orderId = params.get('id'); 
+    //});
     })
 
     this.productForm=new FormGroup({

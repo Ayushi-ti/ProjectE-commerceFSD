@@ -22,7 +22,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     EditProductComponent,
     AddCategoryComponent,
     AdminHeaderComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    
     
   ],
   imports: [
