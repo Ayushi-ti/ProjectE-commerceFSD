@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionStorageService } from 'angular-web-storage';
+import { Customer } from 'src/core/models/customer.model';
+import { Order } from 'src/core/models/Order.model';
+import { CustomerService } from 'src/core/services/customer/customer.service';
 import { OrderService } from 'src/core/services/order/order.service';
 
 
@@ -10,7 +14,7 @@ import { OrderService } from 'src/core/services/order/order.service';
 })
 export class OrderReturnsComponent implements OnInit {
 
-  orders:any[]=[
+  /*orders:any[]=[
     {order_id:1,order_date:Date.now(),status:"Shipped"},
     {order_id:2,order_date:Date.now(),status:"Pending"},
     {order_id:3,order_date:Date.now(),status:"Approved"},
@@ -18,26 +22,49 @@ export class OrderReturnsComponent implements OnInit {
     {order_id:5,order_date:Date.now(),status:"Shipped"},
     
   ];
+  */
+ orders:Order;
+ orderDate:number=Date.now();
 
   
   
-  constructor(private orderService:OrderService,private router:Router) { }
+  constructor(private orderService:OrderService,private customerService:CustomerService,private router:Router,private session:SessionStorageService) { }
 
   
   
   ngOnInit(): void {
-    this.fetchAllOrders();
+    this.getCustomerId();
   }
 
-  fetchAllOrders(){
-    //this.orderService. 
-  }
 
+  getCustomerId(){
+    let email=this.session.get("email");
+    if(email == null || email == ""){
+      //show no orders
+    }else{
+      this.customerService.displayCustomerByEmail(email)
+      .subscribe((res:Customer)=>{
+        this.fetchAllOrders(res.customerId);
+      })
+    }
+  }
   
+
+  fetchAllOrders(cid){
+    this.orderService.getAllOrdersByCustomerId(cid)
+    .subscribe((res:any)=>{
+      console.log(res);
+      this.orders=res;
+    })
+  }
+  
+ 
+ 
+ 
   viewOrderDetails(orderId){
     console.log(orderId);
     
-    this.router.navigate(['/../admin/editproduct',orderId]);
+    this.router.navigate(['/../cart/previousdetails',orderId]);
     //by routing pass data to order-returns-detail page
   }
   

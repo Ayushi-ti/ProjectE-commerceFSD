@@ -28,7 +28,7 @@ const routes: Routes = [
 {path:'previous',
   component:OrderReturnsComponent
 },
-{path:'previousdetails',
+{path:'previousdetails/:id',
   component:OrderReturnDetailsComponent
 },
 

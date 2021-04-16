@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Order } from 'src/core/models/Order.model';
+import { OrderDetails } from 'src/core/models/OrderDetails.model';
 import { Product } from 'src/core/models/product.model';
+import { OrderService } from 'src/core/services/order/order.service';
+import { ProductService } from 'src/core/services/product/product.service';
 
 @Component({
   selector: 'app-order-return-details',
@@ -10,35 +14,59 @@ import { Product } from 'src/core/models/product.model';
 export class OrderReturnDetailsComponent implements OnInit {
 
   orderId:number;
-  products:any[];
+  products:any[]=[];
   totalSum:number;
   orderStatus:string;
-
-  data:any=[{name:"Product1",Price:1000,quantity:3}
-  ,{name:"Product2",Price:600,quantity:3}
-  ,{name:"Product3",Price:700,quantity:2}
-  ,{name:"Product4",Price:1000,quantity:3}]
-
-  constructor(private activatedRoute:ActivatedRoute) { }
+  product:Product;
+  product_name:string;
+  product_price:number;
+  product_quantity:number;
+  
+  constructor(private activatedRoute:ActivatedRoute,private orderService:OrderService,private producService:ProductService) { }
 
   ngOnInit(): void {
     //get order id form order-return component
     this.activatedRoute.params.subscribe((params: any) => {
-      console.log(params.orderId);
-      this.orderId=params.orderId;
-    this.getOrderDetails();
+      console.log(params.id);
+      this.orderId=params.id;
+    this.getOrderedProducts();
+    this.getOrderStatusandTotal();
   })}
 
-  getOrderDetails(){
-    //this.orderId=101;
-    this.getOrderedProducts();
-  }
+ 
 
   getOrderedProducts(){
-    //using order id get all products
-    this.products=this.data;
-    this.totalSum=7000;
-    this.orderStatus="Deliverd";  
+    this.orderService.getAllOrderDetailsByCustomerId(this.orderId)
+    .subscribe((res:any)=>{
+
+      this.getProductDetails(res);
+
+     // this.products=res;
+     
+    })
+    
   }
 
+  getProductDetails(res){
+    res.forEach(item => {
+        this.producService.getProductById(item.productid)
+        .subscribe((prd:Product)=>{
+          this.product_name=prd.product_name;
+          this.product_price=prd.product_price;
+          this.product_quantity=item.quantity;
+          this.products.push({name:this.product_name,price:this.product_price,qty:this.product_quantity});
+          //console.log(prd);
+          
+        })
+    });
+  }
+
+
+  getOrderStatusandTotal(){
+    this.orderService.getOrderByOrderId(this.orderId)
+    .subscribe((res:Order)=>{
+        this.totalSum=res.total_amount;
+        this.orderStatus=res.status;
+    })
+  }
 }

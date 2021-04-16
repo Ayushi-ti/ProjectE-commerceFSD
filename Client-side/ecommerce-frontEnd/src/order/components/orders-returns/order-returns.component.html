@@ -8,10 +8,10 @@
           <th>Actions</th>
       </tr>
       <tr *ngFor="let order of orders">
-          <td>{{ order.order_id }}</td>
-          <td>{{ order.order_date | date:'medium' }}</td>
+          <td>{{ order.orderid }}</td>
+          <td>{{ orderDate | date: "dd-MMM-yyyy" }}</td>
           <td>{{ order.status }}</td>
-          <td><button mat-raised-button color="primary" (click)="viewOrderDetails(order.order_id)">View Order Details</button></td>
+          <td><button mat-raised-button color="primary" (click)="viewOrderDetails(order.orderid)">View Order Details</button></td>
       </tr>
   </table>
 </div>

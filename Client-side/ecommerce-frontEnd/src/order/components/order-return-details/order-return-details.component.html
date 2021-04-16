@@ -15,9 +15,9 @@
         <tr *ngFor="let product of products;index as i">
             <td>{{ i }}</td>
             <td>{{ product.name}}</td>
-            <td>{{ product.Price }}</td>
-            <td>{{product.quantity}}</td>
-            <td>{{product.Price * product.quantity}}</td>
+            <td>{{ product.price }}</td>
+            <td>{{product.qty}}</td>
+            <td>{{product.price * product.qty}}</td>
         </tr>
     </table>
     <hr>
@@ -25,6 +25,6 @@
 
     <p>Order Status : {{orderStatus}}</p>
 
-    <button mat-raised-button color="primary" class="back-button">Back</button>
+    <button mat-raised-button color="primary" class="back-button" [routerLink]=" '/../cart/previous' ">Back</button>
     
 </div>
