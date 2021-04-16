@@ -19,6 +19,7 @@ import com.demo.service.OrderService;
 
 @RestController
 @RequestMapping("orders")
+@CrossOrigin(origins = {"http://localhost:4200"}) 
 public class OrderController {
 	
 	@Autowired
