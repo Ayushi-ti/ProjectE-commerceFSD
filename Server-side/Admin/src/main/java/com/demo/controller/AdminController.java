@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.demo.entities.Admin;
 import com.demo.entities.Customer;
 import com.demo.entities.Product;
 import com.demo.service.AdminService;
@@ -33,9 +34,9 @@ public class AdminController {
 	@Autowired
 	RestTemplate restTemplate;
 
-	@GetMapping("/login/{email}/{password}")
-	public boolean loginadmin(@PathVariable String email, @PathVariable String password) {
-		return adminService.verifyadmin(email, password);
+	@PostMapping("/login")
+	public boolean loginadmin(@RequestBody Admin admin) {
+		return adminService.verifyadmin(admin);
 	}
 
 //view all products
