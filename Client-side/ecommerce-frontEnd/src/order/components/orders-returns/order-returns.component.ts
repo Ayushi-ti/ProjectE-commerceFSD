@@ -37,7 +37,7 @@ export class OrderReturnsComponent implements OnInit {
   viewOrderDetails(orderId){
     console.log(orderId);
     
-    this.router.navigate(['/../admin/editproduct',orderId]);
+    this.router.navigate(['/../order/editproduct',orderId]);
     //by routing pass data to order-returns-detail page
   }
   

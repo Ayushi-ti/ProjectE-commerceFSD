@@ -28,6 +28,7 @@ export class AdminHomeComponent implements OnInit {
 
   goToAddProduct(){
     this.router.navigate(['/../admin/addproduct']);
+    
   }
   
 

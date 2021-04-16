@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
@@ -13,7 +14,7 @@ import { MessengerService } from 'src/core/services/messenger/messenger.service'
 export class HeaderComponent implements OnInit {
   flag:boolean=false;
   EmailId;
-  
+  emails:any[]=[];
  
 
   cartItems: Product[] = [];
@@ -70,7 +71,15 @@ logout(){
   this.session.remove('email');
 }
 
-
+goToProfile(){
+  this.emails=this.session.get("email");
+console.log(this.emails);
+  
+  if(this.emails==null ){
+    this.router.navigate(['/../auth/login']);
+  }
+  this.router.navigate(['/../home/profile']);
+}
 
 
 }

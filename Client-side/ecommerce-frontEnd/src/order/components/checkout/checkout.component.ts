@@ -17,10 +17,12 @@ import { Thumbs } from 'swiper';
 export class CheckoutComponent implements OnInit {
 
   cartItems:Product[]=[];
+  customer:Customer=new Customer();
   cartTotal:number=0;
   billingAddress:string;
   billingMobileNumber:number;
   order:Order=new Order();
+  editFlag:boolean=true;
   constructor(public session:SessionStorageService,public customerService:CustomerService,public orderService:OrderService,public router:Router) { }
 
   ngOnInit(): void {
@@ -80,5 +82,36 @@ export class CheckoutComponent implements OnInit {
     //quantity:session
   }
   
+
+EditableFields(){
+this.editFlag=true;
+}
+
+updateCustomerOrderDetails(){
+  let email=this.session.get("email");
+  
+  this.customerService.getCustomerDetails(email)
+    .subscribe((res:Customer)=>{
+      console.log(res);
+      this.customer.customerId=res.customerId;
+      this.customer.customerName=res.customerName;
+      this.customer.email=res.email;
+      this.customer.phno=this.billingMobileNumber;
+      this.customer.address=res.address;
+      this.customer.delivery_address=this.billingAddress;
+    });
+
+  this.customerService.updateCustomer(email,this.customer)
+  .subscribe((res:any)=>{
+    console.log(res);
+    alert("Order Details Updated");
+    this.editFlag=false;
+    
+     });
+
+}
+
+
+
 
 }

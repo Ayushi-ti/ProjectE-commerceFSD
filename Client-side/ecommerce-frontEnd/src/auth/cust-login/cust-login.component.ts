@@ -108,7 +108,7 @@ export class CustLoginComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     redirectToAdminLogin(){
-      this.router.navigate(['/../auth/logmain']);
+      this.router.navigate(['/auth/logByAdmin']);
     }
 
 

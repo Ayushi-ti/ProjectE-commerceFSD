@@ -19,7 +19,9 @@ export class ProductCardComponent implements OnInit {
   
   editProduct(product_id){
     console.log(product_id);
-    this.router.navigate(['/../admin/editproduct',product_id]);
+    this.router.navigate(['/../admin/editproduct/'+ product_id]);
+    //this.router.navigate(['/cart/success/' + this.order.orderid]);
+    
     //this.router.navigate(['/cart/success/' + pid]);
     
   }

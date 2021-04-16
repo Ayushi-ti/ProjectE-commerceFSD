@@ -30,11 +30,13 @@ pid:number;
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params: any) => {
+    this.activatedRoute.paramMap.subscribe((params: any) => {
       console.log(params.product_id);
-      this.pid=params.product_id;
+      this.pid=params.get('product_id');
       this.getProductInformation();
-
+ //this._Activatedroute.paramMap.subscribe(params => { 
+      //  this.orderId = params.get('id'); 
+    //});
     })
 
   }
