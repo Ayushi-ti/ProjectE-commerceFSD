@@ -24,7 +24,7 @@ export class AdminLoginComponent implements OnInit {
   private buildForm() {
     this.adminloginForm = this.formBuilder.group({
       email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required,Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
+      password: ['', [Validators.required]],
       getErrorMessage() {
         if (this.email.hasError('required')) {
           return 'You must enter a value';
@@ -46,7 +46,7 @@ export class AdminLoginComponent implements OnInit {
     //this.customerService.login(this.loginForm.value.email ,this.loginForm.value.password  )
     const admin = this.adminloginForm.value;
     this.Email=admin.email;
-    this.adminService.login(admin.email, admin.password)
+    this.adminService.login(this.adminloginForm.value)
 
     .subscribe(data => {
         console.log(data);

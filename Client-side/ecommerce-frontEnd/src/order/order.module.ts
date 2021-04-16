@@ -12,6 +12,7 @@ import { OrderRoutingModule } from './order-routing.module';
 
 
 
+
 @NgModule({
   declarations: [
    CartComponent,
@@ -25,7 +26,8 @@ import { OrderRoutingModule } from './order-routing.module';
     CommonModule,
     MaterialModule,
     HttpClientModule,
-    OrderRoutingModule
+    OrderRoutingModule,
+ 
   
   ],
   exports:[CartComponent,ShowCartComponent,CheckoutComponent,

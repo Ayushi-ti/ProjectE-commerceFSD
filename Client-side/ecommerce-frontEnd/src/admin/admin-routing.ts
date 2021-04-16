@@ -16,11 +16,11 @@ const routes: Routes = [
     component: AdminHomeComponent
   },
   {
-    path: 'editproduct',
+    path: 'editproduct/:product_id',
     component: EditProductComponent
   },
   {
-    path: 'productdetail',
+    path: 'productdetail/:product_id',
     component: ProductDetailComponent
   },
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
   {
   path: 'addproduct',
   component: AddProductComponent
-  },
+  }
   // {
   // path: '**',
   // component: AdminHomeComponent

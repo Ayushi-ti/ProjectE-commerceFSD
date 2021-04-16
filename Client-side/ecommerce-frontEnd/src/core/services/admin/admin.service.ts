@@ -42,8 +42,8 @@ export class AdminService {
   // editCustomer(email, newCustomer){
   //   return this.http.put(`${this.host}/customers/${email}`, newCustomer);
   // }
-  login(email,password){
-    return this.http.get(`${this.host}/customers/login/${email}/${password}`);
+  login(admin){
+    return this.http.post(`${this.host}/customers/login`,admin);
   }
 
   // getCustomerDetails(email){

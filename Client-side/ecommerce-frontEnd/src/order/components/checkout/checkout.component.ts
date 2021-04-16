@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
+
+
 import { Customer } from 'src/core/models/customer.model';
 import { Order } from 'src/core/models/Order.model';
 import { OrderDetails } from 'src/core/models/OrderDetails.model';
@@ -18,30 +20,43 @@ import { Thumbs } from 'swiper';
 export class CheckoutComponent implements OnInit {
 
   cartItems:Product[]=[];
+  customer:Customer;
   cartTotal:number=0;
   billingAddress:string;
   billingMobileNumber:number;
   order:Order=new Order();
   orderDetails:OrderDetails=new OrderDetails();
   product:Product;
-
+  newCust:Customer=new Customer();
+  editFlag:boolean=false;
   constructor(public session:SessionStorageService,public customerService:CustomerService,public orderService:OrderService,public router:Router) { }
 
   ngOnInit(): void {
     this.getCartTotal();
-    this.getBillingDetails();
+    this.getCustomerDetails();
+    
     
   }
 
-  getBillingDetails(){
+  getCustomerDetails(){
     let email=this.session.get("email");
     this.customerService.getCustomerDetails(email)
     .subscribe((res:Customer)=>{
-      this.billingAddress=res.address;
-      this.billingMobileNumber=res.phno;
+      this.customer=res;
+      console.log(this.customer);
+      this.getBillingDetails();
     })
+
   }
 
+  getBillingDetails(){
+   
+    this.billingAddress=this.customer.address;
+      this.billingMobileNumber=this.customer.phno;
+   
+  }
+
+ 
   getCartTotal()
   {
     this.cartItems=this.session.get("cartItems");
@@ -53,21 +68,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   proceedToPayment(){
-    let email=this.session.get("email");
-    
-    this.customerService.getCustomerDetails(email)
-    .subscribe((res:Customer)=>{
-      this.order.customerid=res.customerId;
+      this.order.customerid=this.customer.customerId;
       console.log(this.order.customerid);
       this.order.status="Ordered";
       this.order.total_amount=this.cartTotal;
-      
-
       this.createOrderData();
-      //save order data
-      
-    })
-
    }
 
 
@@ -80,9 +85,7 @@ export class CheckoutComponent implements OnInit {
         this.order.orderid=res;
         this.createOrderDetailsData();
         //add data to orderdetails table
-
-        
-        
+      
     });
    }
 
@@ -106,4 +109,38 @@ export class CheckoutComponent implements OnInit {
    }
   
 
+EditableFields(){
+  this.editFlag=true;
 }
+
+updateCustomerOrderDetails(newAddress){
+
+ 
+ console.log(newAddress);
+ //console.log(JSON.stringify(this.customer));
+  this.customer.delivery_address=newAddress;
+  let email=this.session.get("email");
+ /* this.newCust.customerId=this.customer.customerId
+  this.newCust.email=this.customer.email;
+  this.newCust.password=this.customer.password;
+  this.newCust.phno=this.customer.phno;
+  this.newCust.customerName=this.customer.customerName;
+  this.newCust.address=this.customer.address;
+  */
+  //this.newCust.delivery_address=this.customer.delivery_address;
+  //this.customer.delivery_address=newAddress
+  console.log(this.customer);
+ this.customerService.updateCustomer(email,this.customer)
+  .subscribe((res:any)=>{
+    console.log(res);
+  })
+  
+  }
+
+  
+
+
+
+
+}
+

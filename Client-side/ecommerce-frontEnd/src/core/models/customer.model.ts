@@ -5,5 +5,6 @@ export class Customer{
     phno:number;
     customerName:string;
     address:string;
+    delivery_address:string;
 
 }

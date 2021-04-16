@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
+import { Customer } from 'src/core/models/customer.model';
 import { CustomerService } from 'src/core/services/customer/customer.service';
 @Component({
   selector: 'app-register',
@@ -10,6 +11,8 @@ import { CustomerService } from 'src/core/services/customer/customer.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   hide=true;
+  customer:Customer= new Customer();
+
   
   constructor(private customerService:CustomerService,private formBuilder: FormBuilder, private router:Router) {
     this.buildForm();
@@ -32,8 +35,9 @@ export class RegisterComponent implements OnInit {
   register(){
     console.log(this.registerForm.value);
     this.customerService.saveCustomer(this.registerForm.value)
-    .subscribe((res:any)=>{
+    .subscribe((res:Customer)=>{
       console.log(res);
+      this.customer=res;
       this.showConfirmation();
       this.router.navigate(['/auth/login']);
 

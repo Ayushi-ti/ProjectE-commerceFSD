@@ -13,10 +13,10 @@
                 <!-- <a mat-button routerLink="/home" routerLinkActive="active">Home</a> -->
                 <a mat-button [routerLink]="'/home'" routerLinkActive="active">Home</a>
                 <span></span>
-                <a mat-button [routerLink]="'/cart/previous'" routerLinkActive="active">Order&Returns</a>
+                <a mat-button (click)="goToOrders()"  >Order&Returns</a>
                 <span></span>
-                <a mat-button [routerLink]="'/home/profile'" routerLinkActive="active">My Profile</a>
-
+                <!-- <a mat-button [routerLink]="'/cart/previous'"  routerLinkActive="active" [routerLink]="'/home/profile'" routerLinkActive="active">My Profile</a> -->
+                <a mat-button (click)="goToProfile()">My Profile</a>
 
                 <!-- <button mat-button [matMenuTriggerFor]=" menu "></button>
                 <mat-menu #menu="matMenu ">
@@ -33,9 +33,9 @@
             -->
             <span class="fill-space "></span>
 
-            <a mat-button [routerLink]=" '/auth/login' " routerLinkActive="active">Login </a>
+            <a mat-button [routerLink]=" '/auth/login' " *ngIf="!flag" routerLinkActive="active">Login </a>
             <span></span>
-            <a mat-button [routerLink]=" '/auth/login' " [disabled]="flag" (click)="logout()">Logout </a>
+            <a mat-button [routerLink]=" '/auth/login' " *ngIf="flag" (click)="logout()">Logout </a>
             <span></span>
             <a matBadgeColor="primary" mat-raised-button [routerLink]=" '/cart/show' " routerLinkActive="active">
                 <mat-icon>shopping_cart</mat-icon>

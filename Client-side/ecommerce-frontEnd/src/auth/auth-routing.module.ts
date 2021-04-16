@@ -15,7 +15,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'logmain',
+    path: 'logByAdmin',
     component: AdminLoginComponent
   }
   // {

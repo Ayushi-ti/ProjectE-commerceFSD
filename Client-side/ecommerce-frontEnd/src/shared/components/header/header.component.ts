@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
@@ -12,21 +13,26 @@ import { MessengerService } from 'src/core/services/messenger/messenger.service'
 })
 export class HeaderComponent implements OnInit {
   flag:boolean=false;
-  EmailId;
-  
+  EmailId:string;
+
  
 
   cartItems: Product[] = [];
   cartTotal = 0;
   constructor(private session: SessionStorageService,private router: Router,private msg: MessengerService, private cartService: CartService) {
-  this.EmailId=this.session.get('email');
+    this.EmailId=this.session.get("email");
 
-  
-  if(this.EmailId!=null)
-  this.flag=true;
   }
  
   ngOnInit(): void {
+    
+
+    if(this.EmailId!=null && this.EmailId!=""){
+      this.flag=true;
+      }else{
+        this.flag=false;
+      }
+      console.log(this.flag);
 
     this.msg.getMsg().subscribe((product: Product) => {
 
@@ -68,9 +74,26 @@ export class HeaderComponent implements OnInit {
 
 logout(){
   this.session.remove('email');
+ 
 }
 
-
+goToOrders(){
+if(this.EmailId == null || this.EmailId == ""){
+    this.router.navigate(['/../auth/login']);
+  }else{
+  this.router.navigate(['/../cart/previous']);
+  }
+}
+goToProfile(){
+ console.log(this.EmailId);
+  
+  if(this.EmailId == null || this.EmailId == ""){
+    console.log("here");
+    this.router.navigate(['/../auth/login']);
+  }else{
+  this.router.navigate(['/../home/profile']);
+  }
+}
 
 
 }

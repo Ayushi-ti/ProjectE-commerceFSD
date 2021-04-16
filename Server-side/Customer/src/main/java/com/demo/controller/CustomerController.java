@@ -48,6 +48,7 @@ public class CustomerController {
 	@PutMapping("/update/{email}")
 	public boolean editcustomer(@PathVariable String email, @RequestBody Customer customer) {
 		return customerService.updatecustomer(email, customer);
+		
 	}
 	//localhost:9595/customers/bymail
 	@GetMapping("/bymail/{email}")
