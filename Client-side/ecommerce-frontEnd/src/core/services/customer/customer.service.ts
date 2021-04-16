@@ -29,7 +29,8 @@ export class CustomerService {
     return  this.http.get(`${this.host}/customers/bymail/${Email}`);
   }
   updateCustomer(email,customer){
-    return this.http.post(`${this.host}/customers/update/{email}`, customer);
+    
+    return this.http.put(`${this.host}/customers/update/${email}`, customer);
   }
 
  // deleteCustomer(id){

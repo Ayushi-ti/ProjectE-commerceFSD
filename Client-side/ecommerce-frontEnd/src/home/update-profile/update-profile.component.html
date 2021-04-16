@@ -29,59 +29,48 @@
                     <mat-card-content>
 
                         <div class="row">
-                            <div class="col-xs">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Email</mat-label>
-                                    <!-- <mat-card>{{email}}</mat-card> -->
-                                    <!-- <span mat-icon-button matSuffix>
-                <mat-icon>person</mat-icon>
-              </span> -->
+
+                            <div class="col">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Email Id</mat-label>
+                                    <input autocomplete="off" formControlName="email" matInput type="text">
+
                                 </mat-form-field>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-xs">
-                                <mat-form-field appearance="fill" matFormFieldControl="customer_name">
+
+                            <div class="col">
+                                <mat-form-field appearance="outline">
                                     <mat-label>Name</mat-label>
-                                    <input autocomplete="off" formControlName="customer_name" matInput type="text">
+                                    <input autocomplete="off" formControlName="customerName" matInput type="text">
 
                                 </mat-form-field>
                             </div>
-                        </div>
 
 
-
-
-
-                        <div class="row">
-                            <div class="col-xs">
-                                <mat-form-field appearance="fill" matFormFieldControl="address">
+                            <div class="col">
+                                <mat-form-field appearance="outline">
                                     <mat-label>Address</mat-label>
                                     <input autocomplete="off" formControlName="address" matInput type="text">
 
                                 </mat-form-field>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-xs">
-                                <mat-form-field appearance="fill" matFormFieldControl="phno">
-                                    <mat-label>Mobile No</mat-label>
+
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Phone Number</mat-label>
                                     <input autocomplete="off" formControlName="phno" matInput type="text">
 
                                 </mat-form-field>
                             </div>
-                        </div>
-
-
-
-
-
+                            </div>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button [disabled]="updateProfileForm.invalid" mat-raised-button color="accent" type="submit">Register</button>
-                        <button [disabled]="updateProfileForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
+                        <button [disabled]="updateProfileForm.invalid" mat-raised-button color="accent"
+                            type="submit">Update Profile</button>
+                        <button [disabled]="updateProfileForm.invalid" mat-raised-button type="button"
+                            (click)="cancel()">Cancel</button>
                     </mat-card-actions>
                 </mat-card>
             </form>

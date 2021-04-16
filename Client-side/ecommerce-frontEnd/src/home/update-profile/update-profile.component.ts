@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
+import { Customer } from 'src/core/models/customer.model';
 import { CustomerService } from 'src/core/services/customer/customer.service';
 
 @Component({
@@ -13,10 +14,7 @@ export class UpdateProfileComponent implements OnInit {
 
   EmailId:string=this.session.get('email');
   updateProfileForm: FormGroup;
-  email:string ;
-  name:string;
-  phno:string;
-  address:string;
+  customer:Customer;
   
   constructor(private session: SessionStorageService ,private customerService:CustomerService,private formBuilder: FormBuilder, private router:Router) {
     this.buildForm();
@@ -29,18 +27,37 @@ export class UpdateProfileComponent implements OnInit {
 
   private buildForm() {
     this.updateProfileForm = this.formBuilder.group({
-      //email: new FormControl("xyz@gmail.com", [Validators.required,Validators.email]),
-      //password: new FormControl("samplePas", [Validators.required, Validators.min(1),Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]),
-      address: new FormControl(this.address, Validators.required),
-      phno: new FormControl(this.phno, Validators.required),
-      customer_name: new FormControl(this.name,Validators.required)
+      email: new FormControl({value:'',disabled:true}),
+      address: new FormControl('', Validators.required),
+      phno: new FormControl('', Validators.required),
+      customerName: new FormControl('',Validators.required)
+    });
+  }
+
+  getCustomerInformation(){
+  
+    this.customerService.displayCustomerByEmail(this.EmailId)
+    .subscribe((data:any)=>{
+      this.customer=data;
+        console.log(this.customer); 
+        this.initializeForm();
+    })
+    
+  }
+
+  initializeForm(){
+    this.updateProfileForm = this.formBuilder.group({
+      email: new FormControl({value:this.customer.email,disabled:true}),
+      address: new FormControl(this.customer.address, Validators.required),
+      phno: new FormControl(this.customer.phno, Validators.required),
+      customerName: new FormControl(this.customer.customerName,Validators.required)
     });
   }
 
   update(){
     console.log(this.updateProfileForm.value);
-
-    this.customerService.updateCustomer(this.EmailId,this.updateProfileForm.value)
+   
+    this.customerService.updateCustomer(this.customer.email,this.updateProfileForm.value)
     .subscribe((res:any)=>{
       console.log(res);
       this.showConfirmation();
@@ -61,20 +78,6 @@ export class UpdateProfileComponent implements OnInit {
     alert("Your Account is updated");
   }
 
-  getCustomerInformation(){
   
-    this.customerService.displayCustomerByEmail(this.EmailId);
-    //  .subscribe((data:any)=>{
-    //   console.log(data);
-    //  this.name=data.customer_name;
-    //  this.email=data.email;
-    //  this.address=data.address;
-    //  this.phno=data.phno;
-     
-     
-    // }); 
-    
-  }
-
 
 }

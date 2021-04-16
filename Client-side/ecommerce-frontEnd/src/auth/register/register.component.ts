@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.min(1),Validators.pattern('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]),
       address: new FormControl('', Validators.required),
       phno: new FormControl('', Validators.required),
-      customer_name: new FormControl('',Validators.required)
+      customerName: new FormControl('',Validators.required)
     });
   }
 

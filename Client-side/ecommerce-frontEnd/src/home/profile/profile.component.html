@@ -1,6 +1,5 @@
-<p>profile works!</p>
-<a mat-button (click)="getCustomerInformation()">Show Customer Details </a>
 
+<div class="parent">
 <mat-card class="example-card">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -19,7 +18,8 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" [routerLink]="'/../home/update'">Update Profile</button>
-        <button mat-raised-button color="primary">Order History</button>
+        <button mat-raised-button class="update" color="primary" [routerLink]="'/../home/update'">Update Profile</button>
+        
     </mat-card-actions>
 </mat-card>
+</div>
