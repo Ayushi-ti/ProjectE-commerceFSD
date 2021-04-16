@@ -27,6 +27,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 @RestController
 @RequestMapping("/admin")
 @EnableCircuitBreaker
+@CrossOrigin(origins = {"http://localhost:4200"}) 
 public class AdminController {
 
 	@Autowired
