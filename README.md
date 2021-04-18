@@ -12,8 +12,8 @@ To initiate the project :
     <li> npm i </li>
     <li> npm start </li>
   </ul>
-4) open browser and port to localhost:4200 <br/>
-5) Note : To make the products visile. first, u have to add products into product table under ecommerce database.
+ 3) open browser and port to localhost:4200 <br/>
+ 4) Note : To make the products visile. first, u have to add products into product table under ecommerce database.
 
  
  
