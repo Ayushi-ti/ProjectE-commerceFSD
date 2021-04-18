@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from 'angular-web-storage';
+
 
 @Component({
   selector: 'admin-header',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private session: SessionStorageService) { }
 
   ngOnInit(): void {
+  }
+  logout(){
+    this.session.remove('email');
   }
 
 }
