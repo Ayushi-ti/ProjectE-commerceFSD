@@ -4,8 +4,8 @@ Team members : Ayushi , Shravya, Mayank , Ekta <br/>
 <ul>
 <li>Work Flow schedule : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=0  </li>
 <li>Please provide us suggestions and any flaw in our ecommerce website here under changes and suggestions tab in this excel sheet :https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=1494428362 </li>
-  <li> FrontEnd task structure : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=2100023359 </li>
-  <li> BackEnd Structure : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=500101784</li>
+  <li>FrontEnd task structure : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=2100023359 </li>
+  <li>BackEnd Structure : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=500101784</li>
   </ul>
 
 
