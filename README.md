@@ -8,12 +8,14 @@ Please provide us suggestions and any flaw in our ecommerce website here under c
 To initiate the project :
 1) Run the server side code : Run each service as java application.<br/>
 2) For running client side open ecommerce-frontEnd and execute:<br/>
-<ul>
+  <ul>
     <li> npm i </li>
     <li> npm start </li>
-</ul>
-3) open browser and port to localhost:4200 <br/>
-4)Note : To make the products visile. first, u have to add products into product table under ecommerce database. 
+  </ul>
+4) open browser and port to localhost:4200 <br/>
+5) Note : To make the products visile. first, u have to add products into product table under ecommerce database.
+
+ 
  
 
 
