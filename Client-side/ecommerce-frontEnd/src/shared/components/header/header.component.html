@@ -13,10 +13,12 @@
                 <!-- <a mat-button routerLink="/home" routerLinkActive="active">Home</a> -->
                 <a mat-button [routerLink]="'/home'" routerLinkActive="active">Home</a>
                 <span></span>
-                <a mat-button (click)="goToOrders()"  >Order&Returns</a>
+
+                <a mat-button (click)="goToOrders()">Order&Returns</a>
+
                 <span></span>
                 <!-- <a mat-button [routerLink]="'/cart/previous'"  routerLinkActive="active" [routerLink]="'/home/profile'" routerLinkActive="active">My Profile</a> -->
-                <a mat-button (click)="goToProfile()">My Profile</a>
+                <a mat-button (click)="goToProfile()" routerLinkActive="active">My Profile</a>
 
                 <!-- <button mat-button [matMenuTriggerFor]=" menu "></button>
                 <mat-menu #menu="matMenu ">

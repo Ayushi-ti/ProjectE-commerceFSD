@@ -12,7 +12,8 @@ h3 {
 }
 
 nav>a.active {
-    background-color: black;
+    background-color: white;
+    color: black;
 }
 
 .header-row {
