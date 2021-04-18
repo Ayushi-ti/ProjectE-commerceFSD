@@ -2,6 +2,19 @@
 
 Team members : Ayushi , Shravya, Mayank , Ekta <br/>
 Work Flow schedule : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=0  <br/>
+Please provide us suggestions and any flaw in our ecommerce website here under changes and suggestions tab in this excel sheet :https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=1494428362 <br/>
+
+
+To initiate the project :
+1) Run the server side code : Run each service as java application.<br/>
+2) For running client side open ecommerce-frontEnd and execute:<br/>
+<ul>
+    <li> npm i </li>
+    <li> npm start </li>
+</ul>
+3) open browser and port to localhost:4200 <br/>
+4)Note : To make the products visile. first, u have to add products into product table under ecommerce database. 
+ 
 
 
 Steps to initialize github repository  with your local one :
