@@ -77,6 +77,17 @@ public class OrderService {
 		}
 		return orderdetailslist;
 	}
+	public List<OrderDetails> getorders(int customerid)
+	{
+	  Iterable<OrderDetails> orderdetail=orderdetailsRepository.findAllBycustomerid(customerid);
+	  Iterator<OrderDetails> iterator=orderdetail.iterator();
+	  List<OrderDetails> orderdetailslist=new ArrayList<OrderDetails>();
+		while(iterator.hasNext()) {
+			orderdetailslist.add(iterator.next());
+		}
+		return orderdetailslist;
+	}
+	
 
 	
 	}

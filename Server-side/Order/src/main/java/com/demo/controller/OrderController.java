@@ -69,5 +69,11 @@ public class OrderController {
 	{
 		return orderService.getproducts(orderid);
 	}
+	@GetMapping("/orderdetails/{customerid}")
+	public List<OrderDetails> getallordersByCustomer(@PathVariable int customerid)
+	{
+		return orderService.getorders(customerid);
+	}
+	
 	
 }
