@@ -1,10 +1,30 @@
 # E-commerce project using MySql SpringBoot Angular Java Full Stack Development
 
 Team members : Ayushi , Shravya, Mayank , Ekta <br/>
-Work Flow schedule : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=0  <br/>
+<ul>
+<li>Work Flow schedule : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=0  </li>
+<li>Please provide us suggestions and any flaw in our ecommerce website here under changes and suggestions tab in this excel sheet :https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=1494428362 </li>
+  <li>FrontEnd task structure : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=2100023359 </li>
+  <li>BackEnd Structure : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=500101784</li>
+  </ul>
 
 
-Steps to initialize github repository  with your local one :
+<h4>To initiate the project :</h4>
+<ol>
+<li> Run the server side code : Run each service as java application.</li>
+<li> For running client side open ecommerce-frontEnd and execute: </li>
+  <ul>
+    <li> npm i </li>
+    <li> npm start </li>
+  </ul>
+<li> open browser and port to localhost:4200 </li>
+<li>Note : To make the products visible . first, u have to add products into product table under ecommerce database.</li>
+</ol>
+ 
+ 
+
+
+<h4>Steps to initialize github repository  with your local one :</h4>
 (Remote origin of this repository is : https://github.com/Ayushi-ti/sample.git )
 
 1)Git initialization within your local repository
@@ -27,3 +47,4 @@ Steps to initialize github repository  with your local one :
 
 3)For pull operation--  <br/>
    <ul><li>git pull https://github.com/Ayushi-ti/sample.git main</li></ul>
+
