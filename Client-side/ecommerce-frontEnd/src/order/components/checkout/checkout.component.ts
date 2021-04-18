@@ -27,7 +27,7 @@ export class CheckoutComponent implements OnInit {
   order:Order=new Order();
   orderDetails:OrderDetails=new OrderDetails();
   product:Product;
-  newCust:Customer=new Customer();
+ 
   editFlag:boolean=false;
   constructor(public session:SessionStorageService,public customerService:CustomerService,public orderService:OrderService,public router:Router) { }
 
@@ -50,9 +50,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   getBillingDetails(){
-   
+   if(this.customer.deliveryAddress==null || this.customer.deliveryAddress =="" ){
     this.billingAddress=this.customer.address;
-      this.billingMobileNumber=this.customer.phno;
+      
+  }else{
+    this.billingAddress=this.customer.deliveryAddress;
+    
+  }
+  this.billingMobileNumber=this.customer.phno;
    
   }
 
@@ -115,24 +120,20 @@ EditableFields(){
 
 updateCustomerOrderDetails(newAddress){
 
- 
+ this.editFlag=true;
  console.log(newAddress);
- //console.log(JSON.stringify(this.customer));
-  this.customer.delivery_address=newAddress;
+ 
+  this.customer.deliveryAddress=newAddress;
   let email=this.session.get("email");
- /* this.newCust.customerId=this.customer.customerId
-  this.newCust.email=this.customer.email;
-  this.newCust.password=this.customer.password;
-  this.newCust.phno=this.customer.phno;
-  this.newCust.customerName=this.customer.customerName;
-  this.newCust.address=this.customer.address;
-  */
-  //this.newCust.delivery_address=this.customer.delivery_address;
-  //this.customer.delivery_address=newAddress
-  console.log(this.customer);
+ // console.log(this.customer);
+ 
  this.customerService.updateCustomer(email,this.customer)
   .subscribe((res:any)=>{
     console.log(res);
+    if(res==true){
+    this.billingAddress=this.customer.deliveryAddress;
+    }
+    this.editFlag=false;
   })
   
   }

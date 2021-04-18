@@ -19,8 +19,8 @@
 
         <br>
 
-        <button mat-raised-button color="primary" (click)="EditableFields()">Change billing Details</button>
-        <button mat-raised-button color="primary" (click)="updateCustomerOrderDetails(newAddress.value)">Update</button>
+        <button *ngIf="!editFlag" mat-raised-button color="primary" (click)="EditableFields()">Change billing Details</button>
+        <button *ngIf="editFlag" mat-raised-button color="primary" (click)="updateCustomerOrderDetails(newAddress.value)">Update</button>
 
     </div>
 

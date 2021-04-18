@@ -37,7 +37,7 @@ export class EditProductComponent implements OnInit {
       product_id:new FormControl({value:'',disabled:true}),
       product_name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required),
+      product_price: new FormControl('', Validators.required),
       total_quantity:new FormControl('',Validators.required),
       category:new FormControl('',Validators.required)
     });
@@ -65,7 +65,7 @@ export class EditProductComponent implements OnInit {
       product_id:new FormControl({value:this.product.product_id,disabled:true}),
       product_name: new FormControl(this.product.product_name, Validators.required),
       description: new FormControl(this.product.description, Validators.required),
-      price: new FormControl(this.product.product_price, Validators.required),
+      product_price: new FormControl(this.product.product_price, Validators.required),
       total_quantity:new FormControl(this.product.total_quantity,Validators.required),
       category:new FormControl(this.product.category,Validators.required)
     });
@@ -73,6 +73,7 @@ export class EditProductComponent implements OnInit {
 
 
   editProduct(){
+    console.log(this.productForm.value);
     this.productService.updateProduct(this.product.product_id,this.productForm.value)
     .subscribe((res:any)=>{
       console.log(res);

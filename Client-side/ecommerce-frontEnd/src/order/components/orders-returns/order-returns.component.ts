@@ -25,6 +25,7 @@ export class OrderReturnsComponent implements OnInit {
   */
  orders:Order;
  orderDate:number=Date.now();
+ flag:boolean=false;
 
   
   
@@ -53,8 +54,13 @@ export class OrderReturnsComponent implements OnInit {
   fetchAllOrders(cid){
     this.orderService.getAllOrdersByCustomerId(cid)
     .subscribe((res:any)=>{
-      console.log(res);
+      if(res==null || res==""){
+        this.flag=false;
+    //  console.log(res);
+      }else{
+        this.flag=true;
       this.orders=res;
+      }
     })
   }
   

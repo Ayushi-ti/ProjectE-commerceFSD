@@ -43,7 +43,7 @@ export class AdminService {
   //   return this.http.put(`${this.host}/customers/${email}`, newCustomer);
   // }
   login(admin){
-    return this.http.post(`${this.host}/customers/login`,admin);
+    return this.http.post(`${this.host}/admin/login`,admin);
   }
 
   // getCustomerDetails(email){

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
 import { OrderService } from 'src/core/services/order/order.service';
 
@@ -22,5 +22,9 @@ export class SuccessOrderComponent implements OnInit {
     
   }
 
+  routeToHome(){
+    this.session.set("cartItems","");
+    
+  }
   
 }
