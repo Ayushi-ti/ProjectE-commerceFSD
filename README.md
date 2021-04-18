@@ -20,7 +20,7 @@ Please provide us suggestions and any flaw in our ecommerce website here under c
  
 
 
-Steps to initialize github repository  with your local one :
+<h4>Steps to initialize github repository  with your local one :</h4>
 (Remote origin of this repository is : https://github.com/Ayushi-ti/sample.git )
 
 1)Git initialization within your local repository
