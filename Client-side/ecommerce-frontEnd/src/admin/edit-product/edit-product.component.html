@@ -5,14 +5,25 @@
     <form [formGroup]="productForm" (ngSubmit)="editProduct()">
         <div class="row">
 
-            <div class="col">
+            <div class="col-xs">
                 <mat-form-field appearance="standard">
                     <mat-label>Product Id</mat-label>
                     <input autocomplete="off" formControlName="product_id" matInput type="text">
 
                 </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Select Category</mat-label>
+                    <mat-select formControlName="category">
+                      <mat-option *ngFor="let category of categories" [value]="category.value">
+                        {{category.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
             </div>
-            <div class="col-xs">
+            <div class="col">
 
                 <!--Product Name-->
 
@@ -23,15 +34,7 @@
                 </mat-form-field>
 
                
-                <mat-form-field>
-                    <mat-label>Select Category</mat-label>
-                    <mat-select formControlName="category">
-                      <mat-option *ngFor="let category of categories" [value]="category.value">
-                        {{category.viewValue}}
-                      </mat-option>
-                    </mat-select>
-                    </mat-form-field>
-
+                
                 </div>
 
            
@@ -49,7 +52,7 @@
             <div class="col">
                 <mat-form-field appearance="outline">
                     <mat-label>Product Price/Piece</mat-label>
-                    <input autocomplete="off" formControlName="price" matInput type="number">
+                    <input autocomplete="off" formControlName="product_price" matInput type="number">
 
                 </mat-form-field>
             </div>

@@ -30,7 +30,7 @@ export class UpdateProfileComponent implements OnInit {
       email: new FormControl({value:'',disabled:true}),
       address: new FormControl('', Validators.required),
       phno: new FormControl('', Validators.required),
-      customerName: new FormControl('',Validators.required)
+      customer_name: new FormControl('',Validators.required)
     });
   }
 
@@ -50,7 +50,7 @@ export class UpdateProfileComponent implements OnInit {
       email: new FormControl({value:this.customer.email,disabled:true}),
       address: new FormControl(this.customer.address, Validators.required),
       phno: new FormControl(this.customer.phno, Validators.required),
-      customerName: new FormControl(this.customer.customerName,Validators.required)
+      customer_name: new FormControl(this.customer.customer_name,Validators.required)
     });
   }
 

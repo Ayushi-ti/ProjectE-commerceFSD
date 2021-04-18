@@ -20,22 +20,17 @@ export class ProductCardComponent implements OnInit {
   editProduct(product_id){
     console.log(product_id);
     this.router.navigate(['/../admin/editproduct/'+ product_id]);
-    //this.router.navigate(['/cart/success/' + this.order.orderid]);
-    
-    //this.router.navigate(['/cart/success/' + pid]);
     
   }
   removeProduct(pid){
     console.log(pid);
     this.productService.deleteProduct(pid)
     .subscribe((res:any)=>{
-      // this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-      //   this.router.navigate(['/../admin/home']);
+      this.router.navigate(['/../admin/home/']);
         
     }); 
     
-    // })
-
+   
   }
   
  

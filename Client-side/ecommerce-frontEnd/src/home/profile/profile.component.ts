@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
+import { Customer } from 'src/core/models/customer.model';
 
 import { CustomerService } from 'src/core/services/customer/customer.service';
 
@@ -38,8 +39,8 @@ export class ProfileComponent implements OnInit {
 getCustomerInformation(){
   
   this.customerService.displayCustomerByEmail(this.EmailId)
-  .subscribe((data:any)=>{
-    this.name=data.customerName;
+  .subscribe((data:Customer)=>{
+    this.name=data.customer_name;
      this.email=data.email;
      this.address=data.address;
      this.phno=data.phno;

@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
 
-  private host:String="http://localhost:8080";
+  private host:String="http://localhost:9999";
 
   constructor(private http:HttpClient) { }
 
 
   getOrderByOrderId(orderId){
-    return this.http.get(`${this.host}/orders//showorder/${orderId}`);
+    return this.http.get(`${this.host}/orders/showorder/${orderId}`);
   }
   getAllOrdersByCustomerId(cid){
     return this.http.get(`${this.host}/orders/search/${cid}`);

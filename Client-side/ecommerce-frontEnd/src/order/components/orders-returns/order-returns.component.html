@@ -1,6 +1,8 @@
 <div class="parent">
   <h2>All Orders</h2>
-  <table>
+  <br>
+  <p *ngIf="!flag">You have not placed any Orders yet !!</p>
+  <table *ngIf="flag">
       <tr>
           <th>Order Id</th>
           <th>Order Date</th>

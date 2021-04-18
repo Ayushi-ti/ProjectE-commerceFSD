@@ -27,6 +27,7 @@ export class CustLoginComponent implements OnInit {
   constructor(private customerService:CustomerService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) {
       this.buildForm();
       this.customersList=customerService.getCustomers();
+      console.log(this.customersList);
     }
 
     

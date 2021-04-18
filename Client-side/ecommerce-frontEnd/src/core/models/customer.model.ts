@@ -3,8 +3,8 @@ export class Customer{
     email:string;
     password:string;
     phno:number;
-    customerName:string;
+    customer_name:string;
     address:string;
-    delivery_address:string;
+    deliveryAddress:string;
 
 }

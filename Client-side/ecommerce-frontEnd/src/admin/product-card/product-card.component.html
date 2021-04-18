@@ -7,7 +7,7 @@
             {{product.product_name}}
         </mat-card-title>
         <mat-card-subtitle>
-            {{ product.product_price | currency}}
+            {{ product.product_price | currency :'INR'}}
         </mat-card-subtitle>
         <p>{{ product.description | slice:0:50 }}</p>
     </mat-card-content>
