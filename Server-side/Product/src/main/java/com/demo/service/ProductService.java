@@ -59,6 +59,9 @@ public class ProductService {
 			if(product.getCategory() != null){
 				dbProduct.setCategory(product.getCategory());
 			}
+			if(product.getProduct_price() > 0){
+			        dbProduct.setProduct_price(product.getProduct_price());
+			}
 			
 
 			productRepository.save(dbProduct);
