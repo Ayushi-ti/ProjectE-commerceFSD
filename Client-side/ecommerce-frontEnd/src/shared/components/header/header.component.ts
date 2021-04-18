@@ -75,6 +75,7 @@ export class HeaderComponent implements OnInit {
 logout(){
   this.session.remove('email');
  
+ 
 }
 
 goToOrders(){
