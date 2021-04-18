@@ -5,7 +5,7 @@ Work Flow schedule : https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rc
 Please provide us suggestions and any flaw in our ecommerce website here under changes and suggestions tab in this excel sheet :https://docs.google.com/spreadsheets/d/1ODdk0uWKBeXSoUuq3rcLvjXDU_LiLGbJeNuhpBtn3Ts/edit#gid=1494428362 <br/>
 
 
-To initiate the project :
+<h4>To initiate the project :</h4>
 <ol>
 <li> Run the server side code : Run each service as java application.</li>
 <li> For running client side open ecommerce-frontEnd and execute: </li>
