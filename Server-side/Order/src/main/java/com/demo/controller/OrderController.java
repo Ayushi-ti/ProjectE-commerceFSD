@@ -56,6 +56,11 @@ public class OrderController {
 	{
 		return orderService.deleteorder(orderid);
 	}
+	@GetMapping("/search/{customerid}")
+	public List<Order> getallordersByCustomer(@PathVariable int customerid)
+	{
+		return orderService.getorders(customerid);
+	}
 	//orderdetails service
 	
 	@PostMapping("/orderdetails/save")
@@ -69,11 +74,7 @@ public class OrderController {
 	{
 		return orderService.getproducts(orderid);
 	}
-	@GetMapping("/orderdetails/{customerid}")
-	public List<OrderDetails> getallordersByCustomer(@PathVariable int customerid)
-	{
-		return orderService.getorders(customerid);
-	}
+	
 	
 	
 }

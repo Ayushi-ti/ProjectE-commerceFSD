@@ -61,6 +61,17 @@ public class OrderService {
 			} 
 			return false;
 		}
+	
+	public List<Order> getorders(int customerid)
+	{
+	  Iterable<Order> order=orderRepository.findAllBycustomerid(customerid);
+	  Iterator<Order> iterator=order.iterator();
+	  List<Order> orderlist=new ArrayList<Order>();
+		while(iterator.hasNext()) {
+			orderlist.add(iterator.next());
+		}
+		return orderlist;
+	}
 	//OrderDetails service
 	public OrderDetails saveorderDetails(OrderDetails orderdetails)
 	{
@@ -77,16 +88,7 @@ public class OrderService {
 		}
 		return orderdetailslist;
 	}
-	public List<OrderDetails> getorders(int customerid)
-	{
-	  Iterable<OrderDetails> orderdetail=orderdetailsRepository.findAllBycustomerid(customerid);
-	  Iterator<OrderDetails> iterator=orderdetail.iterator();
-	  List<OrderDetails> orderdetailslist=new ArrayList<OrderDetails>();
-		while(iterator.hasNext()) {
-			orderdetailslist.add(iterator.next());
-		}
-		return orderdetailslist;
-	}
+	
 	
 
 	

@@ -14,7 +14,7 @@ public interface OrderDetailsRepository extends CrudRepository<OrderDetails,Inte
 
 	Iterable<OrderDetails> findAllByorderid(int orderid);
 
-	Iterable<OrderDetails> findAllBycustomerid(int customerid);
+	
 	
 
 }
