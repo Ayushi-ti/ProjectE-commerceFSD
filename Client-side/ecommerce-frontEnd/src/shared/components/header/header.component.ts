@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
  
 
-  cartItems: Product[] = [];
+  cartItems: any[] = [];
   cartTotal = 0;
   constructor(private session: SessionStorageService,private router: Router,private msg: MessengerService, private cartService: CartService) {
     this.EmailId=this.session.get("email");
@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
         product_name: product.product_name,
         product_price: product.product_price,
         total_quantity: product.total_quantity,
+        quantity:1,
         description: product.description,
         category:product.category,
         product_image: product.product_image
