@@ -13,12 +13,12 @@
     </mat-card-content>
     <mat-card-actions>
 
-        <a mat-raised-button color="primary" class="edit-product" (click)="editProduct(product.product_id)">Edit</a>
+        <a mat-raised-button color="primary" [routerLink]="['/../admin/productdetail/'+ product.product_id]">View Detail</a>
         <button (click)="removeProduct(product.product_id)" mat-raised-button color="primary" class="remove-product">Remove</button>
 
         <!-- <button (click)="editProduct" mat-raised-button color="primary">Edit</button> -->
 
-        <a mat-raised-button [routerLink]="['/../admin/productdetail/'+ product.product_id]"> View Detail</a>
+        
 
     </mat-card-actions>
 </mat-card>

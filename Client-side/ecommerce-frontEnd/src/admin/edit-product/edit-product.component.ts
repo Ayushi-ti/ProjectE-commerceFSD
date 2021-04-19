@@ -76,9 +76,14 @@ export class EditProductComponent implements OnInit {
     console.log(this.productForm.value);
     this.productService.updateProduct(this.product.product_id,this.productForm.value)
     .subscribe((res:any)=>{
-      console.log(res);
-     //this.router.navigate(['/../admin/editproduct']);
-     this.router.navigate(['/../admin/productdetail/'+ res.product_id]);
+      if(res){
+        alert("Product details are updated");
+     this.router.navigate(['/../admin/productdetail/'+ this.product.product_id]);
+      }else{
+        this.router.navigate(['/../admin/productdetail/'+ this.product.product_id]);
+    
+        alert ("Some error occured in updating the product details");
+      }
     })
   }
  
