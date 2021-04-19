@@ -56,7 +56,7 @@ public class CustomerService {
 			obj3.setPassword(customer.getPassword());
 		if(customer.getAddress()!=null)
 			obj3.setAddress(customer.getAddress());
-		if(customer.getPhno()==0)
+		if(customer.getPhno()!=0)
 			obj3.setPhno(customer.getPhno());
 		if(customer.getDeliveryAddress()!=null)
 			obj3.setDeliveryAddress(customer.getDeliveryAddress());
