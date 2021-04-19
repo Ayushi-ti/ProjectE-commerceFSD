@@ -77,9 +77,11 @@ export class EditProductComponent implements OnInit {
     this.productService.updateProduct(this.product.product_id,this.productForm.value)
     .subscribe((res:any)=>{
       console.log(res);
-      // this.router.navigate(['/../admin/editproduct']);
+     //this.router.navigate(['/../admin/editproduct']);
+     this.router.navigate(['/../admin/productdetail/'+ res.product_id]);
     })
   }
+ 
 
 
   }

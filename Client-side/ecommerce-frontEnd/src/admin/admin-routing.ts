@@ -4,6 +4,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { OrderListComponent } from './order-list/order-list.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 //import { CustLoginComponent } from '../auth/cust-login/cust-login.component';
@@ -30,7 +32,15 @@ const routes: Routes = [
   {
   path: 'addproduct',
   component: AddProductComponent
-  }
+  },
+  {
+    path: 'orderdetails/:id',
+    component:OrderDetailsComponent
+  },
+  {
+    path: 'orderlist',
+    component:OrderListComponent
+  },
   // {
   // path: '**',
   // component: AdminHomeComponent

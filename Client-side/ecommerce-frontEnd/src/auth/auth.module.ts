@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from 'src/auth/auth-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 
 
 
@@ -16,7 +17,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   declarations: [
     CustLoginComponent,
     RegisterComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    ForgotPassComponent
   ],
   imports: [
     CommonModule,

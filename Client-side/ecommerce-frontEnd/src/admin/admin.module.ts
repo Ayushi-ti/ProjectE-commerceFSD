@@ -11,6 +11,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminRoutingModule } from './admin-routing';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 
 
@@ -23,6 +25,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     AddCategoryComponent,
     AdminHeaderComponent,
     ProductDetailComponent,
+    OrderListComponent,
+    OrderDetailsComponent,
     
     
   ],

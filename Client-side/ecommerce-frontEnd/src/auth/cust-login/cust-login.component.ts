@@ -111,6 +111,9 @@ export class CustLoginComponent implements OnInit {
     redirectToAdminLogin(){
       this.router.navigate(['/auth/logByAdmin']);
     }
+    goToForgotPassword(){
+      this.router.navigate(['/auth/forgotpassword']);
+    }
 
 
    

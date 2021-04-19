@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { CustLoginComponent } from './cust-login/cust-login.component';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { RegisterComponent } from './register/register.component';
 
 
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'logByAdmin',
     component: AdminLoginComponent
+  },
+  {
+    path: 'forgotpassword',
+    component: ForgotPassComponent
   }
   // {
   //   path: '',

@@ -1,0 +1,14 @@
+.parent {
+    padding: 10%;
+    width: 60%;
+}
+
+td,
+th {
+    text-align: center;
+    padding: 8px;
+}
+
+.back-button {
+    float: right;
+}

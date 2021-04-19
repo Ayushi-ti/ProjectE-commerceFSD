@@ -11,11 +11,18 @@ export class OrderService {
   constructor(private http:HttpClient) { }
 
 
+  updateOrder(orderId,order){
+    return this.http.put(`${this.host}/orders/update/${orderId}`, order);
+  }
+
   getOrderByOrderId(orderId){
     return this.http.get(`${this.host}/orders/showorder/${orderId}`);
   }
   getAllOrdersByCustomerId(cid){
     return this.http.get(`${this.host}/orders/search/${cid}`);
+  }
+  getAllOrders(){
+    return this.http.get(`${this.host}/orders/show`);
   }
 
   createOrder(order){
