@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.demo.entities.Category;
 import com.demo.entities.Product;
 import com.demo.service.ProductService;
 
@@ -54,6 +54,21 @@ public class ProductController {
 	@PutMapping("/{id}")
 	public boolean updateProduct(@PathVariable int id,@RequestBody Product product) {
 		return productService.editProduct(id, product);
+	}
+	
+	
+	//category service
+	
+	@PostMapping("/save")
+	public Category addCategory(@RequestBody Category category)
+	{
+		return productService.saveCategory(category);
+	}
+	
+	@GetMapping("/search/{categoryid}")
+	public Category getCategory(@PathVariable String categoryid)
+	{
+		return productService.getCategory(categoryid);
 	}
 
 }
