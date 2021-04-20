@@ -116,11 +116,11 @@ public class ProductController {
 	    }
 	
 	
-	    @GetMapping(path = { "/get/{imageName}" })
+	    @GetMapping(path = { "/get/{imageId}" })
 	
-	    public ImageModel getImage(@PathVariable("imageName") String imageName) throws IOException {
+	    public ImageModel getImage(@PathVariable("imageId") long imageId) throws IOException {
 	
-	        final Optional<ImageModel> retrievedImage = imageRepository.findByName(imageName);
+	        final Optional<ImageModel> retrievedImage = imageRepository.findById(imageId);
 	
 	        ImageModel img = new ImageModel(retrievedImage.get().getName(), retrievedImage.get().getType(),
 	
