@@ -93,6 +93,11 @@ public class ProductController {
 	{
 		return productService.getCategory(categoryid);
 	}
+	@GetMapping("/category")
+	public List<Category> getCategory()
+	{
+		return productService.getAllCategory();
+	}
 
 
 //image
