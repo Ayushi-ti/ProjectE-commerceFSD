@@ -1,24 +1,44 @@
-
-.product-form{
+.product-form {
     width: 80%;
     padding: 5%;
-   
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-form{
-    margin-top:100px;
-}
-.mat-form-field{
-    width: 400px;
-    margin-left:40px;
+form {
+    margin-top: 100px;
 }
 
-.mat-raised-button{
+.mat-form-field {
+    width: 400px;
+    margin-left: 40px;
+}
+
+.mat-raised-button {
     float: right;
     width: 200px;
-    margin-right:100px;
+    margin-right: 100px;
+}
+
+aside,
+section,
+footer {
+    box-sizing: border-box;
+}
+
+aside {
+    /* width: 20%; */
+    float: left;
+}
+
+section {
+    /* width: 60%; */
+    float: left;
+    /* height: 100px; */
+}
+
+footer {
+    clear: both;
 }

@@ -1,4 +1,6 @@
-
+.product-card{
+    height: 450px;
+}
 .product-card img{
     width: 100%;
 }

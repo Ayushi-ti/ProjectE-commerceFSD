@@ -34,6 +34,7 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.updateOrder(this.orderId,this.order)
     .subscribe((res:boolean)=>{
      console.log(res);
+     window.location.reload();
       
    })
 

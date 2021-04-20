@@ -19,7 +19,7 @@ import { Thumbs } from 'swiper';
 })
 export class CheckoutComponent implements OnInit {
 
-  cartItems:Product[]=[];
+  cartItems:any[]=[];
   customer:Customer;
   cartTotal:number=0;
   billingAddress:string;
@@ -67,7 +67,7 @@ export class CheckoutComponent implements OnInit {
     this.cartItems=this.session.get("cartItems");
     if( this.cartItems!=null && this.cartItems.length > 0){
       this.cartItems.forEach(item=>{
-        this.cartTotal+=(item.total_quantity*item.product_price);
+        this.cartTotal+=(item.quantity*item.product_price);
       })
     }
   }
@@ -102,7 +102,7 @@ export class CheckoutComponent implements OnInit {
      if( productArray.length > 0){
         productArray.forEach(item=>{
             this.orderDetails.productid=item.product_id;
-            this.orderDetails.quantity=item.total_quantity;
+            this.orderDetails.quantity=item.quantity;
           this.orderService.createOrderDetails(this.orderDetails)
           .subscribe((res:any)=>{
             console.log(res);

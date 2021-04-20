@@ -1,0 +1,20 @@
+aside,
+section,
+footer {
+    box-sizing: border-box;
+}
+
+aside {
+    /* width: 20%; */
+    float: left;
+}
+
+section {
+    /* width: 60%; */
+    float: left;
+    /* height: 100px; */
+}
+
+footer {
+    clear: both;
+}
