@@ -8,7 +8,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.demo.entities.Category;
 import com.demo.entities.Product;
+import com.demo.repositories.CategoryRepository;
 import com.demo.repositories.ProductRepository;
 
 @Service
@@ -16,6 +18,9 @@ public class ProductService {
 
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	public List<Product> findAllProducts(){
 		Iterable<Product> iterable =productRepository.findAll();
@@ -69,4 +74,16 @@ public class ProductService {
 		return dbProduct != null;
 	}
 
+
+//category service
+
+public Category saveCategory(Category category)
+{
+	return categoryRepository.save(category);
+}
+
+public Category getCategory(String categoryid)
+{
+	return categoryRepository.findBycategoryId(categoryid);
+}
 }

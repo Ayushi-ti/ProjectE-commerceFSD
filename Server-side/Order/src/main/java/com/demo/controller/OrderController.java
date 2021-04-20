@@ -61,6 +61,11 @@ public class OrderController {
 	{
 		return orderService.getorders(customerid);
 	}
+	@GetMapping("/getDateCustomer/{orderid}")
+	public List<Integer> getDateCustomers(@PathVariable int orderid)
+	{
+		return orderService.findOrdersByID(orderid);
+	}
 	//orderdetails service
 	
 	@PostMapping("/orderdetails/save")

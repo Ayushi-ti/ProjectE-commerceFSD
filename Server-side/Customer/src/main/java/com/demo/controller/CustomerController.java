@@ -59,4 +59,9 @@ public class CustomerController {
 	public boolean removecustomer(@PathVariable int id) {
 		return customerService.deletecustomer(id);
 	}
+	@GetMapping("/forgot/{email}")
+	public boolean forgotPassword(@PathVariable String email)
+	{
+		return customerService.updatePassword(email);
+	}
 }

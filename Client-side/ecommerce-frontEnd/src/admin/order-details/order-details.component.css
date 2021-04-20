@@ -1,25 +1,16 @@
-.product-form {
-    width: 80%;
-    padding: 5%;
+.parent {
+    padding: 10%;
+    width: 60%;
 }
 
-h2 {
+td,
+th {
     text-align: center;
+    padding: 8px;
 }
 
-form {
-    margin-top: 100px;
-}
-
-.mat-form-field {
-    width: 400px;
-    margin-left: 40px;
-}
-
-.mat-raised-button {
+.back-button {
     float: right;
-    width: 200px;
-    margin-right: 100px;
 }
 
 aside,

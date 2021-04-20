@@ -49,6 +49,16 @@ public class OrderService {
 	{
 		return orderRepository.findByorderid(orderid);
 	}
+	public List<Integer> findOrdersByID(int orderid)
+	{
+		Order orderObj= orderRepository.findByorderid(orderid);
+		List<Integer> customerList=new ArrayList<Integer>();
+		customerList.add(orderObj.getCustomerid());
+		customerList.add(orderObj.getDateOfOrder());
+		return customerList;
+		
+
+	}
 	
 	
 	public boolean deleteorder(int orderid)

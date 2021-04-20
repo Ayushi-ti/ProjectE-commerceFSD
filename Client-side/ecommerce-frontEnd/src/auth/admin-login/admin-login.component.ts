@@ -23,8 +23,8 @@ export class AdminLoginComponent implements OnInit {
 
   private buildForm() {
     this.adminloginForm = this.formBuilder.group({
-      email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required]],
+      email: ['admin@gmail.com', [Validators.required,Validators.email]],
+      password: ['admin', [Validators.required]],
       getErrorMessage() {
         if (this.email.hasError('required')) {
           return 'You must enter a value';

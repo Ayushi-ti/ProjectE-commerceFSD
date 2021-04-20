@@ -26,7 +26,11 @@ import java.util.zip.Inflater;
 import org.springframework.http.HttpStatus;
 
 
+
 import com.demo.entities.ImageModel;
+
+import com.demo.entities.Category;
+
 import com.demo.entities.Product;
 import com.demo.repositories.ImageRepository;
 import com.demo.service.ProductService;
@@ -38,6 +42,8 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
+	@Autowired
+	ImageRepository imageRepository;
 	
 //	http://localhost:5555/products
 	@PostMapping()
@@ -68,12 +74,29 @@ public class ProductController {
 	@PutMapping("/{id}")
 	public boolean updateProduct(@PathVariable int id,@RequestBody Product product) {
 		return productService.editProduct(id, product);
+		
+	
 	}
 	
+
+	
+	//category service
+	
+	@PostMapping("/save")
+	public Category addCategory(@RequestBody Category category)
+	{
+		return productService.saveCategory(category);
+	}
+	
+	@GetMapping("/search/{categoryid}")
+	public Category getCategory(@PathVariable String categoryid)
+	{
+		return productService.getCategory(categoryid);
+	}
+
+
 //image
 	
-	@Autowired
-	    ImageRepository imageRepository;
 	
 	    @PostMapping("/upload")
 	
@@ -180,5 +203,6 @@ public class ProductController {
 	    }
 	
 	}
+
 
 

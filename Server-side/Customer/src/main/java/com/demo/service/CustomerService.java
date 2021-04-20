@@ -5,6 +5,7 @@ package com.demo.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,7 +57,7 @@ public class CustomerService {
 			obj3.setPassword(customer.getPassword());
 		if(customer.getAddress()!=null)
 			obj3.setAddress(customer.getAddress());
-		if(customer.getPhno()==0)
+		if(customer.getPhno()!=0)
 			obj3.setPhno(customer.getPhno());
 		if(customer.getDeliveryAddress()!=null)
 			obj3.setDeliveryAddress(customer.getDeliveryAddress());
@@ -90,6 +91,28 @@ public class CustomerService {
 			return true;
 		} 
 		return false;
+	}
+	public boolean updatePassword(String email)
+	{
+		//Customer cust=new Customer();
+		Customer obj4=customerRepository.findByemail(email);
+		
+		if(obj4!=null)
+		{
+		String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi"
+		          +"jklmnopqrstuvwxyz!@#$%&";
+				Random rnd = new Random();
+				int length=10;
+				StringBuilder sb = new StringBuilder();
+				for (int i = 0; i < length; i++)
+					sb.append(chars.charAt(rnd.nextInt(chars.length())));
+				//String pass= sb.toString();
+				obj4.setPassword(sb.toString());
+				customerRepository.save(obj4);
+				return true;
+		}
+		return false;
+		
 	}
 
 }

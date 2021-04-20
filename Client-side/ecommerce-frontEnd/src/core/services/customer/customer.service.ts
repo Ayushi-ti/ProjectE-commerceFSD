@@ -52,5 +52,8 @@ export class CustomerService {
   getCustomerDetails(email){
     return this.http.get(`${this.host}/customers/bymail/${email}`);
   }
+  forgotPass(Email){
+    return  this.http.get(`${this.host}/customers/forgot/${Email}`);
+  }
 
 }

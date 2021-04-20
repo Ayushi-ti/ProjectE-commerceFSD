@@ -79,7 +79,10 @@ export class CustLoginComponent implements OnInit {
         this.session.set("email",this.Email);
         this.session.get("email");
         console.log(this.session.get("email"));
-        this.router.navigate(['/home'])
+        // this.router.navigateByUrl('RefreshComponent',{skipLocationChange:true })
+        // .then(()=>{
+          this.router.navigate(['/../home']);
+        // });
       }
 
         // if (this.session.get("customersList") != null) {
@@ -110,6 +113,9 @@ export class CustLoginComponent implements OnInit {
     }
     redirectToAdminLogin(){
       this.router.navigate(['/auth/logByAdmin']);
+    }
+    goToForgotPassword(){
+      this.router.navigate(['/auth/forgotpassword']);
     }
 
 

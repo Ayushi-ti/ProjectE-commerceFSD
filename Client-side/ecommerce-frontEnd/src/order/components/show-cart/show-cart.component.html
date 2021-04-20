@@ -15,7 +15,9 @@
             <tr *ngFor="let items of cartItems">
                 <td>{{items.product_name}}</td>
                 <td>{{items.product_price}}</td>
-                <td>{{items.total_quantity}}</td>
+                <td><button class="desc" (click)="decreaseQauntity(items)">-</button>
+                &nbsp;<input type="number" value={{items.quantity}} style="width: 45px;">
+            &nbsp;<button class="desc" (click)="increaseQauntity(items)">+</button></td>
             </tr>
         </table>
 

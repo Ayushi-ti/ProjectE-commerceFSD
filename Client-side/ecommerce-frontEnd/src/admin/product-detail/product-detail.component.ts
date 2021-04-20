@@ -57,5 +57,10 @@ pid:number;
     
   }
   
+  editProduct(product_id){
+    console.log(product_id);
+    this.router.navigate(['/../admin/editproduct/'+ product_id]);
+    
+  }
 
 }

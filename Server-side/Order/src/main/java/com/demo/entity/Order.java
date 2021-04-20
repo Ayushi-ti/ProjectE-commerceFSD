@@ -1,5 +1,7 @@
 package com.demo.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +18,14 @@ public class Order {
 	private int customerid;
 	private int total_amount;
 	private String status;
+	private int dateOfOrder;//YYYY-MM-DD
 	
+	public int getDateOfOrder() {
+		return dateOfOrder;
+	}
+	public void setDateOfOrder(int dateOfOrder) {
+		this.dateOfOrder = dateOfOrder;
+	}
 	public String getStatus() {
 		return status;
 	}
