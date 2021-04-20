@@ -26,7 +26,10 @@ export class ProductCardComponent implements OnInit {
     console.log(pid);
     this.productService.deleteProduct(pid)
     .subscribe((res:any)=>{
-      this.router.navigate(['/../admin/home/']);
+      console.log(res);
+      if(res==true)
+      window.location.reload();
+      
         
     }); 
     
