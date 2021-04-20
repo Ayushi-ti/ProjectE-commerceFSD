@@ -1,6 +1,8 @@
 package com.demo.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,25 @@ public class OrderService {
 	public Order findOrderByID(int orderid)
 	{
 		return orderRepository.findByorderid(orderid);
+	}
+//	public LocalDateTime findOrdersByID(int orderid)
+//	{
+//		Order orderObj= orderRepository.findByorderid(orderid);
+//	//	List<Order> customerList=new ArrayList<Order>();
+//		//customerList.add(orderObj.getCustomerid());
+//		//customerList.add(orderObj.getDateOfOrder());
+//		return orderObj.getDateOfOrder();
+//		
+//
+//	}
+	public List[] findOrdersByID(int orderid)
+	{
+		Order orderObj= orderRepository.findByorderid(orderid);
+		List<Integer> customerList1=new ArrayList<Integer>();
+		customerList1.add(orderObj.getCustomerid());
+		List<LocalDateTime> customerList2=new ArrayList<LocalDateTime>();
+		customerList2.add(orderObj.getDateOfOrder());
+		   return new List[] { customerList1,customerList2 };
 	}
 	
 	

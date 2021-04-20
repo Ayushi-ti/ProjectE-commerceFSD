@@ -1,6 +1,7 @@
 
 .product-form{
-    width: 80%;
+    width: 70%;
+    text-align: center;
     padding:5%;
 }
 
@@ -12,7 +13,7 @@ form{
     margin-top:100px;
 }
 .mat-form-field{
-    width: 400px;
+    width: 100%;
     margin-left:40px;
 }
 
@@ -20,4 +21,8 @@ form{
     float: right;
     width: 200px;
     margin-right:100px;
+}
+
+.update-btn{
+    float: right;
 }

@@ -24,9 +24,8 @@ export class OrderReturnsComponent implements OnInit {
   ];
   */
  orders:Order;
- orderDate:number=Date.now();
  flag:boolean=false;
-
+ orderDate=Date.now();
   
   
   constructor(private orderService:OrderService,private customerService:CustomerService,private router:Router,private session:SessionStorageService) { }
@@ -34,6 +33,7 @@ export class OrderReturnsComponent implements OnInit {
   
   
   ngOnInit(): void {
+   
     this.getCustomerId();
   }
 

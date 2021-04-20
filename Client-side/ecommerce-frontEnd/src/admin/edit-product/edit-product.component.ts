@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/core/models/Category.model';
 import { Product } from 'src/core/models/product.model';
+import { CategoryService } from 'src/core/services/category/category.service';
 import { ProductService } from 'src/core/services/product/product.service';
-interface Category {
+
+/*interface Category {
   value: string;
   viewValue: string;
 }
+*/
+
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -18,20 +23,18 @@ export class EditProductComponent implements OnInit {
   product:Product;
   productId:number;
   
-  categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
+  categories:Category[]=[];
+ /* categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
   {value:'Clothing',viewValue:'Clothing'},{value:'Books',viewValue:'Books'},
   {value:'Accesories',viewValue:'Accesories'},{value:'Bags and Luggage',viewValue:'Bags and Luggage'},
   {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
-
-  constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { 
+*/
+  constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute,private categoryService:CategoryService) { 
 
     this.activatedRoute.paramMap.subscribe((params:any) => {
       console.log(params.product_id);
       this.productId=params.get('product_id');
-      //this._Activatedroute.paramMap.subscribe(params => { 
-      //  this.orderId = params.get('id'); 
-    //});
-    })
+   })
 
     this.productForm=new FormGroup({
       product_id:new FormControl({value:'',disabled:true}),
@@ -44,11 +47,16 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-  /*  this.activatedRoute.paramMap.subscribe(params => { 
-    this.productId = +params.get('pid');
-   
-});*/
+
+    this.getAllCategories();
     this.getProductDetails();
+  }
+
+  getAllCategories(){
+    this.categoryService.getCategory()
+    .subscribe((res:any)=>{
+      this.categories=res;
+    })
   }
 
   getProductDetails(){
@@ -85,9 +93,13 @@ export class EditProductComponent implements OnInit {
         alert ("Some error occured in updating the product details");
       }
     })
+    
   }
  
 
+  addCategory(){
+    this.router.navigate(['/../admin/addcategory/'+this.productId])
+  }
 
   }
 

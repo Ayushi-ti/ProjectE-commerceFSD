@@ -1,5 +1,7 @@
 package com.demo.controller;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,11 @@ public class OrderController {
 	public List<Order> getallordersByCustomer(@PathVariable int customerid)
 	{
 		return orderService.getorders(customerid);
+	}
+	@GetMapping("/getDateCustomer/{orderid}")
+	public List[] getDateCustomers(@PathVariable int orderid)
+	{
+		return orderService.findOrdersByID(orderid);
 	}
 	//orderdetails service
 	

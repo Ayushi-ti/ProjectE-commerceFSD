@@ -6,6 +6,7 @@ import { CustomerService } from 'src/core/services/customer/customer.service';
 import { OrderService } from 'src/core/services/order/order.service';
 import { Router } from '@angular/router';
 import { isTemplateSpan } from 'typescript';
+import { ProductService } from 'src/core/services/product/product.service';
 
 @Component({
   selector: 'app-show-cart',
@@ -16,10 +17,11 @@ export class ShowCartComponent implements OnInit {
 
   cartItems:any[]=[];
   totalSum:number=0;
-  constructor(public cartService:CartService, public session:SessionStorageService,private customerService:CustomerService,private orderService:OrderService,private router:Router) {
+  constructor(public cartService:CartService, public session:SessionStorageService,private customerService:CustomerService,private orderService:OrderService,private router:Router,private productService:ProductService) {
    }
 
   ngOnInit(): void {
+ 
    this.getAllCartItems();
  
   }
@@ -58,20 +60,38 @@ this.cartItems=this.session.get("cartItems");
   }
 }
 
-  checkout(){
-    //get user data from session
-    let email=this.session.get("email");
-
-      if(email == null || email == "")
-        {
-          this.router.navigate(['/../../login']);
-        }
-        else{
-          this.session.set("cartItems",this.cartItems);
-          this.router.navigate(['cart/checkout']);
+  
+checkout(){
+  let email=this.session.get("email");
+  if(email == null || email == "")
+  {
+    this.router.navigate(['/../../login']);
   }
-
+  else{
+    this.session.set("cartItems",this.cartItems);
+    this.router.navigate(['cart/checkout']);
 }
+ 
+}
+
+/*
+ for(let i=0;i<this.cartItems.length;i++){
+    this.productService.getProductById(this.cartItems[i].product_id)
+    .subscribe((res:Product)=>{
+      if(2 < this.cartItems[i].quantity){
+        alert(res.product_name+" is not available please decrease the quantity");
+      }
+      if(i==this.cartItems.length-1){
+        this.proceedToPaymentPage();
+    }
+  })
+ 
+  } */
+
+
+
+
+
 }
 
 
