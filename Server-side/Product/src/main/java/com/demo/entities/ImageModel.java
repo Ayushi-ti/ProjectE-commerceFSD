@@ -26,11 +26,11 @@ public class ImageModel {
 
 	@Id
 
-	@Column(name = "id")
+	@Column(name = "imageid")
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	private Long id;
+	private Long imageid;
 
 	@Column(name = "name")
 

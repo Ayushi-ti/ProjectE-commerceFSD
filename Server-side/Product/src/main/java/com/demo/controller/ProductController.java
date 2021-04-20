@@ -33,6 +33,7 @@ import com.demo.entities.Category;
 
 import com.demo.entities.Product;
 import com.demo.repositories.ImageRepository;
+import com.demo.repositories.ProductRepository;
 import com.demo.service.ProductService;
 
 @RestController
@@ -44,6 +45,8 @@ public class ProductController {
 	ProductService productService;
 	@Autowired
 	ImageRepository imageRepository;
+	@Autowired
+	ProductRepository productRepository;
 	
 //	http://localhost:5555/products
 	@PostMapping()
@@ -103,9 +106,9 @@ public class ProductController {
 //image
 	
 	
-	    @PostMapping("/upload")
+	    @PostMapping("/upload/{productid}")
 	
-	    public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file) throws IOException {
+	    public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable int productid) throws IOException {
 	
 	
 	        System.out.println("Original Image Byte Size - " + file.getBytes().length);
@@ -115,6 +118,7 @@ public class ProductController {
 	                compressBytes(file.getBytes()));
 	
 	       imageRepository.save(img);
+	       productRepository.save(img);
 	
 	        return (BodyBuilder) ResponseEntity.status(HttpStatus.OK);
 	
