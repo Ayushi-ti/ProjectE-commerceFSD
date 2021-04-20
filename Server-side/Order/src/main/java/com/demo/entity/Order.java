@@ -1,5 +1,6 @@
 package com.demo.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 
 @Entity
@@ -18,12 +24,13 @@ public class Order {
 	private int customerid;
 	private int total_amount;
 	private String status;
-	private int dateOfOrder;//YYYY-MM-DD
+	 @CreationTimestamp
+	    private LocalDateTime dateOfOrder;//YYYY-MM-DD
 	
-	public int getDateOfOrder() {
+	public LocalDateTime getDateOfOrder() {
 		return dateOfOrder;
 	}
-	public void setDateOfOrder(int dateOfOrder) {
+	public void setDateOfOrder(LocalDateTime dateOfOrder) {
 		this.dateOfOrder = dateOfOrder;
 	}
 	public String getStatus() {
