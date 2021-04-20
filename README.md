@@ -19,8 +19,8 @@
   </ul>
 <li> open browser and port to localhost:4200 </li>
 <li>Note : To make the products visible . first, u have to add products into product table under ecommerce database.</li>
- <li>Note : admin email: admin@gmail.com admin <br/>
-   password: admin </li>
+ <li>Note : admin email: admin@gmail.com 
+     admin password: admin </li>
 </ol>
  
  
