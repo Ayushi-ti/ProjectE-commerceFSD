@@ -78,8 +78,6 @@ public class ProductController {
 	@PutMapping("/{id}")
 	public boolean updateProduct(@PathVariable int id,@RequestBody Product product) {
 		return productService.editProduct(id, product);
-		
-	
 	}
 	
 
@@ -129,11 +127,13 @@ public class ProductController {
 	    }
 	
 	
-	    @GetMapping(path = { "/get/{imageId}" })
+	    @GetMapping(path = { "/get/{productid}" })
 	
-	    public ImageModel getImage(@PathVariable("imageId") long imageId) throws IOException {
+	    public ImageModel getImage(@PathVariable("productid") int productid) throws IOException {
+	    	
+	    	Product product = productService.findProductbyId(productid);
 	
-	        final Optional<ImageModel> retrievedImage = imageRepository.findById(imageId);
+	        final Optional<ImageModel> retrievedImage = imageRepository.findById(product.getImageid());
 	
 	        ImageModel img = new ImageModel(retrievedImage.get().getName(), retrievedImage.get().getType(),
 	
