@@ -125,6 +125,36 @@ public class ProductController {
 	        return true;
 	
 	    }
+	    
+	    
+	    @PutMapping("/editProductImage/{productid}")
+		public boolean EditProductImage(@RequestParam("imageFile") MultipartFile file, @PathVariable int productid) throws IOException{
+	    	
+	    	Product product = productService.findProductbyId(productid);
+	    	if(product!=null) {
+	    ImageModel im=imageRepository.findByImageid(product.getImageid());
+	    if(im!=null) {
+	    	
+	    		//ImageModel img = new ImageModel(file.getOriginalFilename(), file.getContentType(),
+	
+	            //    compressBytes(file.getBytes()));
+	    	
+	    		if(im.getName()!=null) {
+	    			im.setName(file.getOriginalFilename());
+	    		}
+	    		if(im.getType()!=null) {
+	    			im.setType(file.getContentType());
+	    		}
+	    		if(im.getPicByte()!=null) {
+	    			im.setPicByte(compressBytes(file.getBytes()));
+	    		}
+	
+	       imageRepository.save(im);
+	    }}
+	       
+	        return product!=null;
+	
+	    }
 	
 	
 	    @GetMapping(path = { "/get/{productid}" })
