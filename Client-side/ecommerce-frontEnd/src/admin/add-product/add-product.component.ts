@@ -63,22 +63,11 @@ productId:number;
       console.log(res);
       this.productId=res.product_id;
     });
-  // saving image in database
-    this.productService.saveProductImage(this.productId,this.imageData) 
-    .subscribe((response) => {
-      console.log(response);
-    });
+  
  
-  // retriving image from database
-    this.productService.getProductsImage(this.productId)
-    .subscribe((res:any)  => {
-    this.retrieveResonse = res;
-    this.base64Data = this.retrieveResonse.picByte;
-    this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-   });
+  
 
-    alert("Product added successfully");
-    this.router.navigate(['/../admin/home']);
+  
   }
 
 
@@ -96,6 +85,17 @@ onUpload() {
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
     this.imageData=uploadImageData;
+    // saving image in database
+    this.productService.saveProductImage(this.productId,this.imageData) 
+    .subscribe((response) => {
+      console.log(response);
+    });
+   // this.getImage();
+}
+
+ProductAdded(){
+  alert("Product added");
+  this.router.navigate(['/../admin/home']);
   
 }
 
