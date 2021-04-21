@@ -17,22 +17,25 @@ public class Product {
 	private int product_price;
 	private int total_quantity;
 	private String description;
-	private Blob image;
+//	private ImageModel image;
+	private int imageid;
 	
-	public Blob getImage() {
-		return (Blob) image;
+
+
+	public int getImageid() {
+		return imageid;
 	}
 
-	public void setImage(Blob img) {
-		this.image = img;
+	public void setImageid(int imageid) {
+		this.imageid = imageid;
 	}
 
-//	public int getImageid() {
-//		return imageid;
+//	public ImageModel getImage() {
+//		return image;
 //	}
 //
-//	public void setImageid(int imageid) {
-//		this.imageid = imageid;
+//	public void setImage(ImageModel img) {
+//		this.image = img;
 //	}
 
 	private String category;

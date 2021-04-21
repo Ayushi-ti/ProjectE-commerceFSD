@@ -117,12 +117,12 @@ public class ProductController {
 	
 	                compressBytes(file.getBytes()));
 	
-//	       imageRepository.save(img);
-	      
-	        product.setImage((Blob) img);
+	       imageRepository.save(img);
+
+	       product.setImageid(img.getImageid());
 	       
 	       
-	       productRepository.save(img);
+	       productRepository.save(product);
 	
 	        return true;
 	
