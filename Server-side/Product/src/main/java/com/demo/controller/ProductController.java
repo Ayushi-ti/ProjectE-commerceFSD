@@ -1,6 +1,7 @@
 package com.demo.controller;
 
 import java.io.IOException;
+import java.sql.Blob;
 import java.util.List;
 
 //import org.apache.http.HttpStatus;
@@ -103,19 +104,22 @@ public class ProductController {
 	
 	    @PostMapping("/upload/{productid}")
 	
-	    public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable int productid) throws IOException {
-	
-	
-	        System.out.println("Original Image Byte Size - " + file.getBytes().length);
-	
-	        ImageModel img = new ImageModel(file.getOriginalFilename(), file.getContentType(),
+	    public boolean uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable int productid) throws IOException{
+	    	
+	    	Product product = productService.findProductbyId(productid);
+	        
+	    	ImageModel img = new ImageModel(file.getOriginalFilename(), file.getContentType(),
 	
 	                compressBytes(file.getBytes()));
 	
-	       imageRepository.save(img);
+//	       imageRepository.save(img);
+	      
+	        product.setImage((Blob) img);
+	       
+	       
 	       productRepository.save(img);
 	
-	        return (BodyBuilder) ResponseEntity.status(HttpStatus.OK);
+	        return true;
 	
 	    }
 	

@@ -1,5 +1,7 @@
 package com.demo.entities;
 
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +17,26 @@ public class Product {
 	private int product_price;
 	private int total_quantity;
 	private String description;
+	private Blob image;
+	
+	public Blob getImage() {
+		return (Blob) image;
+	}
+
+	public void setImage(Blob img) {
+		this.image = img;
+	}
+
+//	public int getImageid() {
+//		return imageid;
+//	}
+//
+//	public void setImageid(int imageid) {
+//		this.imageid = imageid;
+//	}
+
 	private String category;
+	
 
 	public int getProduct_id() {
 		return product_id;
