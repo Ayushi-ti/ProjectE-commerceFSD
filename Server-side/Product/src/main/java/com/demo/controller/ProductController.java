@@ -133,24 +133,22 @@ public class ProductController {
 	    	Product product = productService.findProductbyId(productid);
 	    	if(product!=null) {
 	    ImageModel im=imageRepository.findByImageid(product.getImageid());
-	    if(im!=null) {
+	    
 	    	
-	    		//ImageModel img = new ImageModel(file.getOriginalFilename(), file.getContentType(),
-	
-	            //    compressBytes(file.getBytes()));
-	    	
-	    		if(im.getName()!=null) {
+	    		
 	    			im.setName(file.getOriginalFilename());
-	    		}
-	    		if(im.getType()!=null) {
+	    		
+	    		
 	    			im.setType(file.getContentType());
-	    		}
-	    		if(im.getPicByte()!=null) {
+	    		
 	    			im.setPicByte(compressBytes(file.getBytes()));
-	    		}
-	
+	    		
+	    		product.setImageid(im.getImageid());
+	      
+	        productRepository.save(product);
 	       imageRepository.save(im);
-	    }}
+	  //  }
+	    	}
 	       
 	        return product!=null;
 	

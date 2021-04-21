@@ -124,12 +124,7 @@ onUpload() {
      console.log(response);
    });
    //retriving from database
-   this.productService.getProductsImage(this.productId)
-            .subscribe((res:any)  => {
-            this.retrieveResonse = res;
-            this.base64Data = this.retrieveResonse.picByte;
-            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-           });
+   this.getImage();
  
 }
  
@@ -137,15 +132,15 @@ onUpload() {
   addCategory(){
     this.router.navigate(['/../admin/addcategory/'+this.productId])
   }
-  // getImage() {
-  //   //Make a call to Sprinf Boot to get the Image Bytes.
-  //          this.productService.getProductsImage(this.productId)
-  //           .subscribe((res:any)  => {
-  //           this.retrieveResonse = res;
-  //           this.base64Data = this.retrieveResonse.picByte;
-  //           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-  //          });
-  //         }
+  getImage() {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+           this.productService.getProductsImage(this.productId)
+            .subscribe((res:any)  => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+           });
+          }
 
   }
 
