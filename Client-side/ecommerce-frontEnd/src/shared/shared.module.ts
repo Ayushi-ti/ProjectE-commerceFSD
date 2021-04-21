@@ -20,7 +20,7 @@ import {SharedRoutingModule} from './share.routing'
   imports: [
     CommonModule,
     MaterialModule,
-    BrowserModule,
+  
     ReactiveFormsModule,
     RouterModule,
     SharedRoutingModule

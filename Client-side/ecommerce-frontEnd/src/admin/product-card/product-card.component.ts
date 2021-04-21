@@ -38,7 +38,7 @@ export class ProductCardComponent implements OnInit {
     .subscribe((res:any)=>{
       console.log(res);
       if(res==true)
-      window.location.reload();
+     window.location.reload();
       
         
     }); 
