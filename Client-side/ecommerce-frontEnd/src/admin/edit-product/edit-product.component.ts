@@ -22,6 +22,14 @@ export class EditProductComponent implements OnInit {
   productForm:FormGroup;
   product:Product;
   productId:number;
+
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  message: string;
+  imageName: any;
+  imageData:any;
   
   categories:Category[]=[];
  /* categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
@@ -47,7 +55,7 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-
+    
     this.getAllCategories();
     this.getProductDetails();
   }
@@ -63,6 +71,7 @@ export class EditProductComponent implements OnInit {
     this.productService.getProductById(this.productId)
     .subscribe((res:any)=>{
       this.product=res;
+      //this.getImage();
       this.initializeForm();
     })
   }
@@ -92,14 +101,51 @@ export class EditProductComponent implements OnInit {
     
         alert ("Some error occured in updating the product details");
       }
-    })
-    
-  }
+    });
+}
+
+//Gets called when the user selects an image
+public onFileChanged(event) {
+  //Select File
+  this.selectedFile = event.target.files[0];
+}
+
+//Gets called when the user clicks on submit to upload the image
+
+onUpload() {
+  console.log(this.selectedFile);
+ //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+   const uploadImageData = new FormData();
+   uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+   this.imageData=uploadImageData;
+   // saving image in database
+   this.productService.editProductImage(this.productId,this.imageData) 
+   .subscribe((response) => {
+     console.log(response);
+   });
+   //retriving from database
+   this.productService.getProductsImage(this.productId)
+            .subscribe((res:any)  => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+           });
+ 
+}
  
 
   addCategory(){
     this.router.navigate(['/../admin/addcategory/'+this.productId])
   }
+  // getImage() {
+  //   //Make a call to Sprinf Boot to get the Image Bytes.
+  //          this.productService.getProductsImage(this.productId)
+  //           .subscribe((res:any)  => {
+  //           this.retrieveResonse = res;
+  //           this.base64Data = this.retrieveResonse.picByte;
+  //           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+  //          });
+  //         }
 
   }
 

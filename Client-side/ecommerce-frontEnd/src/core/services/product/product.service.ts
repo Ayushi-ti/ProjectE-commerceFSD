@@ -17,6 +17,10 @@ export class ProductService {
   saveProductImage(productId, imageFile){
     return this.http.post(`${this.host}/products/upload/${productId}`, imageFile);
   }
+  editProductImage(productId, imageFile){
+    return this.http.post(`${this.host}/products/editProductImage/${productId}`, imageFile);
+
+  }
   
   
   getProducts(){
