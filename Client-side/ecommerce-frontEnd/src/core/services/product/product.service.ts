@@ -11,7 +11,14 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-
+  getProductsImage(productId){
+    return this.http.get(`${this.host}/products/productimg/${productId}`);
+  }
+  saveProductImage(productId, imageFile){
+    return this.http.post(`${this.host}/products/upload/${productId}`, imageFile);
+  }
+  
+  
   getProducts(){
     return this.http.get(`${this.host}/products`);
   }

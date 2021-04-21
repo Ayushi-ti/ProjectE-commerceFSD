@@ -11,7 +11,7 @@ import { OrderService } from 'src/core/services/order/order.service';
 export class SuccessOrderComponent implements OnInit {
 
   orderId:string;
-  constructor(private orderService:OrderService,private _Activatedroute:ActivatedRoute,private session:SessionStorageService) { 
+  constructor(private orderService:OrderService,private _Activatedroute:ActivatedRoute,private session:SessionStorageService,private router:Router) { 
   this.session.set("cartItems","");
   }
   ngOnInit(): void {
@@ -23,7 +23,10 @@ export class SuccessOrderComponent implements OnInit {
   }
 
   routeToHome(){
+    //window.location.reload();
     this.session.set("cartItems","");
+    //this.router.navigate(['/../home'])
+    
     
   }
   

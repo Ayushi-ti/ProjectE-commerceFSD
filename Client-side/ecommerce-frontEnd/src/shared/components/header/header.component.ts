@@ -81,6 +81,7 @@ export class HeaderComponent implements OnInit {
         this.cartTotal += 1;
       })
     }
+    
 
 
   }
