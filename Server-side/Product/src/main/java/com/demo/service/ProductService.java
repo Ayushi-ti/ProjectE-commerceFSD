@@ -86,4 +86,14 @@ public Category getCategory(String categoryid)
 {
 	return categoryRepository.findBycategoryId(categoryid);
 }
+public List<Category> getAllCategory()
+{
+	Iterable<Category> iterable =categoryRepository.findAll();
+	Iterator<Category> iterator=iterable.iterator();
+	List<Category> category =new ArrayList<Category>();
+	while(iterator.hasNext()) {
+		category.add(iterator.next());
+	}
+	return category;
+}
 }

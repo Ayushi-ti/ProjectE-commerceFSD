@@ -26,6 +26,7 @@ export class OrderReturnDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     //get order id form order-return component
+    
     this.activatedRoute.params.subscribe((params: any) => {
       console.log(params.id);
       this.orderId=params.id;

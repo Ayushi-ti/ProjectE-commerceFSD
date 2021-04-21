@@ -3,5 +3,6 @@ export class Order{
     customerid:number;
     total_amount:number;
     status:string;
+    dateOfOrder:number;
 }
 

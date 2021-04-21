@@ -8,72 +8,79 @@
     <form [formGroup]="productForm" (ngSubmit)="editProduct()">
         <div class="row">
 
-            <div class="col-xs">
+            <div class="col-md">
                 <mat-form-field appearance="standard">
                     <mat-label>Product Id</mat-label>
                     <input autocomplete="off" formControlName="product_id" matInput type="text">
 
                 </mat-form-field>
-
-
-                <mat-form-field>
-                    <mat-label>Select Category</mat-label>
-                    <mat-select formControlName="category">
-                        <mat-option *ngFor="let category of categories" [value]="category.value">
-                            {{category.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-            </div>
-            <div class="col">
-
-                <!--Product Name-->
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Product Name</mat-label>
-                    <input autocomplete="off" formControlName="product_name" matInput type="text">
-
-                </mat-form-field>
-
-
-
             </div>
 
+                <div class="col-md">
+                    <mat-form-field>
+                        <mat-label>Select Category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let category of categories" [value]="category.categoryName">
+                                {{category.categoryName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!--row ends-->
 
 
+            <div class="row">
+
+                <div class="col">
+
+                    <!--Product Name-->
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Product Name</mat-label>
+                        <input autocomplete="off" formControlName="product_name" matInput type="text">
+
+                    </mat-form-field>
+                </div>
+
+                <div class="col">
+
+                    <button (click)="addCategory()" mat-raised-button color="primary" class="add-category-btn">Add New
+                        Category</button>
+
+                </div>
+
+            </div>
+            <!--row over-->
+
+            
             <!--Description-->
-            <div class="col">
-                <mat-form-field appearance="outline">
-                    <mat-label>Product Description</mat-label>
-                    <input autocomplete="off" formControlName="description" matInput type="text">
+            <mat-form-field appearance="outline">
+                <mat-label>Product Description</mat-label>
+                <input autocomplete="off" formControlName="description" matInput type="text">
 
-                </mat-form-field>
-            </div>
+            </mat-form-field>
 
             <!--Price-->
-            <div class="col">
-                <mat-form-field appearance="outline">
-                    <mat-label>Product Price/Piece</mat-label>
-                    <input autocomplete="off" formControlName="product_price" matInput type="number">
+            <mat-form-field appearance="outline">
+                <mat-label>Product Price/Piece</mat-label>
+                <input autocomplete="off" formControlName="product_price" matInput type="number">
 
-                </mat-form-field>
-            </div>
+            </mat-form-field>
 
 
             <!--Quantity-->
-            <div class="col">
-                <mat-form-field appearance="outline">
-                    <mat-label>Product Quantity</mat-label>
-                    <input autocomplete="off" formControlName="total_quantity" matInput type="number">
+            <mat-form-field appearance="outline">
+                <mat-label>Product Quantity</mat-label>
+                <input autocomplete="off" formControlName="total_quantity" matInput type="number">
 
-                </mat-form-field>
-            </div>
+            </mat-form-field>
 
-        </div>
-        <!--row-->
 
-        <button [disabled]="!(productForm.valid && productForm.dirty)" mat-raised-button color="primary" type="submit">Update Product</button>
+      
+            <button [disabled]="!(productForm.valid && productForm.dirty)" mat-raised-button color="primary"
+                type="submit" class="update-btn">Update Product</button>
+
     </form>
 
 

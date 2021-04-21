@@ -1,20 +1,25 @@
-aside,
-section,
-footer {
-    box-sizing: border-box;
+.parent{
+    width: 80%;
+    margin: 10%;
+   
 }
 
-aside {
-    /* width: 20%; */
-    float: left;
+#div-top{
+    display: inline;
+}
+#cat-list li {
+    display:inline;
+
 }
 
-section {
-    /* width: 60%; */
-    float: left;
-    /* height: 100px; */
+
+.add-category{
+    
+    width: 150px;
+    height: 50px;
 }
 
-footer {
-    clear: both;
+.back-btn{
+    margin-top:20px;
+    float: right;
 }
