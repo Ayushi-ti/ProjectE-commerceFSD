@@ -18,7 +18,11 @@
     <li> npm start </li>
   </ul>
 <li> open browser and port to localhost:4200 </li>
-<li>Note : ecommerce Database dumps are provided</li>
+<li>Note : ecommerce Database dumps are provided. </li>
+   <ul>
+    <li> open mysql command line and type : select @@datadir; </li>
+    <li> copy the given location and open it through file explorer and paste your ecommerce database there.</li>
+  </ul>
  <li>Note : admin email: admin@gmail.com ,
      admin password: admin </li>
 </ol>
