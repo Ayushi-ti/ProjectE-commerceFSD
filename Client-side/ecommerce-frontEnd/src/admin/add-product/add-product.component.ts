@@ -22,7 +22,8 @@ base64Data: any;
 retrieveResonse: any;
 message: string;
 imageName: any;
-productId:number=3;
+productId:number;
+ imageData:any;
 
 
   
@@ -61,8 +62,21 @@ productId:number=3;
      .subscribe((res:Product)=>{
       console.log(res);
       this.productId=res.product_id;
-    })
-  
+    });
+  // saving image in database
+    this.productService.saveProductImage(this.productId,this.imageData) 
+    .subscribe((response) => {
+      console.log(response);
+    });
+ 
+  // retriving image from database
+    this.productService.getProductsImage(this.productId)
+    .subscribe((res:any)  => {
+    this.retrieveResonse = res;
+    this.base64Data = this.retrieveResonse.picByte;
+    this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+   });
+
     alert("Product added successfully");
     this.router.navigate(['/../admin/home']);
   }
@@ -81,13 +95,8 @@ onUpload() {
   //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-
-  //Make a call to the Spring Boot Application to save the image
-  this.productService.saveProductImage(this.productId,uploadImageData) 
-  .subscribe((response) => {
-    console.log(response);
-     
-    });
+    this.imageData=uploadImageData;
+  
 }
 
 

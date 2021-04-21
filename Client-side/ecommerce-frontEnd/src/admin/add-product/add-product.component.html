@@ -13,6 +13,36 @@
     <h2>Add Product Details</h2>
 
 
+
+
+    <!-- product img -->
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=retrievedImage>
+                <img [src]="retrievedImage">
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="container row">
+        <div class="col-md-6">
+            <input type="file" (change)="onFileChanged($event)">
+        </div>
+        <div class="col-md-6">
+            <input type="button" (click)="onUpload()" value="upload">
+        </div>
+    </div>
+    <hr />
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=message>{{message}}</div>
+        </div>
+    </div>
+    <hr/>
+
+
+
+
     <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
         <div class="row">
             <div class="col-xs">
@@ -82,33 +112,14 @@
 <br/>
 <br/>
 <br/>
-<div class="container row">
-    <div class="col-md-6">
-        <input type="file" (change)="onFileChanged($event)">
-    </div>
-    <div class="col-md-6">
-        <input type="button" (click)="onUpload()" value="upload">
-    </div>
-</div>
-<hr />
+
+
 
 <div class="container row">
-    <div class="col-md-12">
-        <div *ngIf=message>{{message}}</div>
-    </div>
-</div>
-<div class="container row">
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
         <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName" name="name" />
-    </div>
+    </div> -->
     <div class="col-md-6">
         <input type="button" (click)="getImage()" value="Get Image">
-    </div>
-</div>
-<div class="container row">
-    <div class="col-md-12">
-        <div *ngIf=retrievedImage>
-            <img [src]="retrievedImage">
-        </div>
     </div>
 </div>

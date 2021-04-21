@@ -16,6 +16,12 @@ description:string;
 category:string;
 product_price:number;
 pid:number;
+retrievedImage: any;
+base64Data: any;
+retrieveResonse: any;
+message: string;
+imageName: any;
+  //productId:number;
 //Product_Image:string='assets/images/profilepic.jpg';
 
 
@@ -51,6 +57,9 @@ pid:number;
      this.description=data.description;
      this.category=data.category;
      this.product_price=data.product_price;
+     this.getImage();
+
+
      
      
     }); 
@@ -62,5 +71,16 @@ pid:number;
     this.router.navigate(['/../admin/editproduct/'+ product_id]);
     
   }
+
+  getImage() {
+    //Make a call to Spring Boot to get the Image Bytes.
+           //this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
+           this.productService.getProductsImage(this.product_id)
+            .subscribe((res:any)  => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+           });
+          }
 
 }
