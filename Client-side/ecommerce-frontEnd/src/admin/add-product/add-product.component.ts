@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/core/services/category/category.service';
+import { Product } from 'src/core/models/product.model';
 import { ProductService } from 'src/core/services/product/product.service';
 
 interface Category {
@@ -16,6 +17,19 @@ interface Category {
 })
 export class AddProductComponent implements OnInit {
 
+selectedFile: File;
+retrievedImage: any;
+base64Data: any;
+retrieveResonse: any;
+message: string;
+imageName: any;
+productId:number;
+ imageData:any;
+
+
+  
+  
+  
   productForm:FormGroup;
   categories:Category[];
 
@@ -51,13 +65,68 @@ export class AddProductComponent implements OnInit {
     const product=this.productForm.value;
       
      this.productService.saveProduct(this.productForm.value)
-     .subscribe((res:any)=>{
+     .subscribe((res:Product)=>{
       console.log(res);
-    })
+      this.productId=res.product_id;
+      
+    });
   
-    alert("Product added successfully");
-    this.router.navigate(['/../admin/home']);
+ 
+    
+
+  
   }
+
+
+ //Gets called when the user selects an image
+  public onFileChanged(event) {
+   //Select File
+   this.selectedFile = event.target.files[0];
+ }
+
+ //Gets called when the user clicks on submit to upload the image
+
+onUpload() {
+   console.log(this.selectedFile);
+  //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    this.imageData=uploadImageData;
+    // saving image in database
+    this.productService.saveProductImage(this.productId,this.imageData) 
+    .subscribe((response) => {
+      console.log(response);
+    });
+   // this.getImage();
+}
+
+ProductAdded(){
+  alert("Product added");
+  this.router.navigate(['/../admin/home']);
+  
+}
+
+
+
+//Gets called when the user clicks on retieve image button to get the image from back end
+   getImage() {
+ //Make a call to Sprinf Boot to get the Image Bytes.
+        //this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
+        this.productService.getProductsImage(this.productId)
+         .subscribe((res:any)  => {
+         this.retrieveResonse = res;
+         this.base64Data = this.retrieveResonse.picByte;
+         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        });
+       }
+
+
+
+
+
+
+
+
   
   addCategory(){
     this.router.navigate(['/../admin/addcategory/0']);

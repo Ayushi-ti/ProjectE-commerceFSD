@@ -9,12 +9,22 @@ import { ProductService } from 'src/core/services/product/product.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-
   @Input('product')
   product:Product;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  message: string;
+  imageName: any;
+  productId:number;
+
+
+ 
   constructor(private route:Router,private productService:ProductService,private router:Router) { }
 
   ngOnInit(): void {
+    this.productId=this.product.product_id;
+    this.getImage();
   }
   
   editProduct(product_id){
@@ -29,14 +39,21 @@ export class ProductCardComponent implements OnInit {
     .subscribe((res:any)=>{
       console.log(res);
       if(res==true)
-      window.location.reload();
+     window.location.reload();
       
         
     }); 
-    
-   
   }
   
- 
+  getImage() {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+           //this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
+           this.productService.getProductsImage(this.productId)
+            .subscribe((res:any)  => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+           });
+          }
 
 }

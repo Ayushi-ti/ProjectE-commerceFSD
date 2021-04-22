@@ -9,7 +9,15 @@
         <mat-card-title>{{product_name}} </mat-card-title>
 
     </mat-card-header>
-    <img mat-card-image src="https://picsum.photos/400" alt="Product Image">
+    <!-- <img mat-card-image src="https://picsum.photos/400" alt="Product Image"> -->
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=retrievedImage>
+                <img mat-card-image [src]="retrievedImage" alt="product Image">
+            </div>
+        </div>
+    </div>
+
     <mat-card-content>
         <p>
             <mat-card>PID : {{product_id}} <br/> </mat-card>

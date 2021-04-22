@@ -24,9 +24,12 @@ export class SuccessOrderComponent implements OnInit {
   }
 
   routeToHome(){
-    
+    //window.location.reload();
     this.session.set("cartItems","");
-  
+    //this.router.navigate(['/../home'])
+    
+    
+   
   }
   
 }

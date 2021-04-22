@@ -1,6 +1,6 @@
 .column {
     float: left;
-    width: 33.3%;
+    width: 20%;
     margin-bottom: 16px;
     padding: 0 8px;
 }
@@ -8,13 +8,14 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
+    width: 500px;
 }
 
 .about-section {
     padding: 50px;
     text-align: center;
-    background-color: gray;
-    color: white;
+    background-color: pink;
+    color: black;
 }
 
 .container {

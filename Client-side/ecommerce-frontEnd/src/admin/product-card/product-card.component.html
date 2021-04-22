@@ -1,6 +1,13 @@
 <mat-card class="product-card">
 
-    <img src="https://picsum.photos/400">
+    <!-- <img src="https://picsum.photos/400"> -->
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=retrievedImage>
+                <img [src]="retrievedImage">
+            </div>
+        </div>
+    </div>
 
     <mat-card-content>
         <mat-card-title>
@@ -18,7 +25,7 @@
 
         <!-- <button (click)="editProduct" mat-raised-button color="primary">Edit</button> -->
 
-        
+
 
     </mat-card-actions>
 </mat-card>

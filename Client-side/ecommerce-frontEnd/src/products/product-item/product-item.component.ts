@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/core/models/product.model';
+import { ProductService } from 'src/core/services/product/product.service';
 import { RepositoriesService } from 'src/core/services/repositories.service';
 import {MessengerService} from "../../core/services/messenger/messenger.service";
 @Component({
@@ -11,9 +12,19 @@ export class ProductItemComponent implements OnInit {
 
   @Input('product')
   product:Product;
-  constructor(private msg:MessengerService) { }
+  
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  message: string;
+  imageName: any;
+  productId:number;
+
+  constructor(private msg:MessengerService,private productService:ProductService) { }
 
   ngOnInit(): void {
+    this.productId=this.product.product_id;
+    this.getImage();
   
   }
 
@@ -21,4 +32,15 @@ export class ProductItemComponent implements OnInit {
    
       this.msg.sendMsg(this.product);  
     }
+
+    getImage() {
+      //Make a call to Spring Boot to get the Image Bytes.
+             this.productService.getProductsImage(this.productId)
+              .subscribe((res:any)  => {
+              this.retrieveResonse = res;
+              this.base64Data = this.retrieveResonse.picByte;
+              this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+             });
+            }
+
 }
