@@ -96,115 +96,6 @@ public class ProductController {
 	}
 
 //image
-<<<<<<< HEAD
-	
-	
-	    @PostMapping("/upload/{productid}")
-	
-	    public BodyBuilder uplaodImage(@RequestParam("imageFile") MultipartFile file, @PathVariable int productid) throws IOException {
-	
-	
-	        System.out.println("Original Image Byte Size - " + file.getBytes().length);
-	
-	        ImageModel img = new ImageModel(file.getOriginalFilename(), file.getContentType(),
-	
-	                compressBytes(file.getBytes()));
-	
-	       imageRepository.save(img);
-	       productRepository.save(img);
-	       
-	        return (BodyBuilder) ResponseEntity.status(HttpStatus.OK);
-	
-	    }
-	
-	
-	    @GetMapping(path = { "/get/{imageId}" })
-	
-	    public ImageModel getImage(@PathVariable("imageId") long imageId) throws IOException {
-	
-	        final Optional<ImageModel> retrievedImage = imageRepository.findById(imageId);
-	
-	        ImageModel img = new ImageModel(retrievedImage.get().getName(), retrievedImage.get().getType(),
-	
-	               decompressBytes(retrievedImage.get().getPicByte()));
-	
-	        return img;
-	
-	    }
-	
-	
-	    // compress the image bytes before storing it in the database
-	
-	    public static byte[] compressBytes(byte[] data) {
-	
-	        Deflater deflater = new Deflater();
-	
-	        deflater.setInput(data);
-	
-	        deflater.finish();
-	
-	        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
-	
-	        byte[] buffer = new byte[1024];
-	
-	        while (!deflater.finished()) {
-	
-	            int count = deflater.deflate(buffer);
-	
-	            outputStream.write(buffer, 0, count);
-	
-	        }
-	
-	        try {
-	
-	            outputStream.close();
-	
-	        } catch (IOException e) {
-	
-	        }
-	
-	        System.out.println("Compressed Image Byte Size - " + outputStream.toByteArray().length);
-	
-	        return outputStream.toByteArray();
-	
-	    }
-	
-	
-	    // uncompress the image bytes before returning it to the angular application
-	
-	    public static byte[] decompressBytes(byte[] data) {
-	
-	        Inflater inflater = new Inflater();
-	
-	        inflater.setInput(data);
-	
-	        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
-	
-	        byte[] buffer = new byte[1024];
-	
-	        try {
-	
-	            while (!inflater.finished()) {
-	
-	                int count = inflater.inflate(buffer);
-	
-	                outputStream.write(buffer, 0, count);
-	
-	            }
-	
-	            outputStream.close();
-	
-	        } catch (IOException ioe) {
-	
-	        } catch (DataFormatException e) {
-	
-	        }
-	
-	        return outputStream.toByteArray();
-	
-	    }
-	
-=======
 
 	@PostMapping("/upload/{productid}")
 
@@ -273,7 +164,6 @@ public class ProductController {
 
 		return img;
 
->>>>>>> 97f66837f03a32a83d50c49b4855a5a0d8331145
 	}
 
 	// compress the image bytes before storing it in the database
