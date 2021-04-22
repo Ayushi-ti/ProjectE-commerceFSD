@@ -35,11 +35,17 @@ export class RegisterComponent implements OnInit {
   register(){
     console.log(this.registerForm.value);
     this.customerService.saveCustomer(this.registerForm.value)
-    .subscribe((res:Customer)=>{
+    .subscribe((res:any)=>{
       console.log(res);
-      this.customer=res;
+     // this.customer=res;
+      if(res==true){
       this.showConfirmation();
       this.router.navigate(['/auth/login']);
+      }
+      else{
+       alert("User already registered with this email");
+
+      }
 
       
     })
