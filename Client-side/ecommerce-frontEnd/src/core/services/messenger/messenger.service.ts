@@ -16,7 +16,23 @@ export class MessengerService {
     //console.log("get msg"+product);
   }
 
+  clearMessages() {
+    this.subject.next();
+}
+
   getMsg(){
     return this.subject.asObservable();
   }
+
+  /*
+ setCart(item){
+   console.log(null);
+    this.subject.next(item);
+  }
+
+  getCartstatus(){
+    console.log(this.subject.asObservable());
+    return this.subject.asObservable();
+  }
+  */
 }

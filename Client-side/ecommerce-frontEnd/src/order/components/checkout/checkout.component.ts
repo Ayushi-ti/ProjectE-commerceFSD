@@ -10,6 +10,7 @@ import { OrderDetails } from 'src/core/models/OrderDetails.model';
 import { Product } from 'src/core/models/product.model';
 import { CustomerService } from 'src/core/services/customer/customer.service';
 import { OrderService } from 'src/core/services/order/order.service';
+import { ProductService } from 'src/core/services/product/product.service';
 import { Thumbs } from 'swiper';
 
 
@@ -31,13 +32,13 @@ export class CheckoutComponent implements OnInit {
  
  
   editFlag:boolean=false;
-  constructor(public session:SessionStorageService,public customerService:CustomerService,public orderService:OrderService,public router:Router) { }
+  constructor(public session:SessionStorageService,public customerService:CustomerService,public orderService:OrderService,public router:Router,public productService:ProductService) { }
 
   ngOnInit(): void {
     this.getCartTotal();
     this.getCustomerDetails();
     
-    console.log(Date.now());
+
   }
 
   getCustomerDetails(){
@@ -45,7 +46,7 @@ export class CheckoutComponent implements OnInit {
     this.customerService.getCustomerDetails(email)
     .subscribe((res:Customer)=>{
       this.customer=res;
-      console.log(this.customer);
+ 
       this.getBillingDetails();
     })
 
@@ -76,10 +77,10 @@ export class CheckoutComponent implements OnInit {
 
   proceedToPayment(){
       this.order.customerid=this.customer.customerId;
-      console.log(this.order.customerid);
-      this.order.status="Ordered";
+       this.order.status="Ordered";
       this.order.total_amount=this.cartTotal;
     //  this.order.dateOfOrder=Date.now();
+    //order date created automatically in microservice
       this.createOrderData();
    }
 
@@ -106,9 +107,11 @@ export class CheckoutComponent implements OnInit {
         productArray.forEach(item=>{
             this.orderDetails.productid=item.product_id;
             this.orderDetails.quantity=item.quantity;
+            //update product total quantity in db
+            this.updateProductTotalQuantity(item.product_id,item);
           this.orderService.createOrderDetails(this.orderDetails)
           .subscribe((res:any)=>{
-            console.log(res);
+          
           })
       })
     }
@@ -116,23 +119,36 @@ export class CheckoutComponent implements OnInit {
     this.router.navigate(['/cart/success/' + this.order.orderid]);
    }
   
-
+   updateProductTotalQuantity(pid,item){
+     let prd:Product=new Product();
+     prd.product_id=pid;
+     prd.product_name=item.product_name;
+     prd.product_price=item.product_price;
+     prd.category=item.category;
+     prd.description=item.description;
+     prd.total_quantity=item.total_quantity-item.quantity;
+  
+      this.productService.updateProduct(pid,prd)
+      .subscribe((res:any)=>{
+   
+      })
+   }
 EditableFields(){
   this.editFlag=true;
 }
 
-updateCustomerOrderDetails(newAddress){
+updateCustomerBillingDetails(newAddress){
 
  this.editFlag=true;
- console.log(newAddress);
+
  
   this.customer.deliveryAddress=newAddress;
   let email=this.session.get("email");
- // console.log(this.customer);
+ 
  
  this.customerService.updateCustomer(email,this.customer)
   .subscribe((res:any)=>{
-    console.log(res);
+    
     if(res==true){
     this.billingAddress=this.customer.deliveryAddress;
     }

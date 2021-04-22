@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddProductComponent } from './add-product/add-product.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
@@ -35,7 +35,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ],
   exports:[AddProductComponent,AdminHomeComponent,ProductCardComponent,
     EditProductComponent,

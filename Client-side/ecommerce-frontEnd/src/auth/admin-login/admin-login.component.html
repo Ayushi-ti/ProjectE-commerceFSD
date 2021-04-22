@@ -17,7 +17,7 @@
         <aside></aside>
         <div class="row center-xs">
             <div class="box" id="loginbox">
-                <form [formGroup]="adminloginForm" (ngSubmit)=" adminlogin()">
+                <form [formGroup]="adminloginForm">
                     <mat-card>
                         <mat-card-header>
                             <mat-card-title>Login</mat-card-title>
@@ -48,7 +48,7 @@
                             </div>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button [disabled]="adminloginForm.invalid" mat-raised-button color="accent" type="submit">Login</button>
+                            <button [disabled]="adminloginForm.invalid" mat-raised-button color="accent" type="submit" (click)="adminlogin()">Login</button>
                             <button [disabled]="adminloginForm.invalid" mat-raised-button type="button" (click)="cancel()">Cancel</button>
                         </mat-card-actions>
                     </mat-card>

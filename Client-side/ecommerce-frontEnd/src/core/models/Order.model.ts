@@ -5,4 +5,3 @@ export class Order{
     status:string;
     dateOfOrder:number;
 }
-

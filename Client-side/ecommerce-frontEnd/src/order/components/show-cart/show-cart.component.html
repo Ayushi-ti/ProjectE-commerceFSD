@@ -9,6 +9,7 @@
                 <th>Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th></th>
             </tr>
 
 
@@ -17,7 +18,10 @@
                 <td>{{items.product_price}}</td>
                 <td><button class="desc" (click)="decreaseQauntity(items)">-</button>
                 &nbsp;<input type="number" value={{items.quantity}} style="width: 45px;">
-            &nbsp;<button class="desc" (click)="increaseQauntity(items)">+</button></td>
+            &nbsp;<button class="inc" (click)="increaseQauntity(items)">+</button>
+                </td>   
+            
+            <td><button class="delete" mat-raised-button color="warn" (click)="deleteFromCart(items)">Delete</button></td>
             </tr>
         </table>
 

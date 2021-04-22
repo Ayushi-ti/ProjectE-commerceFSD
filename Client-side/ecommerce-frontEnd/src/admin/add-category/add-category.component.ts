@@ -37,7 +37,7 @@ export class AddCategoryComponent implements OnInit {
       .subscribe((res: any) => {
        
         this.allCategory = res;
-        console.log(this.allCategory);
+       
       })
   }
 
@@ -46,9 +46,10 @@ export class AddCategoryComponent implements OnInit {
     //  this.category=this.categoryForm.value;
     this.category.categoryId = this.categoryForm.get("categoryName").value;
     this.category.categoryName = this.categoryForm.get("categoryName").value;
+  
 
     this.allCategory.forEach((item: Category) => {
-      if (item.categoryName.toLowerCase == this.category.categoryName.toLowerCase) {
+      if (item.categoryName.toLowerCase() == this.category.categoryName.toLowerCase()) {
         index = 1;
       }
     });
@@ -67,7 +68,11 @@ export class AddCategoryComponent implements OnInit {
   }
 
   back() {
+    if(this.pid == 0){
+      this.router.navigate(['/../admin/addproduct']);
+    }else{
     this.router.navigate(['/../admin/editproduct/' + this.pid]);
+    }
   }
 
 }

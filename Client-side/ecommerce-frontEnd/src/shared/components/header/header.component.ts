@@ -24,8 +24,11 @@ export class HeaderComponent implements OnInit {
 
   }
 
+ 
+
   ngOnInit(): void {
 
+    
 
     if (this.EmailId != null && this.EmailId != "") {
       this.flag = true;
@@ -36,41 +39,53 @@ export class HeaderComponent implements OnInit {
 
     this.msg.getMsg().subscribe((product: Product) => {
 
-      var index = 0;
+      this.cartItems=[];
+      if (product) {
 
-      if (this.session.get("cartItems") != null) {
-        this.cartItems = this.session.get("cartItems");
-      }
+       
+        var index = 0;
+        if (this.session.get("cartItems") != null && this.session.get("cartItems") != "") {
 
-      this.cartItems.forEach(items => {
-        if (items.product_id == product.product_id) {
-          index = 1;
+          this.cartItems = this.session.get("cartItems");
+          this.cartItems.forEach(items => {
+            if (items.product_id == product.product_id) {
+              index = 1;
+            }
+          });
         }
-      });
-
-      if (index == 1) {
-        alert("Product alerady added to the cart");
-      } else {
-        this.cartItems.push({
-          product_id: product.product_id,
-          product_name: product.product_name,
-          product_price: product.product_price,
-          total_quantity: product.total_quantity,
-          quantity: 1,
-          description: product.description,
-          category: product.category,
-          product_image: product.product_image
-        });
-        this.cartTotal = this.cartTotal + 1;
 
 
-        this.session.set("cartItems", this.cartItems);
+          if (index == 1) {
+            alert(product.product_name +" alerady added to the cart");
+          } else {
+            this.cartItems.push({
+              product_id: product.product_id,
+              product_name: product.product_name,
+              product_price: product.product_price,
+              total_quantity: product.total_quantity,
+              quantity: 1,
+              description: product.description,
+              category: product.category,
+              product_image: product.product_image
+            });
+            this.cartTotal = this.cartTotal + 1;
+
+
+            this.session.set("cartItems", this.cartItems);
+          }
+        
+
+        this.getCartItems();
+      }//product not null
+
+      else {
+        this.getCartItems();
       }
-
     })
 
 
-    this.getCartItems();
+
+
   }
 
   getCartItems() {
@@ -82,7 +97,7 @@ export class HeaderComponent implements OnInit {
       })
     }
 
-
+   // this.cartItems=null;
   }
 
   logout() {

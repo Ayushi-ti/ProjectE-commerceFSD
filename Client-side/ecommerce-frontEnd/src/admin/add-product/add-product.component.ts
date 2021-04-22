@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/core/services/category/category.service';
 import { ProductService } from 'src/core/services/product/product.service';
 
 interface Category {
@@ -16,13 +17,9 @@ interface Category {
 export class AddProductComponent implements OnInit {
 
   productForm:FormGroup;
-  categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
-  {value:'Clothing',viewValue:'Clothing'},{value:'Books',viewValue:'Books'},
-  {value:'Accesories',viewValue:'Accesories'},{value:'Bags and Luggage',viewValue:'Bags and Luggage'},
-  {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
-  
+  categories:Category[];
 
-  constructor(private productService:ProductService,private router: Router) { 
+  constructor(private productService:ProductService,private router: Router,private categoryService:CategoryService) { 
     this.productForm = new FormGroup({
 
       product_name: new FormControl('', Validators.required),
@@ -38,7 +35,16 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllCategories();
   }
+
+  getAllCategories(){
+    this.categoryService.getCategory()
+    .subscribe((res:any)=>{
+      this.categories=res;
+    })
+  }
+
 
   saveProduct(){
   console.log(this.productForm.value);
@@ -53,4 +59,11 @@ export class AddProductComponent implements OnInit {
     this.router.navigate(['/../admin/home']);
   }
   
+  addCategory(){
+    this.router.navigate(['/../admin/addcategory/0']);
+  }
+
+
+
+
 }
