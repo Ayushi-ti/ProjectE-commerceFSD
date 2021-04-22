@@ -20,8 +20,8 @@
 <li> open browser and port to localhost:4200 </li>
 <li>Note : ecommerce Database dumps are provided. </li>
    <ul>
-    <li> open mysql command line and type : select @@datadir; </li>
-    <li> copy the given location and open it through file explorer and paste your ecommerce database there.</li>
+    <li> create database ecommerce  </li>
+    <li>import all .sql files into database by using mysql workbench</li>
   </ul>
  <li>Note : admin email: admin@gmail.com ,
      admin password: admin </li>
