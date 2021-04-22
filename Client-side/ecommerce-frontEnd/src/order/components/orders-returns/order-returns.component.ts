@@ -25,8 +25,7 @@ export class OrderReturnsComponent implements OnInit {
   */
  orders:Order;
  flag:boolean=false;
- orderDate=Date.now();
-  
+ 
   
   constructor(private orderService:OrderService,private customerService:CustomerService,private router:Router,private session:SessionStorageService) { }
 
@@ -56,7 +55,7 @@ export class OrderReturnsComponent implements OnInit {
     .subscribe((res:any)=>{
       if(res==null || res==""){
         this.flag=false;
-    //  console.log(res);
+
       }else{
         this.flag=true;
       this.orders=res;
@@ -68,7 +67,7 @@ export class OrderReturnsComponent implements OnInit {
  
  
   viewOrderDetails(orderId){
-    console.log(orderId);
+  
     
     this.router.navigate(['/../cart/previousdetails',orderId]);
     //by routing pass data to order-returns-detail page

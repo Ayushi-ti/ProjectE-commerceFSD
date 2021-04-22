@@ -28,7 +28,7 @@ export class OrderReturnDetailsComponent implements OnInit {
     //get order id form order-return component
     
     this.activatedRoute.params.subscribe((params: any) => {
-      console.log(params.id);
+  
       this.orderId=params.id;
     this.getOrderedProducts();
     this.getOrderStatusandTotal();
@@ -56,7 +56,7 @@ export class OrderReturnDetailsComponent implements OnInit {
           this.product_price=prd.product_price;
           this.product_quantity=item.quantity;
           this.products.push({name:this.product_name,price:this.product_price,qty:this.product_quantity});
-          //console.log(prd);
+    
           
         })
     });

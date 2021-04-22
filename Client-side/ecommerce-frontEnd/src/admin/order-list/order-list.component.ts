@@ -12,8 +12,8 @@ import { OrderService } from 'src/core/services/order/order.service';
 })
 export class OrderListComponent implements OnInit {
   orders:Order;
-  orderDate:number=Date.now();
   flag:boolean=true;
+  
   constructor(private orderService:OrderService,private customerService:CustomerService,private router:Router,private session:SessionStorageService) { }
 
   ngOnInit(): void {

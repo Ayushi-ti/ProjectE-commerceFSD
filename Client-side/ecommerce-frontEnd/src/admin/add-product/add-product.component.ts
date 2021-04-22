@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/core/services/category/category.service';
 import { Product } from 'src/core/models/product.model';
 import { ProductService } from 'src/core/services/product/product.service';
 
@@ -30,13 +31,9 @@ productId:number;
   
   
   productForm:FormGroup;
-  categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
-  {value:'Clothing',viewValue:'Clothing'},{value:'Books',viewValue:'Books'},
-  {value:'Accesories',viewValue:'Accesories'},{value:'Bags and Luggage',viewValue:'Bags and Luggage'},
-  {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
-  
+  categories:Category[];
 
-  constructor(private productService:ProductService,private router: Router) { 
+  constructor(private productService:ProductService,private router: Router,private categoryService:CategoryService) { 
     this.productForm = new FormGroup({
 
       product_name: new FormControl('', Validators.required),
@@ -52,7 +49,16 @@ productId:number;
   }
 
   ngOnInit(): void {
+    this.getAllCategories();
   }
+
+  getAllCategories(){
+    this.categoryService.getCategory()
+    .subscribe((res:any)=>{
+      this.categories=res;
+    })
+  }
+
 
   saveProduct(){
   console.log(this.productForm.value);
@@ -62,10 +68,11 @@ productId:number;
      .subscribe((res:Product)=>{
       console.log(res);
       this.productId=res.product_id;
+      
     });
   
  
-  
+    
 
   
   }
@@ -100,6 +107,7 @@ ProductAdded(){
 }
 
 
+
 //Gets called when the user clicks on retieve image button to get the image from back end
    getImage() {
  //Make a call to Sprinf Boot to get the Image Bytes.
@@ -120,6 +128,9 @@ ProductAdded(){
 
 
   
+  addCategory(){
+    this.router.navigate(['/../admin/addcategory/0']);
+  }
 
 
 

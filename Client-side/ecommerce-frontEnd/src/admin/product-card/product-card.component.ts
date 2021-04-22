@@ -32,6 +32,7 @@ export class ProductCardComponent implements OnInit {
     this.router.navigate(['/../admin/editproduct/'+ product_id]);
     
   }
+  
   removeProduct(pid){
     console.log(pid);
     this.productService.deleteProduct(pid)
