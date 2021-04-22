@@ -3,6 +3,7 @@ import {  Router } from '@angular/router';
 import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
 
 
+
 import { Customer } from 'src/core/models/customer.model';
 import { Order } from 'src/core/models/Order.model';
 import { OrderDetails } from 'src/core/models/OrderDetails.model';
@@ -28,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   orderDetails:OrderDetails=new OrderDetails();
   product:Product;
  
+ 
   editFlag:boolean=false;
   constructor(public session:SessionStorageService,public customerService:CustomerService,public orderService:OrderService,public router:Router) { }
 
@@ -35,7 +37,7 @@ export class CheckoutComponent implements OnInit {
     this.getCartTotal();
     this.getCustomerDetails();
     
-    
+    console.log(Date.now());
   }
 
   getCustomerDetails(){
@@ -77,6 +79,7 @@ export class CheckoutComponent implements OnInit {
       console.log(this.order.customerid);
       this.order.status="Ordered";
       this.order.total_amount=this.cartTotal;
+    //  this.order.dateOfOrder=Date.now();
       this.createOrderData();
    }
 
@@ -109,7 +112,7 @@ export class CheckoutComponent implements OnInit {
           })
       })
     }
-      
+      this.session.set("cartItems","");
     this.router.navigate(['/cart/success/' + this.order.orderid]);
    }
   

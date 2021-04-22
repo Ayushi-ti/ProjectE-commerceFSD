@@ -12,91 +12,104 @@ import { MessengerService } from 'src/core/services/messenger/messenger.service'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  flag:boolean=false;
-  EmailId:string;
+  flag: boolean = false;
+  EmailId: string;
 
- 
+
 
   cartItems: any[] = [];
   cartTotal = 0;
-  constructor(private session: SessionStorageService,private router: Router,private msg: MessengerService, private cartService: CartService) {
-    this.EmailId=this.session.get("email");
+  constructor(private session: SessionStorageService, private router: Router, private msg: MessengerService, private cartService: CartService) {
+    this.EmailId = this.session.get("email");
 
   }
- 
-  ngOnInit(): void {
-    
 
-    if(this.EmailId!=null && this.EmailId!=""){
-      this.flag=true;
-      }else{
-        this.flag=false;
-      }
-      console.log(this.flag);
+  ngOnInit(): void {
+
+
+    if (this.EmailId != null && this.EmailId != "") {
+      this.flag = true;
+    } else {
+      this.flag = false;
+    }
+
 
     this.msg.getMsg().subscribe((product: Product) => {
 
-      
+      var index = 0;
+
       if (this.session.get("cartItems") != null) {
         this.cartItems = this.session.get("cartItems");
       }
 
-      this.cartItems.push({
-        product_id: product.product_id,
-        product_name: product.product_name,
-        product_price: product.product_price,
-        total_quantity: product.total_quantity,
-        quantity:1,
-        description: product.description,
-        category:product.category,
-        product_image: product.product_image
+      this.cartItems.forEach(items => {
+        if (items.product_id == product.product_id) {
+          index = 1;
+        }
       });
-      this.cartTotal = this.cartTotal + 1;
+
+      if (index == 1) {
+        alert("Product alerady added to the cart");
+      } else {
+        this.cartItems.push({
+          product_id: product.product_id,
+          product_name: product.product_name,
+          product_price: product.product_price,
+          total_quantity: product.total_quantity,
+          quantity: 1,
+          description: product.description,
+          category: product.category,
+          product_image: product.product_image
+        });
+        this.cartTotal = this.cartTotal + 1;
 
 
-      this.session.set("cartItems", this.cartItems);
+        this.session.set("cartItems", this.cartItems);
+      }
+
     })
 
-    
+
     this.getCartItems();
   }
 
-  getCartItems(){
-    this.cartTotal=0;
-    let Items:Product[]=this.session.get("cartItems");
-    if( Items!=null && Items.length > 0){
-      Items.forEach(item=>{
-        this.cartTotal+=1;
+  getCartItems() {
+    this.cartTotal = 0;
+    let Items: Product[] = this.session.get("cartItems");
+    if (Items != null && Items.length > 0) {
+      Items.forEach(item => {
+        this.cartTotal += 1;
       })
     }
+    
 
 
   }
 
-logout(){
-  this.session.remove('email');
-  window.location.reload();
- 
- 
-}
+  logout() {
+    this.session.remove('email');
+    window.location.reload();
 
-goToOrders(){
-if(this.EmailId == null || this.EmailId == ""){
-    this.router.navigate(['/../auth/login']);
-  }else{
-  this.router.navigate(['/../cart/previous']);
+
   }
-}
-goToProfile(){
- console.log(this.EmailId);
-  
-  if(this.EmailId == null || this.EmailId == ""){
-    console.log("here");
-    this.router.navigate(['/../auth/login']);
-  }else{
-  this.router.navigate(['/../home/profile']);
+
+  goToOrders() {
+    if (this.EmailId == null || this.EmailId == "") {
+      this.router.navigate(['/../auth/login']);
+    } else {
+      this.router.navigate(['/../cart/previous']);
+    }
   }
-}
+  goToProfile() {
+    console.log(this.EmailId);
+
+    if (this.EmailId == null || this.EmailId == "") {
+      console.log("here");
+      this.router.navigate(['/../auth/login']);
+    } else {
+      this.router.navigate(['/../home/profile']);
+    }
+  }
 
 
 }

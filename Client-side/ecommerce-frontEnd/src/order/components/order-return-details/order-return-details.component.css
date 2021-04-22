@@ -1,13 +1,18 @@
-.parent{
-    padding:10%;
+.parent {
+    padding: 10%;
     width: 60%;
 }
 
-td, th {
+td,
+th {
     text-align: center;
     padding: 8px;
-  }
+}
 
-  .back-button{
-      float: right;
-  }
+.back-button {
+    float: right;
+}
+
+.example-card {
+    max-width: 400px;
+}

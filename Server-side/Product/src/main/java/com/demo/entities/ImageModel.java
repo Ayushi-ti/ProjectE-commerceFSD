@@ -24,13 +24,21 @@ public class ImageModel {
 
 	}
 
+	public int getImageid() {
+		return imageid;
+	}
+
+	public void setImageid(int imageid) {
+		this.imageid = imageid;
+	}
+
 	@Id
 
 	@Column(name = "imageid")
 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
-	private Long imageid;
+	private int imageid;
 
 	@Column(name = "name")
 

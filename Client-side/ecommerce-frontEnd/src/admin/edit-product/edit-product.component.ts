@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/core/models/Category.model';
 import { Product } from 'src/core/models/product.model';
+import { CategoryService } from 'src/core/services/category/category.service';
 import { ProductService } from 'src/core/services/product/product.service';
-interface Category {
+
+/*interface Category {
   value: string;
   viewValue: string;
 }
+*/
+
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -17,21 +22,27 @@ export class EditProductComponent implements OnInit {
   productForm:FormGroup;
   product:Product;
   productId:number;
+
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  message: string;
+  imageName: any;
+  imageData:any;
   
-  categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
+  categories:Category[]=[];
+ /* categories:Category[]=[{value:'Electronics',viewValue:'Electronics'},
   {value:'Clothing',viewValue:'Clothing'},{value:'Books',viewValue:'Books'},
   {value:'Accesories',viewValue:'Accesories'},{value:'Bags and Luggage',viewValue:'Bags and Luggage'},
   {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
-
-  constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute) { 
+*/
+  constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute,private categoryService:CategoryService) { 
 
     this.activatedRoute.paramMap.subscribe((params:any) => {
       console.log(params.product_id);
       this.productId=params.get('product_id');
-      //this._Activatedroute.paramMap.subscribe(params => { 
-      //  this.orderId = params.get('id'); 
-    //});
-    })
+   })
 
     this.productForm=new FormGroup({
       product_id:new FormControl({value:'',disabled:true}),
@@ -44,17 +55,23 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-  /*  this.activatedRoute.paramMap.subscribe(params => { 
-    this.productId = +params.get('pid');
-   
-});*/
+    
+    this.getAllCategories();
     this.getProductDetails();
+  }
+
+  getAllCategories(){
+    this.categoryService.getCategory()
+    .subscribe((res:any)=>{
+      this.categories=res;
+    })
   }
 
   getProductDetails(){
     this.productService.getProductById(this.productId)
     .subscribe((res:any)=>{
       this.product=res;
+      //this.getImage();
       this.initializeForm();
     })
   }
@@ -84,10 +101,46 @@ export class EditProductComponent implements OnInit {
     
         alert ("Some error occured in updating the product details");
       }
-    })
-  }
+    });
+}
+
+//Gets called when the user selects an image
+public onFileChanged(event) {
+  //Select File
+  this.selectedFile = event.target.files[0];
+}
+
+//Gets called when the user clicks on submit to upload the image
+
+onUpload() {
+  console.log(this.selectedFile);
+ //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+   const uploadImageData = new FormData();
+   uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+   this.imageData=uploadImageData;
+   // saving image in database
+   this.productService.editProductImage(this.productId,this.imageData) 
+   .subscribe((response) => {
+     console.log(response);
+   });
+   //retriving from database
+   this.getImage();
+ 
+}
  
 
+  addCategory(){
+    this.router.navigate(['/../admin/addcategory/'+this.productId])
+  }
+  getImage() {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+           this.productService.getProductsImage(this.productId)
+            .subscribe((res:any)  => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+           });
+          }
 
   }
 
