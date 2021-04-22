@@ -11,4 +11,6 @@ public interface ProductRepository extends CrudRepository<Product,Integer> {
 	void save(ImageModel img);
 	//List<Product> findByName(String name);
 
+	
+
 }
