@@ -19,11 +19,12 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 	
-	public Customer savecustomer(Customer customer)
+	public boolean savecustomer(Customer customer)
 	{
 		
 		
-		return customerRepository.save(customer);
+		 customerRepository.save(customer);
+		 return true;
 	}
 	
 	public boolean  verifycustomer( Customer customer)

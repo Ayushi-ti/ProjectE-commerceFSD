@@ -26,7 +26,7 @@ public class CustomerController {
 
 	//localhost:9595/customers/register
 	@PostMapping("/register")
-	public Customer registercustomer(@RequestBody Customer customer) {
+	public boolean registercustomer(@RequestBody Customer customer) {
 
 		return customerService.savecustomer(customer);
 
