@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/core/models/Category.model';
 import { Product } from 'src/core/models/product.model';
+import { CategoryService } from 'src/core/services/category/category.service';
 import { ProductService } from 'src/core/services/product/product.service';
 
 @Component({
@@ -10,47 +12,60 @@ import { ProductService } from 'src/core/services/product/product.service';
 export class ProductListComponent implements OnInit {
 
   products:Product[]=[];
+  allProducts: Product[] = [];
+  categories: Category[] = [];
+  selCategory: any = "All";
   
   //private url:string = "http://localhost:3000/Products";
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,private categoryService:CategoryService) { }
 
   ngOnInit(): void {
+    this.getAllCategories();
     this.getAllProducts();
+  }
+
+  getAllCategories() {
+
+    this.categoryService.getCategory()
+      .subscribe((res: any) => {
+        this.categories = res;
+      })
   }
 
   getAllProducts(){
     this.productService.getProducts()
     .subscribe((res:any)=>{
-    
-      this.products = res;
+      this.allProducts = res;
+      this.products = this.allProducts;
     })
   }
  
 
-  /*
-  fetchProducts(){
-    fetch(this.url, {
-      method: "get",
-      
-    })
-    .then((res:any)=>{
-     let r = res.json();
-      return r;
-    })
-    .then((data:any)=>{
-      console.log(data);
-      this.products = data;
-    })
+  getSelectedCategory(event: any) {
+    this.selCategory = event.target.value;
+    this.filterProducts();
 
-    .catch((err:any)=>{
-      console.log("some error occurred")
-      console.log(err)
-    })
+  }
 
 
+  filterProducts() {
+    if (this.selCategory == "All") {
+      this.products=this.allProducts;
+    }
+    else{
+      this.products = [];
+      this.allProducts.forEach((item) => {
+        if (item.category == this.selCategory) {
+          this.products.push(item);
+        }
+      })
 
     }
-*/
+ 
+
+  }
+
+ 
 
 
   }

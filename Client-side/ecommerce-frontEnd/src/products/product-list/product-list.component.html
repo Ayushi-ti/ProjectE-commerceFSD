@@ -1,4 +1,14 @@
 <div class="parent">
+   
+   
+   <label style="margin-left: 30px;margin-top: 30px;"><b>Select Category</b></label>
+   <select style="margin-left: 20px;" (change)="getSelectedCategory($event)">
+       <option>All</option>
+       <option *ngFor="let category of categories" [value]="category.categoryName">
+           {{category.categoryName}}
+       </option>
+   </select>
+   
    <div class="product-grid">
    
 
