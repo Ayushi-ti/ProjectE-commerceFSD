@@ -15,6 +15,9 @@
             <div *ngIf=retrievedImage>
                 <img mat-card-image [src]="retrievedImage" alt="product Image">
             </div>
+            <div *ngIf=!retrievedImage>
+                <img [src]="profile">
+            </div>
         </div>
     </div>
 

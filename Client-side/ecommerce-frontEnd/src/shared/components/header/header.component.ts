@@ -102,7 +102,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.session.remove('email');
+    this.session.set('email',"");
     window.location.reload();
 
 
