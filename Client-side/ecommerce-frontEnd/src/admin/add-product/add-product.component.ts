@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/core/services/category/category.service';
 import { Product } from 'src/core/models/product.model';
 import { ProductService } from 'src/core/services/product/product.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Category {
   value: string;
@@ -33,7 +36,7 @@ productId:number;
   productForm:FormGroup;
   categories:Category[];
 
-  constructor(private productService:ProductService,private router: Router,private categoryService:CategoryService) { 
+  constructor(private dialog:MatDialog,private productService:ProductService,private router: Router,private categoryService:CategoryService) { 
     this.productForm = new FormGroup({
 
       product_name: new FormControl('', Validators.required),
@@ -101,7 +104,14 @@ onUpload() {
 }
 
 ProductAdded(){
-  alert("Product added");
+  //alert("Product added");
+  const dialogData = new ConfirmationDialogModel('Product Added Succesfully', ' yay!! ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
   this.router.navigate(['/../admin/home']);
   
 }

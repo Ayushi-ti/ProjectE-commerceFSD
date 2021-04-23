@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
 import { AdminService } from 'src/core/services/admin/admin.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-admin-login',
@@ -13,7 +16,7 @@ export class AdminLoginComponent implements OnInit {
   Email:string;
   hide=true;
   adminloginForm: FormGroup;
-  constructor(private adminService:AdminService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) { 
+  constructor(private dialog:MatDialog,private adminService:AdminService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) { 
     this.buildForm();
       //this.adminList=adminService.getadmins();
   }
@@ -51,7 +54,14 @@ export class AdminLoginComponent implements OnInit {
     .subscribe(data => {
         console.log(data);
         if(data==false){
-          alert("Username and password not matched");
+          //alert("Username and password not matched");
+          const dialogData = new ConfirmationDialogModel('Admin Email and pasword not matched', ' please enter valid credentials ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
           this.router.navigate(['/auth/login']);
         }
        if(data==true){

@@ -1,9 +1,12 @@
 import { BaseCdkCell } from '@angular/cdk/table';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { Category } from 'src/core/models/Category.model';
 import { CategoryService } from 'src/core/services/category/category.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-add-category',
@@ -18,7 +21,7 @@ export class AddCategoryComponent implements OnInit {
   pid: number;
 
 
-  constructor(private categoryService: CategoryService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private dialog: MatDialog,private categoryService: CategoryService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.categoryForm = new FormGroup({
       categoryName: new FormControl('', Validators.required)
     })
@@ -55,13 +58,27 @@ export class AddCategoryComponent implements OnInit {
     });
 
     if (index == 1) {
-      alert("Category alerady present");
+      //alert("Category alerady present");
+      const dialogData = new ConfirmationDialogModel('Category already Present', ' ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
     } else {
 
       this.categoryService.saveCategory(this.category)
         .subscribe((res: any) => {
          
-          alert("New Category Added");
+          //alert("New Category Added");
+          const dialogData = new ConfirmationDialogModel('Category Added Succesfully', '  ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
           this.getAllCategory();
         })
     }

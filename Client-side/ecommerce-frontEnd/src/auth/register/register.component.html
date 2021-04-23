@@ -26,6 +26,8 @@
                     <mat-card-content>
                         <div class="row">
                             <div class="col-xs">
+                                <mat-error *ngIf="invalid">User already exist with this email</mat-error>
+
                                 <mat-form-field appearance="fill">
                                     <mat-label>Name</mat-label>
                                     <input autocomplete="off" formControlName="customer_name" matInput type="text">
@@ -39,10 +41,14 @@
                                 <mat-form-field appearance="fill">
                                     <mat-label>Email</mat-label>
                                     <input autocomplete="off" formControlName="email" matInput type="text">
-                                    <!-- <span mat-icon-button matSuffix>
-                <mat-icon>person</mat-icon>
-              </span> -->
+                                    <mat-error *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">Please enter valid email</mat-error>
+
                                 </mat-form-field>
+                                <!-- <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="alert">
+                                    <div *ngIf="registerForm.controls['email'].errors.required">
+                                        Please enter valid email
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -54,6 +60,8 @@
                                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+                                    <mat-error *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">Choose strong password (must include:1 special char,1 no. ,letters,min length: 8)</mat-error>
+
                                 </mat-form-field>
                             </div>
                         </div>
@@ -73,6 +81,7 @@
                                 <mat-form-field appearance="fill">
                                     <mat-label>Mobile No</mat-label>
                                     <input autocomplete="off" formControlName="phno" matInput type="text">
+                                    <mat-error *ngIf="registerForm.controls['phno'].invalid && (registerForm.controls['phno'].dirty || registerForm.controls['phno'].touched)">Please enter valid Mobile No.</mat-error>
 
                                 </mat-form-field>
                             </div>

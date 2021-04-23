@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SessionStorageService } from 'angular-web-storage';
 import { Customer } from 'src/core/models/customer.model';
 import { CustomerService } from 'src/core/services/customer/customer.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-update-profile',
@@ -16,7 +19,7 @@ export class UpdateProfileComponent implements OnInit {
   updateProfileForm: FormGroup;
   customer:Customer;
   
-  constructor(private session: SessionStorageService ,private customerService:CustomerService,private formBuilder: FormBuilder, private router:Router) {
+  constructor(private dialog: MatDialog,private session: SessionStorageService ,private customerService:CustomerService,private formBuilder: FormBuilder, private router:Router) {
     this.buildForm();
     this.getCustomerInformation();
 
@@ -75,7 +78,14 @@ export class UpdateProfileComponent implements OnInit {
     this.router.navigate(['/home/profile']);
   }
   showConfirmation(){
-    alert("Your Account is updated");
+   // alert("Your Account is updated");
+   const dialogData = new ConfirmationDialogModel('Your Accout has been been updated successfully', ' ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
   }
 
   
