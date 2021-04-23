@@ -17,7 +17,7 @@ export class ProductCardComponent implements OnInit {
   message: string;
   imageName: any;
   productId:number;
-
+  profile:string='assets/images/profilepic.jpg';
 
  
   constructor(private route:Router,private productService:ProductService,private router:Router) { }
@@ -50,10 +50,17 @@ export class ProductCardComponent implements OnInit {
            //this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
            this.productService.getProductsImage(this.productId)
             .subscribe((res:any)  => {
+             
+              
+              console.log(res);
             this.retrieveResonse = res;
             this.base64Data = this.retrieveResonse.picByte;
             this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-           });
+           },error=>{
+             console.log(error);
+           }
+           
+           );
           }
 
 }

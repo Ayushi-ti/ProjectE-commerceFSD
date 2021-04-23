@@ -6,6 +6,9 @@
             <div *ngIf=retrievedImage>
                 <img [src]="retrievedImage">
             </div>
+            <div *ngIf=!retrievedImage>
+                <img [src]="profile">
+            </div>
         </div>
     </div>
 

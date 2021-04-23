@@ -40,8 +40,8 @@ productId:number;
       
       description: new FormControl('', Validators.required),
 
-      product_price: new FormControl('', Validators.required),
-      total_quantity:new FormControl('',Validators.required),
+      product_price: new FormControl('', [Validators.required,Validators.min(1)]),
+      total_quantity:new FormControl('',[Validators.required,Validators.min(1)]),
       category:new FormControl('',Validators.required)
 
   
@@ -50,6 +50,11 @@ productId:number;
 
   ngOnInit(): void {
     this.getAllCategories();
+  }
+
+  isValidInput(fieldName): boolean {
+    return this.productForm.controls[fieldName].invalid &&
+      (this.productForm.controls[fieldName].dirty || this.productForm.controls[fieldName].touched);
   }
 
   getAllCategories(){
@@ -114,6 +119,7 @@ ProductAdded(){
         //this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
         this.productService.getProductsImage(this.productId)
          .subscribe((res:any)  => {
+           
          this.retrieveResonse = res;
          this.base64Data = this.retrieveResonse.picByte;
          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
