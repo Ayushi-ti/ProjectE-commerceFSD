@@ -9,7 +9,7 @@ import {CustomerService} from './customer/customer.service'
 @Injectable({
   providedIn: 'root'
 })
-export class RepositoriesService {
+export class RepositoryService {
 
   constructor(
     // public productsService: ProductsService,

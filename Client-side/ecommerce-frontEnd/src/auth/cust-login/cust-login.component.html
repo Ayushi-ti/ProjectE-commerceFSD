@@ -6,16 +6,17 @@
 <!-- <span class="fill-space "></span> -->
 <span class="gap"></span>
 <!-- <button mat-raised-button color="primary" (click)="redirectToRegister()">New User?</button> -->
-<button mat-raised-button [matMenuTriggerFor]="menu" color="primary">New User?</button>
-
-<mat-menu #menu="matMenu">
+<!-- <button mat-raised-button [matMenuTriggerFor]="menu" color="primary">New User?</button> -->
+<button mat-raised-button color="primary" [routerLink]="'/../auth/register'">New User?</button>
+<!-- <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="redirectToRegister()">Register</button>
-</mat-menu>
+</mat-menu> -->
 <span class="gap"></span>
-<button mat-raised-button [matMenuTriggerFor]="menu2" color="primary">Admin?</button>
-<mat-menu #menu2="matMenu">
+<!-- <button mat-raised-button [matMenuTriggerFor]="menu2" color="primary">Admin?</button> -->
+<button mat-raised-button color="primary" [routerLink]="'/../auth/logByAdmin'">Admin?</button>
+<!-- <mat-menu #menu2="matMenu">
     <button mat-menu-item (click)="redirectToAdminLogin()">Admin login</button>
-</mat-menu>
+</mat-menu> -->
 
 
 <!-- </nav>

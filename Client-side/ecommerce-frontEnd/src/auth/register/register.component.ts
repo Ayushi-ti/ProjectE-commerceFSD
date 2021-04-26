@@ -58,13 +58,14 @@ export class RegisterComponent implements OnInit {
       else{
        //alert("User already registered with this email");
        //this.invalid=true;
-       const dialogData = new ConfirmationDialogModel('User already exist with this email', ' ');
+      
+       const dialogData = new ConfirmationDialogModel('User already exist with this email', ' yay!! ');
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
             maxWidth: '500px',
-              minWidth:'500px',
+            minWidth:'500px',
             closeOnNavigation: true,
             data: dialogData
-       })
+        })
 
       }
 
@@ -81,7 +82,9 @@ export class RegisterComponent implements OnInit {
   }
   showConfirmation(){
     //alert("Your Account is registered");
-    const dialogData = new ConfirmationDialogModel('Congratulations!!', 'Account Registered succesfully ');
+    
+
+        const dialogData = new ConfirmationDialogModel('Account Registered succesfully', ' yay!! ');
         const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
             maxWidth: '500px',
             minWidth:'500px',
