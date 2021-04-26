@@ -10,7 +10,7 @@ describe('ProfileGuard', () => {
     guard = TestBed.inject(ProfileGuard);
   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
+  // it('should be created', () => {
+  //   expect(guard).toBeTruthy();
+  // });
 });
