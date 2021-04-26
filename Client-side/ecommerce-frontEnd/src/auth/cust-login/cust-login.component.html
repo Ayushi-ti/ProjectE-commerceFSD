@@ -5,15 +5,18 @@
 <a mat-raised-button (click)="redirectToHome()" color="primary">Go Back</a>
 <!-- <span class="fill-space "></span> -->
 <span class="gap"></span>
-<button mat-raised-button [matMenuTriggerFor]="menu" color="primary">New User?</button>
-<mat-menu #menu="matMenu">
+<!-- <button mat-raised-button color="primary" (click)="redirectToRegister()">New User?</button> -->
+<!-- <button mat-raised-button [matMenuTriggerFor]="menu" color="primary">New User?</button> -->
+<button mat-raised-button color="primary" [routerLink]="'/../auth/register'">New User?</button>
+<!-- <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="redirectToRegister()">Register</button>
-</mat-menu>
+</mat-menu> -->
 <span class="gap"></span>
-<button mat-raised-button [matMenuTriggerFor]="menu2" color="primary">Admin?</button>
-<mat-menu #menu2="matMenu">
+<!-- <button mat-raised-button [matMenuTriggerFor]="menu2" color="primary">Admin?</button> -->
+<button mat-raised-button color="primary" [routerLink]="'/../auth/logByAdmin'">Admin?</button>
+<!-- <mat-menu #menu2="matMenu">
     <button mat-menu-item (click)="redirectToAdminLogin()">Admin login</button>
-</mat-menu>
+</mat-menu> -->
 
 
 <!-- </nav>
@@ -38,6 +41,8 @@
 
         <div class="row center-xs">
             <div class="box" id="loginbox">
+                <mat-error *ngIf="invalid">Please enter valid Credentials : email and password not matched</mat-error>
+
                 <form [formGroup]="loginForm">
                     <mat-card>
                         <mat-card-header>
@@ -67,6 +72,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
+
                         </mat-card-content>
                         <mat-card-actions>
                             <button [disabled]="loginForm.invalid" mat-raised-button color="accent" type="submit" (click)="login()">Login</button>

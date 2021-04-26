@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/core/models/Category.model';
 import { Product } from 'src/core/models/product.model';
 import { CategoryService } from 'src/core/services/category/category.service';
 import { ProductService } from 'src/core/services/product/product.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 /*interface Category {
   value: string;
@@ -37,7 +40,7 @@ export class EditProductComponent implements OnInit {
   {value:'Accesories',viewValue:'Accesories'},{value:'Bags and Luggage',viewValue:'Bags and Luggage'},
   {value:'Footwear',viewValue:'Footwear'},{value:'Make-up',viewValue:'Make-up'}];
 */
-  constructor(private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute,private categoryService:CategoryService) { 
+  constructor(private dialog: MatDialog,private router:Router,private productService:ProductService,private activatedRoute:ActivatedRoute,private categoryService:CategoryService) { 
 
     this.activatedRoute.paramMap.subscribe((params:any) => {
       console.log(params.product_id);
@@ -48,8 +51,8 @@ export class EditProductComponent implements OnInit {
       product_id:new FormControl({value:'',disabled:true}),
       product_name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      product_price: new FormControl('', Validators.required),
-      total_quantity:new FormControl('',Validators.required),
+      product_price: new FormControl('', [Validators.required,Validators.min(1)]),
+      total_quantity:new FormControl('',[Validators.required,Validators.min(1)]),
       category:new FormControl('',Validators.required)
     });
   }
@@ -94,12 +97,26 @@ export class EditProductComponent implements OnInit {
     this.productService.updateProduct(this.product.product_id,this.productForm.value)
     .subscribe((res:any)=>{
       if(res){
-        alert("Product details are updated");
+       // alert("Product details are updated");
+       const dialogData = new ConfirmationDialogModel('Product details are updated', ' ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
      this.router.navigate(['/../admin/productdetail/'+ this.product.product_id]);
       }else{
         this.router.navigate(['/../admin/productdetail/'+ this.product.product_id]);
     
-        alert ("Some error occured in updating the product details");
+        //alert ("Some error occured in updating the product details");
+        const dialogData = new ConfirmationDialogModel('Some error occured in updating the product details', ' ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
       }
     });
 }

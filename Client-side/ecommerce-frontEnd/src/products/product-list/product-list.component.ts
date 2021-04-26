@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { Category } from 'src/core/models/Category.model';
 import { Product } from 'src/core/models/product.model';
 import { CategoryService } from 'src/core/services/category/category.service';
@@ -15,6 +16,10 @@ export class ProductListComponent implements OnInit {
   allProducts: Product[] = [];
   categories: Category[] = [];
   selCategory: any = "All";
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+
   
   //private url:string = "http://localhost:3000/Products";
   constructor(private productService:ProductService,private categoryService:CategoryService) { }
@@ -22,6 +27,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCategories();
     this.getAllProducts();
+    
+
+    //this.dataSource.paginator = this.paginator;
+
   }
 
   getAllCategories() {

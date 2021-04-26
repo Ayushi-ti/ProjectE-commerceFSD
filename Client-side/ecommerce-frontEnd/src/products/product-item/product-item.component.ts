@@ -19,6 +19,7 @@ export class ProductItemComponent implements OnInit {
   message: string;
   imageName: any;
   productId:number;
+  profile:string='assets/images/profilepic.jpg';
 
   constructor(private msg:MessengerService,private productService:ProductService) { }
 

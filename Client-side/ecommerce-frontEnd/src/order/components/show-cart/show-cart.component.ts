@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 import { isTemplateSpan } from 'typescript';
 import { ProductService } from 'src/core/services/product/product.service';
 import { MessengerService } from 'src/core/services/messenger/messenger.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-show-cart',
@@ -18,7 +21,7 @@ export class ShowCartComponent implements OnInit {
 
   cartItems: any[] = [];
   totalSum: number = 0;
-  constructor(public cartService: CartService, public session: SessionStorageService, private customerService: CustomerService, private orderService: OrderService, private router: Router, private productService: ProductService,private msg:MessengerService) {
+  constructor(private dialog:MatDialog,public cartService: CartService, public session: SessionStorageService, private customerService: CustomerService, private orderService: OrderService, private router: Router, private productService: ProductService,private msg:MessengerService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +37,14 @@ export class ShowCartComponent implements OnInit {
 
   decreaseQauntity(items) {
     if (items.quantity == 1) {
-      alert("You cannot decrease more");
+      //alert("You cannot decrease more");
+      const dialogData = new ConfirmationDialogModel('Not Valid operation', ' You cannot decrease more ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
     } else {
       items.quantity--;
       this.findTotalAmout();
@@ -43,7 +53,14 @@ export class ShowCartComponent implements OnInit {
 
   increaseQauntity(items) {
     if (items.quantity == items.total_quantity) {
-      alert("You cannot increase more");
+     // alert("You cannot increase more");
+     const dialogData = new ConfirmationDialogModel('Not Valid operation', ' You cannot increase more ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
     } else {
       items.quantity++;
       this.findTotalAmout();

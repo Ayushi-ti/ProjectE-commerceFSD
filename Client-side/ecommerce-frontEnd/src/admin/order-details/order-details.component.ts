@@ -5,6 +5,8 @@ import { Order } from 'src/core/models/Order.model';
 import { Product } from 'src/core/models/product.model';
 import { OrderService } from 'src/core/services/order/order.service';
 import { ProductService } from 'src/core/services/product/product.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
@@ -39,7 +41,14 @@ export class OrderDetailsComponent implements OnInit {
    })
 
    
-    alert("Order Approved");
+    //alert("Order Approved");
+    const dialogData = new ConfirmationDialogModel('Order Approved', '  ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
   }
 
 

@@ -21,6 +21,7 @@ base64Data: any;
 retrieveResonse: any;
 message: string;
 imageName: any;
+profile:string='assets/images/profilepic.jpg';
   //productId:number;
 //Product_Image:string='assets/images/profilepic.jpg';
 

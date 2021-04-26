@@ -44,7 +44,7 @@ getCustomerInformation(){
      this.email=data.email;
      this.address=data.address;
      this.phno=data.phno;
-      console.log(data); 
+      //console.log(data); 
   })
   
 }

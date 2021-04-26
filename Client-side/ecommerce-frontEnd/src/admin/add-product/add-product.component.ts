@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/core/services/category/category.service';
 import { Product } from 'src/core/models/product.model';
 import { ProductService } from 'src/core/services/product/product.service';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Category {
   value: string;
@@ -33,15 +36,15 @@ productId:number;
   productForm:FormGroup;
   categories:Category[];
 
-  constructor(private productService:ProductService,private router: Router,private categoryService:CategoryService) { 
+  constructor(private dialog:MatDialog,private productService:ProductService,private router: Router,private categoryService:CategoryService) { 
     this.productForm = new FormGroup({
 
       product_name: new FormControl('', Validators.required),
       
       description: new FormControl('', Validators.required),
 
-      product_price: new FormControl('', Validators.required),
-      total_quantity:new FormControl('',Validators.required),
+      product_price: new FormControl('', [Validators.required,Validators.min(1)]),
+      total_quantity:new FormControl('',[Validators.required,Validators.min(1)]),
       category:new FormControl('',Validators.required)
 
   
@@ -50,6 +53,11 @@ productId:number;
 
   ngOnInit(): void {
     this.getAllCategories();
+  }
+
+  isValidInput(fieldName): boolean {
+    return this.productForm.controls[fieldName].invalid &&
+      (this.productForm.controls[fieldName].dirty || this.productForm.controls[fieldName].touched);
   }
 
   getAllCategories(){
@@ -101,7 +109,14 @@ onUpload() {
 }
 
 ProductAdded(){
-  alert("Product added");
+  //alert("Product added");
+  const dialogData = new ConfirmationDialogModel('Product Added Succesfully', ' yay!! ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
   this.router.navigate(['/../admin/home']);
   
 }
@@ -114,6 +129,7 @@ ProductAdded(){
         //this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
         this.productService.getProductsImage(this.productId)
          .subscribe((res:any)  => {
+           
          this.retrieveResonse = res;
          this.base64Data = this.retrieveResonse.picByte;
          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;

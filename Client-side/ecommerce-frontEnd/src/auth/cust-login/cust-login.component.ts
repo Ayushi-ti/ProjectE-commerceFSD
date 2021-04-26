@@ -3,6 +3,10 @@ import { FormControl, FormGroup, Validators, FormBuilder, EmailValidator} from '
 import { CustomerService } from 'src/core/services/customer/customer.service';
 import { Router } from '@angular/router';
 import {  SessionStorageService, SessionStorage } from 'angular-web-storage';
+import { invalid } from '@angular/compiler/src/render3/view/util';
+import { ConfirmationDialogModel } from 'src/shared/components/confirmation-dialog/confirmation-dialog';
+import { ConfirmationDialogComponent } from 'src/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 //import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
@@ -18,13 +22,14 @@ export class CustLoginComponent implements OnInit {
   loginForm: FormGroup;
   customersList:any=[];
   flag:boolean;
+  invalid:boolean=false;
 
   
 
   
   //@SessionStorage() sessionValue: string = `Email`;
  
-  constructor(private customerService:CustomerService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) {
+  constructor(private dialog:MatDialog,private customerService:CustomerService ,private formBuilder: FormBuilder,private router: Router ,private session: SessionStorageService) {
       this.buildForm();
       this.customersList=customerService.getCustomers();
       console.log(this.customersList);
@@ -44,8 +49,9 @@ export class CustLoginComponent implements OnInit {
   private buildForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
-      
+      password: ['', [Validators.required]],
+      // password: ['', [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
+
 
       getErrorMessage() {
         if (this.email.hasError('required')) {
@@ -72,8 +78,16 @@ export class CustLoginComponent implements OnInit {
     .subscribe(data => {
         console.log(data);
         if(data==false){
-          alert("Username and password not matched");
-          this.router.navigate(['/auth/login']);
+          //this.invalid=true;
+          const dialogData = new ConfirmationDialogModel('Username and Password not matched', ' please enter valid credentials ');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            maxWidth: '500px',
+            minWidth:'500px',
+            closeOnNavigation: true,
+            data: dialogData
+        })
+          //alert("Username and password not matched");
+          //this.router.navigate(['/auth/login']);
         }
        if(data==true){
         this.session.set("email",this.Email);
@@ -81,7 +95,9 @@ export class CustLoginComponent implements OnInit {
         console.log(this.session.get("email"));
         // this.router.navigateByUrl('RefreshComponent',{skipLocationChange:true })
         // .then(()=>{
-          this.router.navigate(['/../home']);
+          this.router.navigate(['/../home']).then(()=>{
+            window.location.reload();
+          });
         // });
       }
 

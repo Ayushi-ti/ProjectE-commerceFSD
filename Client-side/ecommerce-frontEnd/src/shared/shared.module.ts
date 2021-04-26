@@ -8,14 +8,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import {SharedRoutingModule} from './share.routing'
+import {SharedRoutingModule} from './share.routing';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component'
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
