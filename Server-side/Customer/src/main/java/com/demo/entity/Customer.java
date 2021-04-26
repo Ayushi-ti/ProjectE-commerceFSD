@@ -22,9 +22,39 @@ public class Customer {
 	@Column(name="email",unique=true,nullable=false)
 	
 	private String email;
+	
+//	public Customer(int customerId, String customerName, String password, String address, long phno,
+//			String deliveryAddress, String email) {
+//		super();
+//		this.customerId = customerId;
+//		this.customerName = customerName;
+//		this.password = password;
+//		this.address = address;
+//		this.phno = phno;
+//		this.deliveryAddress = deliveryAddress;
+//		this.email = email;
+//	}
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
+	public Customer(int customerId, String customerName, String password, String address, long phno,
+			String deliveryAddress, String email) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.password = password;
+		this.address = address;
+		this.phno = phno;
+		this.deliveryAddress = deliveryAddress;
+		this.email = email;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}

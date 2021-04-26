@@ -80,6 +80,7 @@ public class CustomerService {
 	}
 	public Customer getCustomerEmail(String email)
 	{
+		
 		Customer cust= customerRepository.findByemail(email);
 		 return cust;
 	}
