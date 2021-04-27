@@ -10,6 +10,7 @@ import { AuthRoutingModule } from 'src/auth/auth-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -25,8 +26,8 @@ import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    AuthRoutingModule
-    
-  ]
+    AuthRoutingModule    
+  ],
+  providers:[MatDialog]
 })
 export class AuthModule { }

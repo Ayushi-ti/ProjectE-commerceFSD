@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from './core/services/customer/customer.service';
 
 import { HomeModule } from './home/home.module';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -49,7 +50,8 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     CoreModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialog
     
    
     
